@@ -1,4 +1,4 @@
--- Healing Groups Suck v1.8
+-- Healing Groups Suck v1.9
 -- Written by The_Groove updated by Lilamystiqu on Lothar
 
 --Change this to increase the number of sets
@@ -9,12 +9,14 @@ HGS_DRUID = "Druid";
 HGS_SHAMAN = "Shaman";
 HGS_PRIEST = "Priest";
 HGS_PALADIN = "Paladin";
+
 if ( GetLocale() == "frFR" ) then
 	HGS_DRUID = "Druide";
 	HGS_SHAMAN = "Chaman";
 	HGS_PRIEST = "Pr\195\170tre";
 	HGS_PALADIN = "Paladin";
 end
+
 if ( GetLocale() == "deDE") then
 	HGS_DRUID = "Druid";
 	HGS_SHAMAN = "Schaman";
@@ -30,7 +32,6 @@ function HGS_OnLoad()
 	SlashCmdList["HGS"] = HGSCommand;
 	SLASH_HGS1 = "/healingroupsuck";
 	SLASH_HGS2 = "/hgs";
-
 end
 
 function HGS_OnEvent(event, arg1)
@@ -86,7 +87,7 @@ function HGSCommand(msg)
 	end
 	
 	if (msg == "") then
-		DEFAULT_CHAT_FRAME:AddMessage("~ Healing Groups Suck v1.8 ~", 0.5, 1, 0.5);
+		DEFAULT_CHAT_FRAME:AddMessage("~ Healing Groups Suck v1.9 ~", 0.5, 1, 0.5);
 		DEFAULT_CHAT_FRAME:AddMessage("/hgs show - Shows the minimap icon", 0.3, 0.6, 0.3);
 		DEFAULT_CHAT_FRAME:AddMessage("/hgs hide - Hides the minimap icon", 0.3, 0.6, 0.3);
 		DEFAULT_CHAT_FRAME:AddMessage("/hgs open - Opens the group window", 0.3, 0.6, 0.3);
@@ -185,7 +186,7 @@ function UpdateFonts()
 	SetHealerFont(Healer34text,34);
 	SetHealerFont(Healer35text,35);
 	SetHealerFont(Healer36text,36);
-   SetHealerFont(Healer37text,37);
+    SetHealerFont(Healer37text,37);
 	
 	SetGroupFont(G1Box1text,1,1);
 	SetGroupFont(G1Box2text,1,2);
