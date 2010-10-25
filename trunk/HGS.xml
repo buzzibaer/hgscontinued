@@ -2,2649 +2,2649 @@
 xsi:schemaLocation="http://www.blizzard.com/wow/ui/..\..\FrameXML\UI.xsd">
 
 <Script file="HGS.lua"/>
-	
-	
-	
+    
+    
+    
 <Button name="HealerTemplate"  justifyH="CENTER" virtual="true">
-		<Size>
-			<AbsDimension x="80" y="14"/>
-		</Size>
-		<Layers>
-			<Layer level="OVERLAY">
-				<FontString name="$parenttext" inherits="GameFontHighLightSmall" text="">
-					<Anchors>
-						<Anchor point="CENTER">
-							<Offset>
-								<AbsDimension x="0" y="0"/>
-							</Offset>
-						</Anchor>
-					</Anchors>
-				</FontString>
-			</Layer>
-		</Layers>
-		<NormalTexture file="Interface\RaidFrame\UI-RaidFrame-GroupButton">
-			<TexCoords left="0" right="0.640625" top="0" bottom="0.4375"/>
-		</NormalTexture>
-		<HighlightTexture file="Interface\RaidFrame\UI-RaidFrame-GroupButton" alphaMode="ADD">
-			<TexCoords left="0" right="0.640625" top="0.46875" bottom="0.90625"/>
-		</HighlightTexture>
-		<Scripts>
-					<OnClick>
-						Healer_OnClick();
-					</OnClick>
-				</Scripts>
-	</Button>
-	
-	
-	
-	<Frame name="HGSFrame" parent="UIParent" frameStrata="HIGH"  hidden="true" toplevel="true" enableMouse="true" movable="true">
-		<Size>
-			<AbsDimension x="700" y="620"/>
-		</Size>
-		<Anchors>
-			<Anchor point="TOP"/>
-		</Anchors>
-		<Backdrop name="HGSFrameBackdrop" bgFile="Interface\Tooltips\UI-Tooltip-Background" edgeFile="Interface\Tooltips\UI-Tooltip-Border" tile="true">
-			<EdgeSize>
-				<AbsValue val="16"/>
-			</EdgeSize>
-			<TileSize>
-				<AbsValue val="16"/>
-			</TileSize>
-			<BackgroundInsets>
-				<AbsInset left="5" right="5" top="5" bottom="5"/>
-			</BackgroundInsets>
-		</Backdrop>
-		<Layers>
-			<Layer level="OVERLAY">
+        <Size>
+            <AbsDimension x="80" y="14"/>
+        </Size>
+        <Layers>
+            <Layer level="OVERLAY">
+                <FontString name="$parenttext" inherits="GameFontHighLightSmall" text="">
+                    <Anchors>
+                        <Anchor point="CENTER">
+                            <Offset>
+                                <AbsDimension x="0" y="0"/>
+                            </Offset>
+                        </Anchor>
+                    </Anchors>
+                </FontString>
+            </Layer>
+        </Layers>
+        <NormalTexture file="Interface\RaidFrame\UI-RaidFrame-GroupButton">
+            <TexCoords left="0" right="0.640625" top="0" bottom="0.4375"/>
+        </NormalTexture>
+        <HighlightTexture file="Interface\RaidFrame\UI-RaidFrame-GroupButton" alphaMode="ADD">
+            <TexCoords left="0" right="0.640625" top="0.46875" bottom="0.90625"/>
+        </HighlightTexture>
+        <Scripts>
+                    <OnClick>
+                        Healer_OnClick(self);
+                    </OnClick>
+                </Scripts>
+    </Button>
+    
+    
+    
+    <Frame name="HGSFrame" parent="UIParent" frameStrata="HIGH"  hidden="true" toplevel="true" enableMouse="true" movable="true">
+        <Size>
+            <AbsDimension x="700" y="620"/>
+        </Size>
+        <Anchors>
+            <Anchor point="TOP"/>
+        </Anchors>
+        <Backdrop name="HGSFrameBackdrop" bgFile="Interface\Tooltips\UI-Tooltip-Background" edgeFile="Interface\Tooltips\UI-Tooltip-Border" tile="true">
+            <EdgeSize>
+                <AbsValue val="16"/>
+            </EdgeSize>
+            <TileSize>
+                <AbsValue val="16"/>
+            </TileSize>
+            <BackgroundInsets>
+                <AbsInset left="5" right="5" top="5" bottom="5"/>
+            </BackgroundInsets>
+        </Backdrop>
+        <Layers>
+            <Layer level="OVERLAY">
 
-			<FontString name="HGSTitle" inherits="GameFontNormal" text="Healing Groups Suck v1.9.1">
-					<Size>
-						<AbsDimension x="190" y="16"/>
-					</Size>
-					<Anchors>
-						<Anchor point="TOP">
-							<Offset>
-								<AbsDimension x="0" y="-5"/>
-							</Offset>
-						</Anchor>
-					</Anchors>
-				</FontString>
-			<FontString name="HGSHealerText" inherits="GameFontNormal" text="-Healers-">
-					<Size>
-						<AbsDimension x="85" y="25"/>
-					</Size>
-					<Anchors>
-						<Anchor point="TOPLEFT" relativeTo="HGSFrame" relativePoint="TOPLEFT">
-							<Offset>
-								<AbsDimension x="10" y="-35"/>
-							</Offset>
-						</Anchor>
-					</Anchors>
-				</FontString>	
-			<FontString name="HGSActiveText" inherits="GameFontNormal" text="Group1">
-					<Size>
-						<AbsDimension x="85" y="28"/>
-					</Size>
-					<Anchors>
-						<Anchor point="TOPLEFT" relativeTo="HGSFrame" relativePoint="TOPLEFT">
-							<Offset>
-								<AbsDimension x="10" y="-15"/>
-							</Offset>
-						</Anchor>
-					</Anchors>
-				</FontString>	
-			<FontString name="HGSChanText" inherits="GameFontNormal" text="Channel" justifyH="LEFT">
-					<Size>
-						<AbsDimension x="200" y="28"/>
-					</Size>
-					<Anchors>
-						<Anchor point="BOTTOMLEFT">
-							<Offset>
-								<AbsDimension x="125" y="23"/>
-							</Offset>
-						</Anchor>
-					</Anchors>
-				</FontString>	
-			<FontString name="HGSClearCText" inherits="GameFontNormal" text="- clears the current set">
-					<Size>
-						<AbsDimension x="400" y="28"/>
-					</Size>
-					<Anchors>
-						<Anchor point="BOTTOMRIGHT">
-							<Offset>
-								<AbsDimension x="80" y="2"/>
-							</Offset>
-						</Anchor>
-					</Anchors>
-				</FontString>	
-			<FontString name="HGSInstanceText" inherits="GameFontNormal" justifyH="LEFT">
-					<Size>
-						<AbsDimension x="300" y="28"/>
-					</Size>
-					<Anchors>
-						<Anchor point="BOTTOM">
-							<Offset>
-								<AbsDimension x="85" y="68"/>
-							</Offset>
-						</Anchor>
-					</Anchors>
-				</FontString>	
-			<FontString name="HGSCommText" inherits="GameFontNormal" text="Comments: ">
-					<Size>
-						<AbsDimension x="100" y="28"/>
-					</Size>
-					<Anchors>
-						<Anchor point="BOTTOM">
-							<Offset>
-								<AbsDimension x="-180" y="100"/>
-							</Offset>
-						</Anchor>
-					</Anchors>
-				</FontString>	
-			
-			</Layer>
-		</Layers>
-		<Frames>
-		-- 120 pt offset
-			<Button name="HGSGroup1Text" inherits="GameMenuButtonTemplate" id="1" text="Group1">
-					<Size>
-						<AbsDimension x="85" y="25"/>
-					</Size>
-					<Anchors>
-						<Anchor point="TOPLEFT" relativeTo="HGSFrame" relativePoint="TOPLEFT">
-							<Offset>
-								<AbsDimension x="135" y="-35"/>
-							</Offset>
-						</Anchor>
-					</Anchors>
-					<Scripts>
-						<OnClick>
-							HGS_SetActiveGroup();
-						</OnClick>
-					</Scripts>
-			</Button>	
-			<Button name="HGSGroup2Text" inherits="GameMenuButtonTemplate" id="2" text="Group2">
-					<Size>
-						<AbsDimension x="85" y="25"/>
-					</Size>
-					<Anchors>
-						<Anchor point="TOPLEFT" relativeTo="HGSFrame" relativePoint="TOPLEFT">
-							<Offset>
-								<AbsDimension x="255" y="-35"/>
-							</Offset>
-						</Anchor>
-					</Anchors>
-					<Scripts>
-						<OnClick>
-							HGS_SetActiveGroup();
-						</OnClick>
-					</Scripts>
-			</Button>	
-			<Button name="HGSGroup3Text" inherits="GameMenuButtonTemplate" id="3" text="Group3">
-					<Size>
-						<AbsDimension x="85" y="25"/>
-					</Size>
-					<Anchors>
-						<Anchor point="TOPLEFT" relativeTo="HGSFrame" relativePoint="TOPLEFT">
-							<Offset>
-								<AbsDimension x="375" y="-35"/>
-							</Offset>
-						</Anchor>
-					</Anchors>
-					<Scripts>
-						<OnClick>
-							HGS_SetActiveGroup();
-						</OnClick>
-					</Scripts>
-			</Button>	
-			<Button name="HGSGroup4Text" inherits="GameMenuButtonTemplate" id="4" text="Group4">
-					<Size>
-						<AbsDimension x="85" y="25"/>
-					</Size>
-					<Anchors>
-						<Anchor point="TOPLEFT" relativeTo="HGSFrame" relativePoint="TOPLEFT">
-							<Offset>
-								<AbsDimension x="495" y="-35"/>
-							</Offset>
-						</Anchor>
-					</Anchors>
-					<Scripts>
-						<OnClick>
-							HGS_SetActiveGroup();
-						</OnClick>
-					</Scripts>
-			</Button>	
-			<Button name="HGSGroup5Text" inherits="GameMenuButtonTemplate" id="5" text="Group5">
-					<Size>
-						<AbsDimension x="85" y="25"/>
-					</Size>
-					<Anchors>
-						<Anchor point="TOPLEFT" relativeTo="HGSFrame" relativePoint="TOPLEFT">
-							<Offset>
-								<AbsDimension x="135" y="-275"/>
-							</Offset>
-						</Anchor>
-					</Anchors>
-					<Scripts>
-						<OnClick>
-							HGS_SetActiveGroup();
-						</OnClick>
-					</Scripts>
-			</Button>	
-			<Button name="HGSGroup6Text" inherits="GameMenuButtonTemplate" id="6" text="Group6">
-					<Size>
-						<AbsDimension x="85" y="25"/>
-					</Size>
-					<Anchors>
-						<Anchor point="TOPLEFT" relativeTo="HGSFrame" relativePoint="TOPLEFT">
-							<Offset>
-								<AbsDimension x="255" y="-275"/>
-							</Offset>
-						</Anchor>
-					</Anchors>
-					<Scripts>
-						<OnClick>
-							HGS_SetActiveGroup();
-						</OnClick>
-					</Scripts>
-			</Button>	
-			<Button name="HGSGroup7Text" inherits="GameMenuButtonTemplate" id="7" text="Group7">
-					<Size>
-						<AbsDimension x="85" y="25"/>
-					</Size>
-					<Anchors>
-						<Anchor point="TOPLEFT" relativeTo="HGSFrame" relativePoint="TOPLEFT">
-							<Offset>
-								<AbsDimension x="375" y="-275"/>
-							</Offset>
-						</Anchor>
-					</Anchors>
-					<Scripts>
-						<OnClick>
-							HGS_SetActiveGroup();
-						</OnClick>
-					</Scripts>
-			</Button>	
-			<Button name="HGSGroup8Text" inherits="GameMenuButtonTemplate" id="8" text="Group8">
-					<Size>
-						<AbsDimension x="85" y="25"/>
-					</Size>
-					<Anchors>
-						<Anchor point="TOPLEFT" relativeTo="HGSFrame" relativePoint="TOPLEFT">
-							<Offset>
-								<AbsDimension x="495" y="-275"/>
-							</Offset>
-						</Anchor>
-					</Anchors>
-					<Scripts>
-						<OnClick>
-							HGS_SetActiveGroup();
-						</OnClick>
-					</Scripts>
-			</Button>	
-			
-			
-		<Button name="Healer1" inherits="HealerTemplate" id="1">
-				<Anchors>
-					<Anchor point="TOPLEFT">
-						<Offset>
-							<AbsDimension x="13" y="-66"/>
-						</Offset>
-					</Anchor>
-				</Anchors>
-		</Button>
-		<Button name="Healer2" inherits="HealerTemplate" id="2">
-				<Anchors>
-					<Anchor point="TOPLEFT" relativeTo="Healer1">
-						<Offset>
-							<AbsDimension x="0" y="-14"/>
-						</Offset>
-					</Anchor>
-				</Anchors>
-		</Button>
-		<Button name="Healer3" inherits="HealerTemplate" id="3">
-				<Anchors>
-					<Anchor point="TOPLEFT" relativeTo="Healer2">
-						<Offset>
-							<AbsDimension x="0" y="-14"/>
-						</Offset>
-					</Anchor>
-				</Anchors>
-		</Button>
-		<Button name="Healer4" inherits="HealerTemplate" id="4">
-				<Anchors>
-					<Anchor point="TOPLEFT" relativeTo="Healer3">
-						<Offset>
-							<AbsDimension x="0" y="-14"/>
-						</Offset>
-					</Anchor>
-				</Anchors>
-		</Button>
-		<Button name="Healer5" inherits="HealerTemplate" id="5">
-				<Anchors>
-					<Anchor point="TOPLEFT" relativeTo="Healer4">
-						<Offset>
-							<AbsDimension x="0" y="-14"/>
-						</Offset>
-					</Anchor>
-				</Anchors>
-		</Button>
-		<Button name="Healer6" inherits="HealerTemplate" id="6">
-				<Anchors>
-					<Anchor point="TOPLEFT" relativeTo="Healer5">
-						<Offset>
-							<AbsDimension x="0" y="-14"/>
-						</Offset>
-					</Anchor>
-				</Anchors>
-		</Button>
-		<Button name="Healer7" inherits="HealerTemplate" id="7">
-				<Anchors>
-					<Anchor point="TOPLEFT" relativeTo="Healer6">
-						<Offset>
-							<AbsDimension x="0" y="-14"/>
-						</Offset>
-					</Anchor>
-				</Anchors>
-		</Button>
-		<Button name="Healer8" inherits="HealerTemplate" id="8">
-				<Anchors>
-					<Anchor point="TOPLEFT" relativeTo="Healer7">
-						<Offset>
-							<AbsDimension x="0" y="-14"/>
-						</Offset>
-					</Anchor>
-				</Anchors>
-		</Button>
-		<Button name="Healer9" inherits="HealerTemplate" id="9">
-				<Anchors>
-					<Anchor point="TOPLEFT" relativeTo="Healer8">
-						<Offset>
-							<AbsDimension x="0" y="-14"/>
-						</Offset>
-					</Anchor>
-				</Anchors>
-		</Button>
-		<Button name="Healer10" inherits="HealerTemplate" id="10">
-				<Anchors>
-					<Anchor point="TOPLEFT" relativeTo="Healer9">
-						<Offset>
-							<AbsDimension x="0" y="-14"/>
-						</Offset>
-					</Anchor>
-				</Anchors>
-		</Button>
-		<Button name="Healer11" inherits="HealerTemplate" id="11">
-				<Anchors>
-					<Anchor point="TOPLEFT" relativeTo="Healer10">
-						<Offset>
-							<AbsDimension x="0" y="-14"/>
-						</Offset>
-					</Anchor>
-				</Anchors>
-		</Button>
-		<Button name="Healer12" inherits="HealerTemplate" id="12">
-				<Anchors>
-					<Anchor point="TOPLEFT" relativeTo="Healer11">
-						<Offset>
-							<AbsDimension x="0" y="-14"/>
-						</Offset>
-					</Anchor>
-				</Anchors>
-		</Button>
-		<Button name="Healer13" inherits="HealerTemplate" id="13">
-				<Anchors>
-					<Anchor point="TOPLEFT" relativeTo="Healer12">
-						<Offset>
-							<AbsDimension x="0" y="-14"/>
-						</Offset>
-					</Anchor>
-				</Anchors>
-		</Button>
-		<Button name="Healer14" inherits="HealerTemplate" id="14">
-				<Anchors>
-					<Anchor point="TOPLEFT" relativeTo="Healer13">
-						<Offset>
-							<AbsDimension x="0" y="-14"/>
-						</Offset>
-					</Anchor>
-				</Anchors>
-		</Button>
-		<Button name="Healer15" inherits="HealerTemplate" id="15">
-				<Anchors>
-					<Anchor point="TOPLEFT" relativeTo="Healer14">
-						<Offset>
-							<AbsDimension x="0" y="-14"/>
-						</Offset>
-					</Anchor>
-				</Anchors>
-		</Button>
-		<Button name="Healer16" inherits="HealerTemplate" id="16">
-				<Anchors>
-					<Anchor point="TOPLEFT" relativeTo="Healer15">
-						<Offset>
-							<AbsDimension x="0" y="-14"/>
-						</Offset>
-					</Anchor>
-				</Anchors>
-		</Button>
-		<Button name="Healer17" inherits="HealerTemplate" id="17">
-				<Anchors>
-					<Anchor point="TOPLEFT" relativeTo="Healer16">
-						<Offset>
-							<AbsDimension x="0" y="-14"/>
-						</Offset>
-					</Anchor>
-				</Anchors>
-		</Button>
-		<Button name="Healer18" inherits="HealerTemplate" id="18">
-				<Anchors>
-					<Anchor point="TOPLEFT" relativeTo="Healer17">
-						<Offset>
-							<AbsDimension x="0" y="-14"/>
-						</Offset>
-					</Anchor>
-				</Anchors>
-		</Button>
-		<Button name="Healer19" inherits="HealerTemplate" id="19">
-				<Anchors>
-					<Anchor point="TOPLEFT" relativeTo="Healer18">
-						<Offset>
-							<AbsDimension x="0" y="-14"/>
-						</Offset>
-					</Anchor>
-				</Anchors>
-		</Button>
-		<Button name="Healer20" inherits="HealerTemplate" id="20">
-				<Anchors>
-					<Anchor point="TOPLEFT" relativeTo="Healer19">
-						<Offset>
-							<AbsDimension x="0" y="-14"/>
-						</Offset>
-					</Anchor>
-				</Anchors>
-		</Button>
-		<Button name="Healer21" inherits="HealerTemplate" id="21">
-				<Anchors>
-					<Anchor point="TOPLEFT" relativeTo="Healer20">
-						<Offset>
-							<AbsDimension x="0" y="-14"/>
-						</Offset>
-					</Anchor>
-				</Anchors>
-		</Button>
-		<Button name="Healer22" inherits="HealerTemplate" id="22">
-				<Anchors>
-					<Anchor point="TOPLEFT" relativeTo="Healer21">
-						<Offset>
-							<AbsDimension x="0" y="-14"/>
-						</Offset>
-					</Anchor>
-				</Anchors>
-		</Button>
-		<Button name="Healer23" inherits="HealerTemplate" id="23">
-				<Anchors>
-					<Anchor point="TOPLEFT" relativeTo="Healer22">
-						<Offset>
-							<AbsDimension x="0" y="-14"/>
-						</Offset>
-					</Anchor>
-				</Anchors>
-		</Button>
-		<Button name="Healer24" inherits="HealerTemplate" id="24">
-				<Anchors>
-					<Anchor point="TOPLEFT" relativeTo="Healer23">
-						<Offset>
-							<AbsDimension x="0" y="-14"/>
-						</Offset>
-					</Anchor>
-				</Anchors>
-		</Button>
-		<Button name="Healer25" inherits="HealerTemplate" id="25">
-				<Anchors>
-					<Anchor point="TOPLEFT" relativeTo="Healer24">
-						<Offset>
-							<AbsDimension x="0" y="-14"/>
-						</Offset>
-					</Anchor>
-				</Anchors>
-		</Button>
-		<Button name="Healer26" inherits="HealerTemplate" id="26">
-				<Anchors>
-					<Anchor point="TOPLEFT" relativeTo="Healer25">
-						<Offset>
-							<AbsDimension x="0" y="-14"/>
-						</Offset>
-					</Anchor>
-				</Anchors>
-		</Button>
-		<Button name="Healer27" inherits="HealerTemplate" id="27">
-				<Anchors>
-					<Anchor point="TOPLEFT" relativeTo="Healer26">
-						<Offset>
-							<AbsDimension x="0" y="-14"/>
-						</Offset>
-					</Anchor>
-				</Anchors>
-		</Button>
-		<Button name="Healer28" inherits="HealerTemplate" id="28">
-				<Anchors>
-					<Anchor point="TOPLEFT" relativeTo="Healer27">
-						<Offset>
-							<AbsDimension x="0" y="-14"/>
-						</Offset>
-					</Anchor>
-				</Anchors>
-		</Button>
-		<Button name="Healer29" inherits="HealerTemplate" id="29">
-				<Anchors>
-					<Anchor point="TOPLEFT" relativeTo="Healer28">
-						<Offset>
-							<AbsDimension x="0" y="-14"/>
-						</Offset>
-					</Anchor>
-				</Anchors>
-		</Button>
-		<Button name="Healer30" inherits="HealerTemplate" id="30">
-				<Anchors>
-					<Anchor point="TOPLEFT" relativeTo="Healer29">
-						<Offset>
-							<AbsDimension x="0" y="-14"/>
-						</Offset>
-					</Anchor>
-				</Anchors>
-		</Button>
-		<Button name="Healer31" inherits="HealerTemplate" id="31">
-				<Anchors>
-					<Anchor point="TOPLEFT" relativeTo="Healer30">
-						<Offset>
-							<AbsDimension x="0" y="-14"/>
-						</Offset>
-					</Anchor>
-				</Anchors>
-		</Button>
-		<Button name="Healer32" inherits="HealerTemplate" id="32">
-				<Anchors>
-					<Anchor point="TOPLEFT" relativeTo="Healer31">
-						<Offset>
-							<AbsDimension x="0" y="-14"/>
-						</Offset>
-					</Anchor>
-				</Anchors>
-		</Button>
-		<Button name="Healer33" inherits="HealerTemplate" id="33">
-				<Anchors>
-					<Anchor point="TOPLEFT" relativeTo="Healer32">
-						<Offset>
-							<AbsDimension x="0" y="-14"/>
-						</Offset>
-					</Anchor>
-				</Anchors>
-		</Button>
-		<Button name="Healer34" inherits="HealerTemplate" id="34">
-				<Anchors>
-					<Anchor point="TOPLEFT" relativeTo="Healer33">
-						<Offset>
-							<AbsDimension x="0" y="-14"/>
-						</Offset>
-					</Anchor>
-				</Anchors>
-		</Button>
-		<Button name="Healer35" inherits="HealerTemplate" id="35">
-				<Anchors>
-					<Anchor point="TOPLEFT" relativeTo="Healer34">
-						<Offset>
-							<AbsDimension x="0" y="-14"/>
-						</Offset>
-					</Anchor>
-				</Anchors>
-		</Button>
-		<Button name="Healer36" inherits="HealerTemplate" id="36">
-				<Anchors>
-					<Anchor point="TOPLEFT" relativeTo="Healer35">
-						<Offset>
-							<AbsDimension x="0" y="-14"/>
-						</Offset>
-					</Anchor>
-				</Anchors>
-		</Button>
-		<Button name="Healer37" inherits="HealerTemplate" id="37">
-				<Anchors>
-					<Anchor point="TOPLEFT" relativeTo="Healer36">
-						<Offset>
-							<AbsDimension x="0" y="-14"/>
-						</Offset>
-					</Anchor>
-				</Anchors>
-		</Button>
-
-
-		<Button name="HGSButton2" inherits="GameMenuButtonTemplate" justifyH="CENTER" text="Close">
-				<Anchors>
-					<Anchor point="BOTTOM">
-						<Offset>
-							<AbsDimension x="0" y="5"/>
-						</Offset>
-					</Anchor>
-				</Anchors>
-				<Scripts>
-					<OnClick>
-						HGSFrame:Hide();
-					</OnClick>
-				</Scripts>
-			</Button>
-			
-		<Button name="HGSRefresh" inherits="GameMenuButtonTemplate" justifyH="CENTER" text="Refresh">
-				<Size>
-					<AbsDimension x="80" y="20"/>
-				</Size>
-				<Anchors>
-					<Anchor point="BOTTOMLEFT">
-						<Offset>
-							<AbsDimension x="13" y="10"/>
-						</Offset>
-					</Anchor>
-				</Anchors>
-				<Scripts>
-					<OnClick>
-						HGS_Refresh();
-					</OnClick>
-				</Scripts>
-			</Button>
+            <FontString name="HGSTitle" inherits="GameFontNormal" text="Healing Groups Suck v1.9.1">
+                    <Size>
+                        <AbsDimension x="190" y="16"/>
+                    </Size>
+                    <Anchors>
+                        <Anchor point="TOP">
+                            <Offset>
+                                <AbsDimension x="0" y="-5"/>
+                            </Offset>
+                        </Anchor>
+                    </Anchors>
+                </FontString>
+            <FontString name="HGSHealerText" inherits="GameFontNormal" text="-Healers-">
+                    <Size>
+                        <AbsDimension x="85" y="25"/>
+                    </Size>
+                    <Anchors>
+                        <Anchor point="TOPLEFT" relativeTo="HGSFrame" relativePoint="TOPLEFT">
+                            <Offset>
+                                <AbsDimension x="10" y="-35"/>
+                            </Offset>
+                        </Anchor>
+                    </Anchors>
+                </FontString>   
+            <FontString name="HGSActiveText" inherits="GameFontNormal" text="Group1">
+                    <Size>
+                        <AbsDimension x="85" y="28"/>
+                    </Size>
+                    <Anchors>
+                        <Anchor point="TOPLEFT" relativeTo="HGSFrame" relativePoint="TOPLEFT">
+                            <Offset>
+                                <AbsDimension x="10" y="-15"/>
+                            </Offset>
+                        </Anchor>
+                    </Anchors>
+                </FontString>   
+            <FontString name="HGSChanText" inherits="GameFontNormal" text="Channel" justifyH="LEFT">
+                    <Size>
+                        <AbsDimension x="200" y="28"/>
+                    </Size>
+                    <Anchors>
+                        <Anchor point="BOTTOMLEFT">
+                            <Offset>
+                                <AbsDimension x="125" y="23"/>
+                            </Offset>
+                        </Anchor>
+                    </Anchors>
+                </FontString>   
+            <FontString name="HGSClearCText" inherits="GameFontNormal" text="- clears the current set">
+                    <Size>
+                        <AbsDimension x="400" y="28"/>
+                    </Size>
+                    <Anchors>
+                        <Anchor point="BOTTOMRIGHT">
+                            <Offset>
+                                <AbsDimension x="80" y="2"/>
+                            </Offset>
+                        </Anchor>
+                    </Anchors>
+                </FontString>   
+            <FontString name="HGSInstanceText" inherits="GameFontNormal" justifyH="LEFT">
+                    <Size>
+                        <AbsDimension x="300" y="28"/>
+                    </Size>
+                    <Anchors>
+                        <Anchor point="BOTTOM">
+                            <Offset>
+                                <AbsDimension x="85" y="68"/>
+                            </Offset>
+                        </Anchor>
+                    </Anchors>
+                </FontString>   
+            <FontString name="HGSCommText" inherits="GameFontNormal" text="Comments: ">
+                    <Size>
+                        <AbsDimension x="100" y="28"/>
+                    </Size>
+                    <Anchors>
+                        <Anchor point="BOTTOM">
+                            <Offset>
+                                <AbsDimension x="-180" y="100"/>
+                            </Offset>
+                        </Anchor>
+                    </Anchors>
+                </FontString>   
+            
+            </Layer>
+        </Layers>
+        <Frames>
+        -- 120 pt offset
+            <Button name="HGSGroup1Text" inherits="GameMenuButtonTemplate" id="1" text="Group1">
+                    <Size>
+                        <AbsDimension x="85" y="25"/>
+                    </Size>
+                    <Anchors>
+                        <Anchor point="TOPLEFT" relativeTo="HGSFrame" relativePoint="TOPLEFT">
+                            <Offset>
+                                <AbsDimension x="135" y="-35"/>
+                            </Offset>
+                        </Anchor>
+                    </Anchors>
+                    <Scripts>
+                        <OnClick>
+                            HGS_SetActiveGroup(self);
+                        </OnClick>
+                    </Scripts>
+            </Button>   
+            <Button name="HGSGroup2Text" inherits="GameMenuButtonTemplate" id="2" text="Group2">
+                    <Size>
+                        <AbsDimension x="85" y="25"/>
+                    </Size>
+                    <Anchors>
+                        <Anchor point="TOPLEFT" relativeTo="HGSFrame" relativePoint="TOPLEFT">
+                            <Offset>
+                                <AbsDimension x="255" y="-35"/>
+                            </Offset>
+                        </Anchor>
+                    </Anchors>
+                    <Scripts>
+                        <OnClick>
+                            HGS_SetActiveGroup(self);
+                        </OnClick>
+                    </Scripts>
+            </Button>   
+            <Button name="HGSGroup3Text" inherits="GameMenuButtonTemplate" id="3" text="Group3">
+                    <Size>
+                        <AbsDimension x="85" y="25"/>
+                    </Size>
+                    <Anchors>
+                        <Anchor point="TOPLEFT" relativeTo="HGSFrame" relativePoint="TOPLEFT">
+                            <Offset>
+                                <AbsDimension x="375" y="-35"/>
+                            </Offset>
+                        </Anchor>
+                    </Anchors>
+                    <Scripts>
+                        <OnClick>
+                            HGS_SetActiveGroup(self);
+                        </OnClick>
+                    </Scripts>
+            </Button>   
+            <Button name="HGSGroup4Text" inherits="GameMenuButtonTemplate" id="4" text="Group4">
+                    <Size>
+                        <AbsDimension x="85" y="25"/>
+                    </Size>
+                    <Anchors>
+                        <Anchor point="TOPLEFT" relativeTo="HGSFrame" relativePoint="TOPLEFT">
+                            <Offset>
+                                <AbsDimension x="495" y="-35"/>
+                            </Offset>
+                        </Anchor>
+                    </Anchors>
+                    <Scripts>
+                        <OnClick>
+                            HGS_SetActiveGroup(self);
+                        </OnClick>
+                    </Scripts>
+            </Button>   
+            <Button name="HGSGroup5Text" inherits="GameMenuButtonTemplate" id="5" text="Group5">
+                    <Size>
+                        <AbsDimension x="85" y="25"/>
+                    </Size>
+                    <Anchors>
+                        <Anchor point="TOPLEFT" relativeTo="HGSFrame" relativePoint="TOPLEFT">
+                            <Offset>
+                                <AbsDimension x="135" y="-275"/>
+                            </Offset>
+                        </Anchor>
+                    </Anchors>
+                    <Scripts>
+                        <OnClick>
+                            HGS_SetActiveGroup(self);
+                        </OnClick>
+                    </Scripts>
+            </Button>   
+            <Button name="HGSGroup6Text" inherits="GameMenuButtonTemplate" id="6" text="Group6">
+                    <Size>
+                        <AbsDimension x="85" y="25"/>
+                    </Size>
+                    <Anchors>
+                        <Anchor point="TOPLEFT" relativeTo="HGSFrame" relativePoint="TOPLEFT">
+                            <Offset>
+                                <AbsDimension x="255" y="-275"/>
+                            </Offset>
+                        </Anchor>
+                    </Anchors>
+                    <Scripts>
+                        <OnClick>
+                            HGS_SetActiveGroup(self);
+                        </OnClick>
+                    </Scripts>
+            </Button>   
+            <Button name="HGSGroup7Text" inherits="GameMenuButtonTemplate" id="7" text="Group7">
+                    <Size>
+                        <AbsDimension x="85" y="25"/>
+                    </Size>
+                    <Anchors>
+                        <Anchor point="TOPLEFT" relativeTo="HGSFrame" relativePoint="TOPLEFT">
+                            <Offset>
+                                <AbsDimension x="375" y="-275"/>
+                            </Offset>
+                        </Anchor>
+                    </Anchors>
+                    <Scripts>
+                        <OnClick>
+                            HGS_SetActiveGroup(self);
+                        </OnClick>
+                    </Scripts>
+            </Button>   
+            <Button name="HGSGroup8Text" inherits="GameMenuButtonTemplate" id="8" text="Group8">
+                    <Size>
+                        <AbsDimension x="85" y="25"/>
+                    </Size>
+                    <Anchors>
+                        <Anchor point="TOPLEFT" relativeTo="HGSFrame" relativePoint="TOPLEFT">
+                            <Offset>
+                                <AbsDimension x="495" y="-275"/>
+                            </Offset>
+                        </Anchor>
+                    </Anchors>
+                    <Scripts>
+                        <OnClick>
+                            HGS_SetActiveGroup(self);
+                        </OnClick>
+                    </Scripts>
+            </Button>   
+            
+            
+        <Button name="Healer1" inherits="HealerTemplate" id="1">
+                <Anchors>
+                    <Anchor point="TOPLEFT">
+                        <Offset>
+                            <AbsDimension x="13" y="-66"/>
+                        </Offset>
+                    </Anchor>
+                </Anchors>
+        </Button>
+        <Button name="Healer2" inherits="HealerTemplate" id="2">
+                <Anchors>
+                    <Anchor point="TOPLEFT" relativeTo="Healer1">
+                        <Offset>
+                            <AbsDimension x="0" y="-14"/>
+                        </Offset>
+                    </Anchor>
+                </Anchors>
+        </Button>
+        <Button name="Healer3" inherits="HealerTemplate" id="3">
+                <Anchors>
+                    <Anchor point="TOPLEFT" relativeTo="Healer2">
+                        <Offset>
+                            <AbsDimension x="0" y="-14"/>
+                        </Offset>
+                    </Anchor>
+                </Anchors>
+        </Button>
+        <Button name="Healer4" inherits="HealerTemplate" id="4">
+                <Anchors>
+                    <Anchor point="TOPLEFT" relativeTo="Healer3">
+                        <Offset>
+                            <AbsDimension x="0" y="-14"/>
+                        </Offset>
+                    </Anchor>
+                </Anchors>
+        </Button>
+        <Button name="Healer5" inherits="HealerTemplate" id="5">
+                <Anchors>
+                    <Anchor point="TOPLEFT" relativeTo="Healer4">
+                        <Offset>
+                            <AbsDimension x="0" y="-14"/>
+                        </Offset>
+                    </Anchor>
+                </Anchors>
+        </Button>
+        <Button name="Healer6" inherits="HealerTemplate" id="6">
+                <Anchors>
+                    <Anchor point="TOPLEFT" relativeTo="Healer5">
+                        <Offset>
+                            <AbsDimension x="0" y="-14"/>
+                        </Offset>
+                    </Anchor>
+                </Anchors>
+        </Button>
+        <Button name="Healer7" inherits="HealerTemplate" id="7">
+                <Anchors>
+                    <Anchor point="TOPLEFT" relativeTo="Healer6">
+                        <Offset>
+                            <AbsDimension x="0" y="-14"/>
+                        </Offset>
+                    </Anchor>
+                </Anchors>
+        </Button>
+        <Button name="Healer8" inherits="HealerTemplate" id="8">
+                <Anchors>
+                    <Anchor point="TOPLEFT" relativeTo="Healer7">
+                        <Offset>
+                            <AbsDimension x="0" y="-14"/>
+                        </Offset>
+                    </Anchor>
+                </Anchors>
+        </Button>
+        <Button name="Healer9" inherits="HealerTemplate" id="9">
+                <Anchors>
+                    <Anchor point="TOPLEFT" relativeTo="Healer8">
+                        <Offset>
+                            <AbsDimension x="0" y="-14"/>
+                        </Offset>
+                    </Anchor>
+                </Anchors>
+        </Button>
+        <Button name="Healer10" inherits="HealerTemplate" id="10">
+                <Anchors>
+                    <Anchor point="TOPLEFT" relativeTo="Healer9">
+                        <Offset>
+                            <AbsDimension x="0" y="-14"/>
+                        </Offset>
+                    </Anchor>
+                </Anchors>
+        </Button>
+        <Button name="Healer11" inherits="HealerTemplate" id="11">
+                <Anchors>
+                    <Anchor point="TOPLEFT" relativeTo="Healer10">
+                        <Offset>
+                            <AbsDimension x="0" y="-14"/>
+                        </Offset>
+                    </Anchor>
+                </Anchors>
+        </Button>
+        <Button name="Healer12" inherits="HealerTemplate" id="12">
+                <Anchors>
+                    <Anchor point="TOPLEFT" relativeTo="Healer11">
+                        <Offset>
+                            <AbsDimension x="0" y="-14"/>
+                        </Offset>
+                    </Anchor>
+                </Anchors>
+        </Button>
+        <Button name="Healer13" inherits="HealerTemplate" id="13">
+                <Anchors>
+                    <Anchor point="TOPLEFT" relativeTo="Healer12">
+                        <Offset>
+                            <AbsDimension x="0" y="-14"/>
+                        </Offset>
+                    </Anchor>
+                </Anchors>
+        </Button>
+        <Button name="Healer14" inherits="HealerTemplate" id="14">
+                <Anchors>
+                    <Anchor point="TOPLEFT" relativeTo="Healer13">
+                        <Offset>
+                            <AbsDimension x="0" y="-14"/>
+                        </Offset>
+                    </Anchor>
+                </Anchors>
+        </Button>
+        <Button name="Healer15" inherits="HealerTemplate" id="15">
+                <Anchors>
+                    <Anchor point="TOPLEFT" relativeTo="Healer14">
+                        <Offset>
+                            <AbsDimension x="0" y="-14"/>
+                        </Offset>
+                    </Anchor>
+                </Anchors>
+        </Button>
+        <Button name="Healer16" inherits="HealerTemplate" id="16">
+                <Anchors>
+                    <Anchor point="TOPLEFT" relativeTo="Healer15">
+                        <Offset>
+                            <AbsDimension x="0" y="-14"/>
+                        </Offset>
+                    </Anchor>
+                </Anchors>
+        </Button>
+        <Button name="Healer17" inherits="HealerTemplate" id="17">
+                <Anchors>
+                    <Anchor point="TOPLEFT" relativeTo="Healer16">
+                        <Offset>
+                            <AbsDimension x="0" y="-14"/>
+                        </Offset>
+                    </Anchor>
+                </Anchors>
+        </Button>
+        <Button name="Healer18" inherits="HealerTemplate" id="18">
+                <Anchors>
+                    <Anchor point="TOPLEFT" relativeTo="Healer17">
+                        <Offset>
+                            <AbsDimension x="0" y="-14"/>
+                        </Offset>
+                    </Anchor>
+                </Anchors>
+        </Button>
+        <Button name="Healer19" inherits="HealerTemplate" id="19">
+                <Anchors>
+                    <Anchor point="TOPLEFT" relativeTo="Healer18">
+                        <Offset>
+                            <AbsDimension x="0" y="-14"/>
+                        </Offset>
+                    </Anchor>
+                </Anchors>
+        </Button>
+        <Button name="Healer20" inherits="HealerTemplate" id="20">
+                <Anchors>
+                    <Anchor point="TOPLEFT" relativeTo="Healer19">
+                        <Offset>
+                            <AbsDimension x="0" y="-14"/>
+                        </Offset>
+                    </Anchor>
+                </Anchors>
+        </Button>
+        <Button name="Healer21" inherits="HealerTemplate" id="21">
+                <Anchors>
+                    <Anchor point="TOPLEFT" relativeTo="Healer20">
+                        <Offset>
+                            <AbsDimension x="0" y="-14"/>
+                        </Offset>
+                    </Anchor>
+                </Anchors>
+        </Button>
+        <Button name="Healer22" inherits="HealerTemplate" id="22">
+                <Anchors>
+                    <Anchor point="TOPLEFT" relativeTo="Healer21">
+                        <Offset>
+                            <AbsDimension x="0" y="-14"/>
+                        </Offset>
+                    </Anchor>
+                </Anchors>
+        </Button>
+        <Button name="Healer23" inherits="HealerTemplate" id="23">
+                <Anchors>
+                    <Anchor point="TOPLEFT" relativeTo="Healer22">
+                        <Offset>
+                            <AbsDimension x="0" y="-14"/>
+                        </Offset>
+                    </Anchor>
+                </Anchors>
+        </Button>
+        <Button name="Healer24" inherits="HealerTemplate" id="24">
+                <Anchors>
+                    <Anchor point="TOPLEFT" relativeTo="Healer23">
+                        <Offset>
+                            <AbsDimension x="0" y="-14"/>
+                        </Offset>
+                    </Anchor>
+                </Anchors>
+        </Button>
+        <Button name="Healer25" inherits="HealerTemplate" id="25">
+                <Anchors>
+                    <Anchor point="TOPLEFT" relativeTo="Healer24">
+                        <Offset>
+                            <AbsDimension x="0" y="-14"/>
+                        </Offset>
+                    </Anchor>
+                </Anchors>
+        </Button>
+        <Button name="Healer26" inherits="HealerTemplate" id="26">
+                <Anchors>
+                    <Anchor point="TOPLEFT" relativeTo="Healer25">
+                        <Offset>
+                            <AbsDimension x="0" y="-14"/>
+                        </Offset>
+                    </Anchor>
+                </Anchors>
+        </Button>
+        <Button name="Healer27" inherits="HealerTemplate" id="27">
+                <Anchors>
+                    <Anchor point="TOPLEFT" relativeTo="Healer26">
+                        <Offset>
+                            <AbsDimension x="0" y="-14"/>
+                        </Offset>
+                    </Anchor>
+                </Anchors>
+        </Button>
+        <Button name="Healer28" inherits="HealerTemplate" id="28">
+                <Anchors>
+                    <Anchor point="TOPLEFT" relativeTo="Healer27">
+                        <Offset>
+                            <AbsDimension x="0" y="-14"/>
+                        </Offset>
+                    </Anchor>
+                </Anchors>
+        </Button>
+        <Button name="Healer29" inherits="HealerTemplate" id="29">
+                <Anchors>
+                    <Anchor point="TOPLEFT" relativeTo="Healer28">
+                        <Offset>
+                            <AbsDimension x="0" y="-14"/>
+                        </Offset>
+                    </Anchor>
+                </Anchors>
+        </Button>
+        <Button name="Healer30" inherits="HealerTemplate" id="30">
+                <Anchors>
+                    <Anchor point="TOPLEFT" relativeTo="Healer29">
+                        <Offset>
+                            <AbsDimension x="0" y="-14"/>
+                        </Offset>
+                    </Anchor>
+                </Anchors>
+        </Button>
+        <Button name="Healer31" inherits="HealerTemplate" id="31">
+                <Anchors>
+                    <Anchor point="TOPLEFT" relativeTo="Healer30">
+                        <Offset>
+                            <AbsDimension x="0" y="-14"/>
+                        </Offset>
+                    </Anchor>
+                </Anchors>
+        </Button>
+        <Button name="Healer32" inherits="HealerTemplate" id="32">
+                <Anchors>
+                    <Anchor point="TOPLEFT" relativeTo="Healer31">
+                        <Offset>
+                            <AbsDimension x="0" y="-14"/>
+                        </Offset>
+                    </Anchor>
+                </Anchors>
+        </Button>
+        <Button name="Healer33" inherits="HealerTemplate" id="33">
+                <Anchors>
+                    <Anchor point="TOPLEFT" relativeTo="Healer32">
+                        <Offset>
+                            <AbsDimension x="0" y="-14"/>
+                        </Offset>
+                    </Anchor>
+                </Anchors>
+        </Button>
+        <Button name="Healer34" inherits="HealerTemplate" id="34">
+                <Anchors>
+                    <Anchor point="TOPLEFT" relativeTo="Healer33">
+                        <Offset>
+                            <AbsDimension x="0" y="-14"/>
+                        </Offset>
+                    </Anchor>
+                </Anchors>
+        </Button>
+        <Button name="Healer35" inherits="HealerTemplate" id="35">
+                <Anchors>
+                    <Anchor point="TOPLEFT" relativeTo="Healer34">
+                        <Offset>
+                            <AbsDimension x="0" y="-14"/>
+                        </Offset>
+                    </Anchor>
+                </Anchors>
+        </Button>
+        <Button name="Healer36" inherits="HealerTemplate" id="36">
+                <Anchors>
+                    <Anchor point="TOPLEFT" relativeTo="Healer35">
+                        <Offset>
+                            <AbsDimension x="0" y="-14"/>
+                        </Offset>
+                    </Anchor>
+                </Anchors>
+        </Button>
+        <Button name="Healer37" inherits="HealerTemplate" id="37">
+                <Anchors>
+                    <Anchor point="TOPLEFT" relativeTo="Healer36">
+                        <Offset>
+                            <AbsDimension x="0" y="-14"/>
+                        </Offset>
+                    </Anchor>
+                </Anchors>
+        </Button>
 
 
-			<EditBox name="ChannelBox" autoFocus="false" inherits="InputBoxTemplate" id="1">
-				<Size>
-					<AbsDimension x="80" y="16"/>
-				</Size>
-				<Anchors>
-					<Anchor point="BOTTOMLEFT">
-						<Offset>
-							<AbsDimension x="138" y="10"/>
-						</Offset>
-					</Anchor>
-				</Anchors>
-				<Scripts>
-					<OnEnterPressed>
-						HGS_SetChannel();
-						this:ClearFocus();
-					</OnEnterPressed>
-					<OnEditFocusLost>
-						HGS_SetChannel();
-					</OnEditFocusLost>
-				</Scripts>
-				<FontString inherits="ChatFontNormal" bytes="64"/>
-			</EditBox>
+        <Button name="HGSButton2" inherits="GameMenuButtonTemplate" justifyH="CENTER" text="Close">
+                <Anchors>
+                    <Anchor point="BOTTOM">
+                        <Offset>
+                            <AbsDimension x="0" y="5"/>
+                        </Offset>
+                    </Anchor>
+                </Anchors>
+                <Scripts>
+                    <OnClick>
+                        HGSFrame:Hide();
+                    </OnClick>
+                </Scripts>
+            </Button>
+            
+        <Button name="HGSRefresh" inherits="GameMenuButtonTemplate" justifyH="CENTER" text="Refresh">
+                <Size>
+                    <AbsDimension x="80" y="20"/>
+                </Size>
+                <Anchors>
+                    <Anchor point="BOTTOMLEFT">
+                        <Offset>
+                            <AbsDimension x="13" y="10"/>
+                        </Offset>
+                    </Anchor>
+                </Anchors>
+                <Scripts>
+                    <OnClick>
+                        HGS_Refresh();
+                    </OnClick>
+                </Scripts>
+            </Button>
 
 
-			<EditBox name="CommentBox" autoFocus="false" inherits="InputBoxTemplate" id="1">
-				<Size>
-					<AbsDimension x="360" y="34"/>
-				</Size>
-				<Anchors>
-					<Anchor point="BOTTOM">
-						<Offset>
-							<AbsDimension x="47" y="97"/>
-						</Offset>
-					</Anchor>
-				</Anchors>
-				<Scripts>
-					<OnEnterPressed>
-						HGS_SaveComment();
-						this:ClearFocus();
-					</OnEnterPressed>
-					<OnEditFocusLost>
-						HGS_SaveComment();
-					</OnEditFocusLost>
-				</Scripts>
-				<FontString inherits="ChatFontNormal" bytes="512"/>
-			</EditBox>
-			
-			
-			<EditBox name="InstanceBox" autoFocus="false" inherits="InputBoxTemplate" id="1">
-				<Size>
-					<AbsDimension x="135" y="16"/>
-				</Size>
-				<Anchors>
-					<Anchor point="BOTTOM">
-						<Offset>
-							<AbsDimension x="2" y="55"/>
-						</Offset>
-					</Anchor>
-				</Anchors>
-				<Scripts>
-					<OnEnterPressed>
-						HGS_SaveInstance();
-						this:ClearFocus();
-					</OnEnterPressed>
-					<OnEditFocusLost>
-						HGS_SaveInstance();
-					</OnEditFocusLost>
-				</Scripts>
-				<FontString inherits="ChatFontNormal" bytes="64"/>
-			</EditBox>
-
-		<Button name="HGSInstanceNext" inherits="GameMenuButtonTemplate" justifyH="CENTER">
-				<Size>
-					<AbsDimension x="20" y="20"/>
-				</Size>
-				<Anchors>
-					<Anchor point="BOTTOM">
-						<Offset>
-							<AbsDimension x="85" y="52"/>
-						</Offset>
-					</Anchor>
-				</Anchors>
-			<NormalTexture file="Interface\Buttons\UI-SpellBookIcon-NextPage-Up">
-			<TexCoords left="0" right="1" top="0" bottom="1"/>
-		</NormalTexture>
-		<HighlightTexture file="Interface\Buttons\UI-SpellBookIcon-NextPage-Down" alphaMode="ADD">
-			<TexCoords left="0" right="1" top="0" bottom="1"/>
-		</HighlightTexture>
-				<Scripts>
-					<OnClick>
-						
-						HGS_NextInstance();
-						
-					</OnClick>
-				</Scripts>
-			</Button>
-		<Button name="HGSInstancePrev" inherits="GameMenuButtonTemplate" justifyH="CENTER">
-				<Size>
-					<AbsDimension x="20" y="20"/>
-				</Size>
-				<Anchors>
-					<Anchor point="BOTTOM">
-						<Offset>
-							<AbsDimension x="-85" y="52"/>
-						</Offset>
-					</Anchor>
-				</Anchors>
-			<NormalTexture file="Interface\Buttons\UI-SpellBookIcon-PrevPage-Up">
-			<TexCoords left="0" right="1" top="0" bottom="1"/>
-		</NormalTexture>
-		<HighlightTexture file="Interface\Buttons\UI-SpellBookIcon-PrevPage-Down" alphaMode="ADD">
-			<TexCoords left="0" right="1" top="0" bottom="1"/>
-		</HighlightTexture>
-				<Scripts>
-					<OnClick>
-						
-						HGS_PrevInstance();
-						
-					</OnClick>
-				</Scripts>
-			</Button>
+            <EditBox name="ChannelBox" autoFocus="false" inherits="InputBoxTemplate" id="1">
+                <Size>
+                    <AbsDimension x="80" y="16"/>
+                </Size>
+                <Anchors>
+                    <Anchor point="BOTTOMLEFT">
+                        <Offset>
+                            <AbsDimension x="138" y="10"/>
+                        </Offset>
+                    </Anchor>
+                </Anchors>
+                <Scripts>
+                    <OnEnterPressed>
+                        HGS_SetChannel(self);
+                        self:ClearFocus();
+                    </OnEnterPressed>
+                    <OnEditFocusLost>
+                        HGS_SetChannel(self);
+                    </OnEditFocusLost>
+                </Scripts>
+                <FontString inherits="ChatFontNormal" bytes="64"/>
+            </EditBox>
 
 
-		<Button name="HGSButton3" inherits="GameMenuButtonTemplate" justifyH="CENTER" text="Broadcast">
-				<Anchors>
-					<Anchor point="BOTTOM">
-						<Offset>
-							<AbsDimension x="0" y="25"/>
-						</Offset>
-					</Anchor>
-				</Anchors>
-				<Scripts>
-					<OnClick>
-						HGS_Broadcast();
-					</OnClick>
-				</Scripts>
-			</Button>
-		<Button name="HGSButton4" inherits="GameMenuButtonTemplate" justifyH="CENTER" text="Clear">
-				<Size>
-					<AbsDimension x="42" y="20"/>
-				</Size>
-				<Anchors>
-					<Anchor point="BOTTOM">
-						<Offset>
-							<AbsDimension x="140" y="5"/>
-						</Offset>
-					</Anchor>
-				</Anchors>
-				<Scripts>
-					<OnClick>
-						HGS_Reset();
-					</OnClick>
-				</Scripts>
-			</Button>
-		<Button name="HGSButton5" inherits="GameMenuButtonTemplate" justifyH="CENTER" text="I'm Lazy!">
-				<Size>
-					<AbsDimension x="84" y="40"/>
-				</Size>
-				<Anchors>
-					<Anchor point="BOTTOM">
-						<Offset>
-							<AbsDimension x="-175" y="50"/>
-						</Offset>
-					</Anchor>
-				</Anchors>
-				<Scripts>
-					<OnClick>
-						HGS_Autosort();
-					</OnClick>
-				</Scripts>
-				</Button>
+            <EditBox name="CommentBox" autoFocus="false" inherits="InputBoxTemplate" id="1">
+                <Size>
+                    <AbsDimension x="360" y="34"/>
+                </Size>
+                <Anchors>
+                    <Anchor point="BOTTOM">
+                        <Offset>
+                            <AbsDimension x="47" y="97"/>
+                        </Offset>
+                    </Anchor>
+                </Anchors>
+                <Scripts>
+                    <OnEnterPressed>
+                        HGS_SaveComment();
+                        self:ClearFocus();
+                    </OnEnterPressed>
+                    <OnEditFocusLost>
+                        HGS_SaveComment();
+                    </OnEditFocusLost>
+                </Scripts>
+                <FontString inherits="ChatFontNormal" bytes="512"/>
+            </EditBox>
+            
+            
+            <EditBox name="InstanceBox" autoFocus="false" inherits="InputBoxTemplate" id="1">
+                <Size>
+                    <AbsDimension x="135" y="16"/>
+                </Size>
+                <Anchors>
+                    <Anchor point="BOTTOM">
+                        <Offset>
+                            <AbsDimension x="2" y="55"/>
+                        </Offset>
+                    </Anchor>
+                </Anchors>
+                <Scripts>
+                    <OnEnterPressed>
+                        HGS_SaveInstance();
+                        self:ClearFocus();
+                    </OnEnterPressed>
+                    <OnEditFocusLost>
+                        HGS_SaveInstance();
+                    </OnEditFocusLost>
+                </Scripts>
+                <FontString inherits="ChatFontNormal" bytes="64"/>
+            </EditBox>
 
-			
-		<Frame name="HGSHealersFrame">
-				<Size>
-					<AbsDimension x="89" y="530"/>
-				</Size>
-				<Anchors>
-					<Anchor point="TOPLEFT">
-						<Offset>
-							<AbsDimension x="8" y="-60"/>
-						</Offset>
-					</Anchor>
-				</Anchors>
-				<Backdrop name="HGSHEalersBackdrop" edgeFile="Interface\Tooltips\UI-Tooltip-Border" tile="true">
-					<EdgeSize>
-						<AbsValue val="16"/>
-					</EdgeSize>
-					<TileSize>
-						<AbsValue val="16"/>
-					</TileSize>
-					<BackgroundInsets>
-						<AbsInset left="5" right="5" top="5" bottom="5"/>
-					</BackgroundInsets>
-				</Backdrop>
-			</Frame>
+        <Button name="HGSInstanceNext" inherits="GameMenuButtonTemplate" justifyH="CENTER">
+                <Size>
+                    <AbsDimension x="20" y="20"/>
+                </Size>
+                <Anchors>
+                    <Anchor point="BOTTOM">
+                        <Offset>
+                            <AbsDimension x="85" y="52"/>
+                        </Offset>
+                    </Anchor>
+                </Anchors>
+            <NormalTexture file="Interface\Buttons\UI-SpellBookIcon-NextPage-Up">
+            <TexCoords left="0" right="1" top="0" bottom="1"/>
+        </NormalTexture>
+        <HighlightTexture file="Interface\Buttons\UI-SpellBookIcon-NextPage-Down" alphaMode="ADD">
+            <TexCoords left="0" right="1" top="0" bottom="1"/>
+        </HighlightTexture>
+                <Scripts>
+                    <OnClick>
+                        
+                        HGS_NextInstance();
+                        
+                    </OnClick>
+                </Scripts>
+            </Button>
+        <Button name="HGSInstancePrev" inherits="GameMenuButtonTemplate" justifyH="CENTER">
+                <Size>
+                    <AbsDimension x="20" y="20"/>
+                </Size>
+                <Anchors>
+                    <Anchor point="BOTTOM">
+                        <Offset>
+                            <AbsDimension x="-85" y="52"/>
+                        </Offset>
+                    </Anchor>
+                </Anchors>
+            <NormalTexture file="Interface\Buttons\UI-SpellBookIcon-PrevPage-Up">
+            <TexCoords left="0" right="1" top="0" bottom="1"/>
+        </NormalTexture>
+        <HighlightTexture file="Interface\Buttons\UI-SpellBookIcon-PrevPage-Down" alphaMode="ADD">
+            <TexCoords left="0" right="1" top="0" bottom="1"/>
+        </HighlightTexture>
+                <Scripts>
+                    <OnClick>
+                        
+                        HGS_PrevInstance();
+                        
+                    </OnClick>
+                </Scripts>
+            </Button>
 
-			<EditBox name="HGSGroup1Box" autoFocus="false" inherits="InputBoxTemplate" id="1">
-				<Size>
-					<AbsDimension x="80" y="16"/>
-				</Size>
-				<Anchors>
-					<Anchor point="TOPLEFT" relativeTo="HGSFrame" relativePoint="TOPLEFT">
-						<Offset>
-							<AbsDimension x="140" y="-57"/>
-						</Offset>
-					</Anchor>
-				</Anchors>
-				<Scripts>
-					<OnEnterPressed>
-						GroupBox_SetName();
-						this:ClearFocus();
-					</OnEnterPressed>
-					<OnEditFocusLost>
-						GroupBox_SetName();
-					</OnEditFocusLost>
-				</Scripts>
-				<FontString inherits="ChatFontNormal" bytes="64"/>
-			</EditBox>
-			<EditBox name="HGSGroup2Box" autoFocus="false" inherits="InputBoxTemplate" id="2">
-				<Size>
-					<AbsDimension x="80" y="16"/>
-				</Size>
-				<Anchors>
-					<Anchor point="TOPLEFT" relativeTo="HGSFrame" relativePoint="TOPLEFT">
-						<Offset>
-							<AbsDimension x="260" y="-57"/>
-						</Offset>
-					</Anchor>
-				</Anchors>
-				<Scripts>
-					<OnEnterPressed>
-						GroupBox_SetName();
-						this:ClearFocus();
-					</OnEnterPressed>
-					<OnEditFocusLost>
-						GroupBox_SetName();
-					</OnEditFocusLost>
-				</Scripts>
-				<FontString inherits="ChatFontNormal" bytes="64"/>
-			</EditBox>
-			<EditBox name="HGSGroup3Box" autoFocus="false" inherits="InputBoxTemplate" id="3">
-				<Size>
-					<AbsDimension x="80" y="16"/>
-				</Size>
-				<Anchors>
-					<Anchor point="TOPLEFT" relativeTo="HGSFrame" relativePoint="TOPLEFT">
-						<Offset>
-							<AbsDimension x="380" y="-57"/>
-						</Offset>
-					</Anchor>
-				</Anchors>
-				<Scripts>
-					<OnEnterPressed>
-						GroupBox_SetName();
-						this:ClearFocus();
-					</OnEnterPressed>
-					<OnEditFocusLost>
-						GroupBox_SetName();
-					</OnEditFocusLost>
-				</Scripts>
-				<FontString inherits="ChatFontNormal" bytes="64"/>
-			</EditBox>
-			<EditBox name="HGSGroup4Box" autoFocus="false" inherits="InputBoxTemplate" id="4">
-				<Size>
-					<AbsDimension x="80" y="16"/>
-				</Size>
-				<Anchors>
-					<Anchor point="TOPLEFT" relativeTo="HGSFrame" relativePoint="TOPLEFT">
-						<Offset>
-							<AbsDimension x="500" y="-57"/>
-						</Offset>
-					</Anchor>
-				</Anchors>
-				<Scripts>
-					<OnEnterPressed>
-						GroupBox_SetName();
-						this:ClearFocus();
-					</OnEnterPressed>
-					<OnEditFocusLost>
-						GroupBox_SetName();
-					</OnEditFocusLost>
-				</Scripts>
-				<FontString inherits="ChatFontNormal" bytes="64"/>
-			</EditBox>
-			<EditBox name="HGSGroup5Box" autoFocus="false" inherits="InputBoxTemplate" id="5">
-				<Size>
-					<AbsDimension x="80" y="16"/>
-				</Size>
-				<Anchors>
-					<Anchor point="TOPLEFT" relativeTo="HGSFrame" relativePoint="TOPLEFT">
-						<Offset>
-							<AbsDimension x="140" y="-297"/>
-						</Offset>
-					</Anchor>
-				</Anchors>
-				<Scripts>
-					<OnEnterPressed>
-						GroupBox_SetName();
-						this:ClearFocus();
-					</OnEnterPressed>
-					<OnEditFocusLost>
-						GroupBox_SetName();
-					</OnEditFocusLost>
-				</Scripts>
-				<FontString inherits="ChatFontNormal" bytes="64"/>
-			</EditBox>
-			<EditBox name="HGSGroup6Box" autoFocus="false" inherits="InputBoxTemplate" id="6">
-				<Size>
-					<AbsDimension x="80" y="16"/>
-				</Size>
-				<Anchors>
-					<Anchor point="TOPLEFT" relativeTo="HGSFrame" relativePoint="TOPLEFT">
-						<Offset>
-							<AbsDimension x="260" y="-297"/>
-						</Offset>
-					</Anchor>
-				</Anchors>
-				<Scripts>
-					<OnEnterPressed>
-						GroupBox_SetName();
-						this:ClearFocus();
-					</OnEnterPressed>
-					<OnEditFocusLost>
-						GroupBox_SetName();
-					</OnEditFocusLost>
-				</Scripts>
-				<FontString inherits="ChatFontNormal" bytes="64"/>
-			</EditBox>
-			<EditBox name="HGSGroup7Box" autoFocus="false" inherits="InputBoxTemplate" id="7">
-				<Size>
-					<AbsDimension x="80" y="16"/>
-				</Size>
-				<Anchors>
-					<Anchor point="TOPLEFT" relativeTo="HGSFrame" relativePoint="TOPLEFT">
-						<Offset>
-							<AbsDimension x="380" y="-297"/>
-						</Offset>
-					</Anchor>
-				</Anchors>
-				<Scripts>
-					<OnEnterPressed>
-						GroupBox_SetName();
-						this:ClearFocus();
-					</OnEnterPressed>
-					<OnEditFocusLost>
-						GroupBox_SetName();
-					</OnEditFocusLost>
-				</Scripts>
-				<FontString inherits="ChatFontNormal" bytes="64"/>
-			</EditBox>
-			<EditBox name="HGSGroup8Box" autoFocus="false" inherits="InputBoxTemplate" id="8">
-				<Size>
-					<AbsDimension x="80" y="16"/>
-				</Size>
-				<Anchors>
-					<Anchor point="TOPLEFT" relativeTo="HGSFrame" relativePoint="TOPLEFT">
-						<Offset>
-							<AbsDimension x="500" y="-297"/>
-						</Offset>
-					</Anchor>
-				</Anchors>
-				<Scripts>
-					<OnEnterPressed>
-						GroupBox_SetName();
-						this:ClearFocus();
-					</OnEnterPressed>
-					<OnEditFocusLost>
-						GroupBox_SetName();
-					</OnEditFocusLost>
-				</Scripts>
-				<FontString inherits="ChatFontNormal" bytes="64"/>
-			</EditBox>
 
-		<Frame name="HGSGroup1Frame">
-				<Size>
-					<AbsDimension x="89" y="178"/>
-				</Size>
-				<Anchors>
-					<Anchor point="TOPLEFT" relativeTo="HGSFrame" relativePoint="TOPLEFT">
-						<Offset>
-							<AbsDimension x="132" y="-72"/>
-						</Offset>
-					</Anchor>
-				</Anchors>
-				<Backdrop name="HGSHEalersBackdrop" edgeFile="Interface\Tooltips\UI-Tooltip-Border" tile="true">
-					<EdgeSize>
-						<AbsValue val="16"/>
-					</EdgeSize>
-					<TileSize>
-						<AbsValue val="16"/>
-					</TileSize>
-					<BackgroundInsets>
-						<AbsInset left="5" right="5" top="5" bottom="5"/>
-					</BackgroundInsets>
-				</Backdrop>
-			
-			</Frame>
-		<Frame name="HGSGroup2Frame">
-				<Size>
-					<AbsDimension x="89" y="178"/>
-				</Size>
-				<Anchors>
-					<Anchor point="TOPLEFT" relativeTo="HGSFrame" relativePoint="TOPLEFT">
-						<Offset>
-							<AbsDimension x="252" y="-72"/>
-						</Offset>
-					</Anchor>
-				</Anchors>
-				<Backdrop name="HGSHEalersBackdrop" edgeFile="Interface\Tooltips\UI-Tooltip-Border" tile="true">
-					<EdgeSize>
-						<AbsValue val="16"/>
-					</EdgeSize>
-					<TileSize>
-						<AbsValue val="16"/>
-					</TileSize>
-					<BackgroundInsets>
-						<AbsInset left="5" right="5" top="5" bottom="5"/>
-					</BackgroundInsets>
-				</Backdrop>
-			
-			</Frame>
-		<Frame name="HGSGroup3Frame">
-				<Size>
-					<AbsDimension x="89" y="178"/>
-				</Size>
-				<Anchors>
-					<Anchor point="TOPLEFT" relativeTo="HGSFrame" relativePoint="TOPLEFT">
-						<Offset>
-							<AbsDimension x="372" y="-72"/>
-						</Offset>
-					</Anchor>
-				</Anchors>
-				<Backdrop name="HGSHEalersBackdrop" edgeFile="Interface\Tooltips\UI-Tooltip-Border" tile="true">
-					<EdgeSize>
-						<AbsValue val="16"/>
-					</EdgeSize>
-					<TileSize>
-						<AbsValue val="16"/>
-					</TileSize>
-					<BackgroundInsets>
-						<AbsInset left="5" right="5" top="5" bottom="5"/>
-					</BackgroundInsets>
-				</Backdrop>
-			
-			</Frame>
-		<Frame name="HGSGroup4Frame">
-				<Size>
-					<AbsDimension x="89" y="178"/>
-				</Size>
-				<Anchors>
-					<Anchor point="TOPLEFT" relativeTo="HGSFrame" relativePoint="TOPLEFT">
-						<Offset>
-							<AbsDimension x="492" y="-72"/>
-						</Offset>
-					</Anchor>
-				</Anchors>
-				<Backdrop name="HGSHEalersBackdrop" edgeFile="Interface\Tooltips\UI-Tooltip-Border" tile="true">
-					<EdgeSize>
-						<AbsValue val="16"/>
-					</EdgeSize>
-					<TileSize>
-						<AbsValue val="16"/>
-					</TileSize>
-					<BackgroundInsets>
-						<AbsInset left="5" right="5" top="5" bottom="5"/>
-					</BackgroundInsets>
-				</Backdrop>
-			
-			</Frame>
-		<Frame name="HGSGroup5Frame">
-				<Size>
-					<AbsDimension x="89" y="178"/>
-				</Size>
-				<Anchors>
-					<Anchor point="TOPLEFT" relativeTo="HGSFrame" relativePoint="TOPLEFT">
-						<Offset>
-							<AbsDimension x="132" y="-312"/>
-						</Offset>
-					</Anchor>
-				</Anchors>
-				<Backdrop name="HGSHEalersBackdrop" edgeFile="Interface\Tooltips\UI-Tooltip-Border" tile="true">
-					<EdgeSize>
-						<AbsValue val="16"/>
-					</EdgeSize>
-					<TileSize>
-						<AbsValue val="16"/>
-					</TileSize>
-					<BackgroundInsets>
-						<AbsInset left="5" right="5" top="5" bottom="5"/>
-					</BackgroundInsets>
-				</Backdrop>
-			
-			</Frame>
-		<Frame name="HGSGroup6Frame">
-				<Size>
-					<AbsDimension x="89" y="178"/>
-				</Size>
-				<Anchors>
-					<Anchor point="TOPLEFT" relativeTo="HGSFrame" relativePoint="TOPLEFT">
-						<Offset>
-							<AbsDimension x="252" y="-312"/>
-						</Offset>
-					</Anchor>
-				</Anchors>
-				<Backdrop name="HGSHEalersBackdrop" edgeFile="Interface\Tooltips\UI-Tooltip-Border" tile="true">
-					<EdgeSize>
-						<AbsValue val="16"/>
-					</EdgeSize>
-					<TileSize>
-						<AbsValue val="16"/>
-					</TileSize>
-					<BackgroundInsets>
-						<AbsInset left="5" right="5" top="5" bottom="5"/>
-					</BackgroundInsets>
-				</Backdrop>
-			
-			</Frame>
-		<Frame name="HGSGroup7Frame">
-				<Size>
-					<AbsDimension x="89" y="178"/>
-				</Size>
-				<Anchors>
-					<Anchor point="TOPLEFT" relativeTo="HGSFrame" relativePoint="TOPLEFT">
-						<Offset>
-							<AbsDimension x="372" y="-312"/>
-						</Offset>
-					</Anchor>
-				</Anchors>
-				<Backdrop name="HGSHEalersBackdrop" edgeFile="Interface\Tooltips\UI-Tooltip-Border" tile="true">
-					<EdgeSize>
-						<AbsValue val="16"/>
-					</EdgeSize>
-					<TileSize>
-						<AbsValue val="16"/>
-					</TileSize>
-					<BackgroundInsets>
-						<AbsInset left="5" right="5" top="5" bottom="5"/>
-					</BackgroundInsets>
-				</Backdrop>
-			
-			</Frame>
-		<Frame name="HGSGroup8Frame">
-				<Size>
-					<AbsDimension x="89" y="178"/>
-				</Size>
-				<Anchors>
-					<Anchor point="TOPLEFT" relativeTo="HGSFrame" relativePoint="TOPLEFT">
-						<Offset>
-							<AbsDimension x="492" y="-312"/>
-						</Offset>
-					</Anchor>
-				</Anchors>
-				<Backdrop name="HGSHEalersBackdrop" edgeFile="Interface\Tooltips\UI-Tooltip-Border" tile="true">
-					<EdgeSize>
-						<AbsValue val="16"/>
-					</EdgeSize>
-					<TileSize>
-						<AbsValue val="16"/>
-					</TileSize>
-					<BackgroundInsets>
-						<AbsInset left="5" right="5" top="5" bottom="5"/>
-					</BackgroundInsets>
-				</Backdrop>
-			
-			</Frame>
+        <Button name="HGSButton3" inherits="GameMenuButtonTemplate" justifyH="CENTER" text="Broadcast">
+                <Anchors>
+                    <Anchor point="BOTTOM">
+                        <Offset>
+                            <AbsDimension x="0" y="25"/>
+                        </Offset>
+                    </Anchor>
+                </Anchors>
+                <Scripts>
+                    <OnClick>
+                        HGS_Broadcast();
+                    </OnClick>
+                </Scripts>
+            </Button>
+        <Button name="HGSButton4" inherits="GameMenuButtonTemplate" justifyH="CENTER" text="Clear">
+                <Size>
+                    <AbsDimension x="42" y="20"/>
+                </Size>
+                <Anchors>
+                    <Anchor point="BOTTOM">
+                        <Offset>
+                            <AbsDimension x="140" y="5"/>
+                        </Offset>
+                    </Anchor>
+                </Anchors>
+                <Scripts>
+                    <OnClick>
+                        HGS_Reset();
+                    </OnClick>
+                </Scripts>
+            </Button>
+        <Button name="HGSButton5" inherits="GameMenuButtonTemplate" justifyH="CENTER" text="I'm Lazy!">
+                <Size>
+                    <AbsDimension x="84" y="40"/>
+                </Size>
+                <Anchors>
+                    <Anchor point="BOTTOM">
+                        <Offset>
+                            <AbsDimension x="-175" y="50"/>
+                        </Offset>
+                    </Anchor>
+                </Anchors>
+                <Scripts>
+                    <OnClick>
+                        HGS_Autosort();
+                    </OnClick>
+                </Scripts>
+                </Button>
 
-		<Button name="G1Box1" inherits="HealerTemplate" id="1">
-				<Anchors>
-					<Anchor point="TOPLEFT">
-						<Offset>
-							<AbsDimension x="137" y="-78"/>
-						</Offset>
-					</Anchor>
-				</Anchors>
-				<Scripts>
-					<OnClick>
-						Group_OnClick();
-					</OnClick>
-				</Scripts>
-		</Button>
-		<Button name="G1Box2" inherits="HealerTemplate" id="1">
-				<Anchors>
-					<Anchor point="TOPLEFT" relativeTo="G1Box1">
-						<Offset>
-							<AbsDimension x="0" y="-14"/>
-						</Offset>
-					</Anchor>
-				</Anchors>
-				<Scripts>
-					<OnClick>
-						Group_OnClick();
-					</OnClick>
-				</Scripts>
-		</Button>
-		<Button name="G1Box3" inherits="HealerTemplate" id="1">
-				<Anchors>
-					<Anchor point="TOPLEFT" relativeTo="G1Box2">
-						<Offset>
-							<AbsDimension x="0" y="-14"/>
-						</Offset>
-					</Anchor>
-				</Anchors>
-				<Scripts>
-					<OnClick>
-						Group_OnClick();
-					</OnClick>
-				</Scripts>
-		</Button>
-		<Button name="G1Box4" inherits="HealerTemplate" id="1">
-				<Anchors>
-					<Anchor point="TOPLEFT" relativeTo="G1Box3">
-						<Offset>
-							<AbsDimension x="0" y="-14"/>
-						</Offset>
-					</Anchor>
-				</Anchors>
-				<Scripts>
-					<OnClick>
-						Group_OnClick();
-					</OnClick>
-				</Scripts>
-		</Button>
-		<Button name="G1Box5" inherits="HealerTemplate" id="1">
-				<Anchors>
-					<Anchor point="TOPLEFT" relativeTo="G1Box4">
-						<Offset>
-							<AbsDimension x="0" y="-14"/>
-						</Offset>
-					</Anchor>
-				</Anchors>
-				<Scripts>
-					<OnClick>
-						Group_OnClick();
-					</OnClick>
-				</Scripts>
-		</Button>
-		<Button name="G1Box6" inherits="HealerTemplate" id="1">
-				<Anchors>
-					<Anchor point="TOPLEFT" relativeTo="G1Box5">
-						<Offset>
-							<AbsDimension x="0" y="-14"/>
-						</Offset>
-					</Anchor>
-				</Anchors>
-				<Scripts>
-					<OnClick>
-						Group_OnClick();
-					</OnClick>
-				</Scripts>
-		</Button>
-		<Button name="G1Box7" inherits="HealerTemplate" id="1">
-				<Anchors>
-					<Anchor point="TOPLEFT" relativeTo="G1Box6">
-						<Offset>
-							<AbsDimension x="0" y="-14"/>
-						</Offset>
-					</Anchor>
-				</Anchors>
-				<Scripts>
-					<OnClick>
-						Group_OnClick();
-					</OnClick>
-				</Scripts>
-		</Button>
-		<Button name="G1Box8" inherits="HealerTemplate" id="1">
-				<Anchors>
-					<Anchor point="TOPLEFT" relativeTo="G1Box7">
-						<Offset>
-							<AbsDimension x="0" y="-14"/>
-						</Offset>
-					</Anchor>
-				</Anchors>
-				<Scripts>
-					<OnClick>
-						Group_OnClick();
-					</OnClick>
-				</Scripts>
-		</Button>
-		<Button name="G1Box9" inherits="HealerTemplate" id="1">
-				<Anchors>
-					<Anchor point="TOPLEFT" relativeTo="G1Box8">
-						<Offset>
-							<AbsDimension x="0" y="-14"/>
-						</Offset>
-					</Anchor>
-				</Anchors>
-				<Scripts>
-					<OnClick>
-						Group_OnClick();
-					</OnClick>
-				</Scripts>
-		</Button>
-		<Button name="G1Box10" inherits="HealerTemplate" id="1">
-				<Anchors>
-					<Anchor point="TOPLEFT" relativeTo="G1Box9">
-						<Offset>
-							<AbsDimension x="0" y="-14"/>
-						</Offset>
-					</Anchor>
-				</Anchors>
-				<Scripts>
-					<OnClick>
-						Group_OnClick();
-					</OnClick>
-				</Scripts>
-		</Button>
-		<Button name="G1Box11" inherits="HealerTemplate" id="1">
-				<Anchors>
-					<Anchor point="TOPLEFT" relativeTo="G1Box10">
-						<Offset>
-							<AbsDimension x="0" y="-14"/>
-						</Offset>
-					</Anchor>
-				</Anchors>
-				<Scripts>
-					<OnClick>
-						Group_OnClick();
-					</OnClick>
-				</Scripts>
-		</Button>
-		<Button name="G1Box12" inherits="HealerTemplate" id="1">
-				<Anchors>
-					<Anchor point="TOPLEFT" relativeTo="G1Box11">
-						<Offset>
-							<AbsDimension x="0" y="-14"/>
-						</Offset>
-					</Anchor>
-				</Anchors>
-				<Scripts>
-					<OnClick>
-						Group_OnClick();
-					</OnClick>
-				</Scripts>
-		</Button>
-		
-		
-		<Button name="G2Box1" inherits="HealerTemplate" id="2">
-				<Anchors>
-					<Anchor point="TOPLEFT">
-						<Offset>
-							<AbsDimension x="257" y="-78"/>
-						</Offset>
-					</Anchor>
-				</Anchors>
-				<Scripts>
-					<OnClick>
-						Group_OnClick();
-					</OnClick>
-				</Scripts>
-		</Button>
-		<Button name="G2Box2" inherits="HealerTemplate" id="2">
-				<Anchors>
-					<Anchor point="TOPLEFT" relativeTo="G2Box1">
-						<Offset>
-							<AbsDimension x="0" y="-14"/>
-						</Offset>
-					</Anchor>
-				</Anchors>
-				<Scripts>
-					<OnClick>
-						Group_OnClick();
-					</OnClick>
-				</Scripts>
-		</Button>
-		<Button name="G2Box3" inherits="HealerTemplate" id="2">
-				<Anchors>
-					<Anchor point="TOPLEFT" relativeTo="G2Box2">
-						<Offset>
-							<AbsDimension x="0" y="-14"/>
-						</Offset>
-					</Anchor>
-				</Anchors>
-				<Scripts>
-					<OnClick>
-						Group_OnClick();
-					</OnClick>
-				</Scripts>
-		</Button>
-		<Button name="G2Box4" inherits="HealerTemplate" id="2">
-				<Anchors>
-					<Anchor point="TOPLEFT" relativeTo="G2Box3">
-						<Offset>
-							<AbsDimension x="0" y="-14"/>
-						</Offset>
-					</Anchor>
-				</Anchors>
-				<Scripts>
-					<OnClick>
-						Group_OnClick();
-					</OnClick>
-				</Scripts>
-		</Button>
-		<Button name="G2Box5" inherits="HealerTemplate" id="2">
-				<Anchors>
-					<Anchor point="TOPLEFT" relativeTo="G2Box4">
-						<Offset>
-							<AbsDimension x="0" y="-14"/>
-						</Offset>
-					</Anchor>
-				</Anchors>
-				<Scripts>
-					<OnClick>
-						Group_OnClick();
-					</OnClick>
-				</Scripts>
-		</Button>
-		<Button name="G2Box6" inherits="HealerTemplate" id="2">
-				<Anchors>
-					<Anchor point="TOPLEFT" relativeTo="G2Box5">
-						<Offset>
-							<AbsDimension x="0" y="-14"/>
-						</Offset>
-					</Anchor>
-				</Anchors>
-				<Scripts>
-					<OnClick>
-						Group_OnClick();
-					</OnClick>
-				</Scripts>
-		</Button>
-		<Button name="G2Box7" inherits="HealerTemplate" id="2">
-				<Anchors>
-					<Anchor point="TOPLEFT" relativeTo="G2Box6">
-						<Offset>
-							<AbsDimension x="0" y="-14"/>
-						</Offset>
-					</Anchor>
-				</Anchors>
-				<Scripts>
-					<OnClick>
-						Group_OnClick();
-					</OnClick>
-				</Scripts>
-		</Button>
-		<Button name="G2Box8" inherits="HealerTemplate" id="2">
-				<Anchors>
-					<Anchor point="TOPLEFT" relativeTo="G2Box7">
-						<Offset>
-							<AbsDimension x="0" y="-14"/>
-						</Offset>
-					</Anchor>
-				</Anchors>
-				<Scripts>
-					<OnClick>
-						Group_OnClick();
-					</OnClick>
-				</Scripts>
-		</Button>
-		<Button name="G2Box9" inherits="HealerTemplate" id="2">
-				<Anchors>
-					<Anchor point="TOPLEFT" relativeTo="G2Box8">
-						<Offset>
-							<AbsDimension x="0" y="-14"/>
-						</Offset>
-					</Anchor>
-				</Anchors>
-				<Scripts>
-					<OnClick>
-						Group_OnClick();
-					</OnClick>
-				</Scripts>
-		</Button>
-		<Button name="G2Box10" inherits="HealerTemplate" id="2">
-				<Anchors>
-					<Anchor point="TOPLEFT" relativeTo="G2Box9">
-						<Offset>
-							<AbsDimension x="0" y="-14"/>
-						</Offset>
-					</Anchor>
-				</Anchors>
-				<Scripts>
-					<OnClick>
-						Group_OnClick();
-					</OnClick>
-				</Scripts>
-		</Button>
-		<Button name="G2Box11" inherits="HealerTemplate" id="2">
-				<Anchors>
-					<Anchor point="TOPLEFT" relativeTo="G2Box10">
-						<Offset>
-							<AbsDimension x="0" y="-14"/>
-						</Offset>
-					</Anchor>
-				</Anchors>
-				<Scripts>
-					<OnClick>
-						Group_OnClick();
-					</OnClick>
-				</Scripts>
-		</Button>
-		<Button name="G2Box12" inherits="HealerTemplate" id="2">
-				<Anchors>
-					<Anchor point="TOPLEFT" relativeTo="G2Box11">
-						<Offset>
-							<AbsDimension x="0" y="-14"/>
-						</Offset>
-					</Anchor>
-				</Anchors>
-				<Scripts>
-					<OnClick>
-						Group_OnClick();
-					</OnClick>
-				</Scripts>
-		</Button>
-		
-		
-		<Button name="G3Box1" inherits="HealerTemplate" id="3">
-				<Anchors>
-					<Anchor point="TOPLEFT">
-						<Offset>
-							<AbsDimension x="377" y="-78"/>
-						</Offset>
-					</Anchor>
-				</Anchors>
-				<Scripts>
-					<OnClick>
-						Group_OnClick();
-					</OnClick>
-				</Scripts>
-		</Button>
-		<Button name="G3Box2" inherits="HealerTemplate" id="3">
-				<Anchors>
-					<Anchor point="TOPLEFT" relativeTo="G3Box1">
-						<Offset>
-							<AbsDimension x="0" y="-14"/>
-						</Offset>
-					</Anchor>
-				</Anchors>
-				<Scripts>
-					<OnClick>
-						Group_OnClick();
-					</OnClick>
-				</Scripts>
-		</Button>
-		<Button name="G3Box3" inherits="HealerTemplate" id="3">
-				<Anchors>
-					<Anchor point="TOPLEFT" relativeTo="G3Box2">
-						<Offset>
-							<AbsDimension x="0" y="-14"/>
-						</Offset>
-					</Anchor>
-				</Anchors>
-				<Scripts>
-					<OnClick>
-						Group_OnClick();
-					</OnClick>
-				</Scripts>
-		</Button>
-		<Button name="G3Box4" inherits="HealerTemplate" id="3">
-				<Anchors>
-					<Anchor point="TOPLEFT" relativeTo="G3Box3">
-						<Offset>
-							<AbsDimension x="0" y="-14"/>
-						</Offset>
-					</Anchor>
-				</Anchors>
-				<Scripts>
-					<OnClick>
-						Group_OnClick();
-					</OnClick>
-				</Scripts>
-		</Button>
-		<Button name="G3Box5" inherits="HealerTemplate" id="3">
-				<Anchors>
-					<Anchor point="TOPLEFT" relativeTo="G3Box4">
-						<Offset>
-							<AbsDimension x="0" y="-14"/>
-						</Offset>
-					</Anchor>
-				</Anchors>
-				<Scripts>
-					<OnClick>
-						Group_OnClick();
-					</OnClick>
-				</Scripts>
-		</Button>
-		<Button name="G3Box6" inherits="HealerTemplate" id="3">
-				<Anchors>
-					<Anchor point="TOPLEFT" relativeTo="G3Box5">
-						<Offset>
-							<AbsDimension x="0" y="-14"/>
-						</Offset>
-					</Anchor>
-				</Anchors>
-				<Scripts>
-					<OnClick>
-						Group_OnClick();
-					</OnClick>
-				</Scripts>
-		</Button>
-		<Button name="G3Box7" inherits="HealerTemplate" id="3">
-				<Anchors>
-					<Anchor point="TOPLEFT" relativeTo="G3Box6">
-						<Offset>
-							<AbsDimension x="0" y="-14"/>
-						</Offset>
-					</Anchor>
-				</Anchors>
-				<Scripts>
-					<OnClick>
-						Group_OnClick();
-					</OnClick>
-				</Scripts>
-		</Button>
-		<Button name="G3Box8" inherits="HealerTemplate" id="3">
-				<Anchors>
-					<Anchor point="TOPLEFT" relativeTo="G3Box7">
-						<Offset>
-							<AbsDimension x="0" y="-14"/>
-						</Offset>
-					</Anchor>
-				</Anchors>
-				<Scripts>
-					<OnClick>
-						Group_OnClick();
-					</OnClick>
-				</Scripts>
-		</Button>
-		<Button name="G3Box9" inherits="HealerTemplate" id="3">
-				<Anchors>
-					<Anchor point="TOPLEFT" relativeTo="G3Box8">
-						<Offset>
-							<AbsDimension x="0" y="-14"/>
-						</Offset>
-					</Anchor>
-				</Anchors>
-				<Scripts>
-					<OnClick>
-						Group_OnClick();
-					</OnClick>
-				</Scripts>
-		</Button>
-		<Button name="G3Box10" inherits="HealerTemplate" id="3">
-				<Anchors>
-					<Anchor point="TOPLEFT" relativeTo="G3Box9">
-						<Offset>
-							<AbsDimension x="0" y="-14"/>
-						</Offset>
-					</Anchor>
-				</Anchors>
-				<Scripts>
-					<OnClick>
-						Group_OnClick();
-					</OnClick>
-				</Scripts>
-		</Button>
-		<Button name="G3Box11" inherits="HealerTemplate" id="3">
-				<Anchors>
-					<Anchor point="TOPLEFT" relativeTo="G3Box10">
-						<Offset>
-							<AbsDimension x="0" y="-14"/>
-						</Offset>
-					</Anchor>
-				</Anchors>
-				<Scripts>
-					<OnClick>
-						Group_OnClick();
-					</OnClick>
-				</Scripts>
-		</Button>
-		<Button name="G3Box12" inherits="HealerTemplate" id="3">
-		
-				<Anchors>
-					<Anchor point="TOPLEFT" relativeTo="G3Box11">
-						<Offset>
-							<AbsDimension x="0" y="-14"/>
-						</Offset>
-					</Anchor>
-				</Anchors>
-				<Scripts>
-					<OnClick>
-						Group_OnClick();
-					</OnClick>
-				</Scripts>
-		</Button>
-		<Button name="G4Box1" inherits="HealerTemplate" id="4">
-				<Anchors>
-					<Anchor point="TOPLEFT">
-						<Offset>
-							<AbsDimension x="497" y="-78"/>
-						</Offset>
-					</Anchor>
-				</Anchors>
-				<Scripts>
-					<OnClick>
-						Group_OnClick();
-					</OnClick>
-				</Scripts>
-		</Button>
-		<Button name="G4Box2" inherits="HealerTemplate" id="4">
-				<Anchors>
-					<Anchor point="TOPLEFT" relativeTo="G4Box1">
-						<Offset>
-							<AbsDimension x="0" y="-14"/>
-						</Offset>
-					</Anchor>
-				</Anchors>
-				<Scripts>
-					<OnClick>
-						Group_OnClick();
-					</OnClick>
-				</Scripts>
-		</Button>
-		<Button name="G4Box3" inherits="HealerTemplate" id="4">
-				<Anchors>
-					<Anchor point="TOPLEFT" relativeTo="G4Box2">
-						<Offset>
-							<AbsDimension x="0" y="-14"/>
-						</Offset>
-					</Anchor>
-				</Anchors>
-				<Scripts>
-					<OnClick>
-						Group_OnClick();
-					</OnClick>
-				</Scripts>
-		</Button>
-		<Button name="G4Box4" inherits="HealerTemplate" id="4">
-				<Anchors>
-					<Anchor point="TOPLEFT" relativeTo="G4Box3">
-						<Offset>
-							<AbsDimension x="0" y="-14"/>
-						</Offset>
-					</Anchor>
-				</Anchors>
-				<Scripts>
-					<OnClick>
-						Group_OnClick();
-					</OnClick>
-				</Scripts>
-		</Button>
-		<Button name="G4Box5" inherits="HealerTemplate" id="4">
-				<Anchors>
-					<Anchor point="TOPLEFT" relativeTo="G4Box4">
-						<Offset>
-							<AbsDimension x="0" y="-14"/>
-						</Offset>
-					</Anchor>
-				</Anchors>
-				<Scripts>
-					<OnClick>
-						Group_OnClick();
-					</OnClick>
-				</Scripts>
-		</Button>
-		<Button name="G4Box6" inherits="HealerTemplate" id="4">
-				<Anchors>
-					<Anchor point="TOPLEFT" relativeTo="G4Box5">
-						<Offset>
-							<AbsDimension x="0" y="-14"/>
-						</Offset>
-					</Anchor>
-				</Anchors>
-				<Scripts>
-					<OnClick>
-						Group_OnClick();
-					</OnClick>
-				</Scripts>
-		</Button>
-		<Button name="G4Box7" inherits="HealerTemplate" id="4">
-				<Anchors>
-					<Anchor point="TOPLEFT" relativeTo="G4Box6">
-						<Offset>
-							<AbsDimension x="0" y="-14"/>
-						</Offset>
-					</Anchor>
-				</Anchors>
-				<Scripts>
-					<OnClick>
-						Group_OnClick();
-					</OnClick>
-				</Scripts>
-		</Button>
-		<Button name="G4Box8" inherits="HealerTemplate" id="4">
-				<Anchors>
-					<Anchor point="TOPLEFT" relativeTo="G4Box7">
-						<Offset>
-							<AbsDimension x="0" y="-14"/>
-						</Offset>
-					</Anchor>
-				</Anchors>
-				<Scripts>
-					<OnClick>
-						Group_OnClick();
-					</OnClick>
-				</Scripts>
-		</Button>
-		<Button name="G4Box9" inherits="HealerTemplate" id="4">
-				<Anchors>
-					<Anchor point="TOPLEFT" relativeTo="G4Box8">
-						<Offset>
-							<AbsDimension x="0" y="-14"/>
-						</Offset>
-					</Anchor>
-				</Anchors>
-				<Scripts>
-					<OnClick>
-						Group_OnClick();
-					</OnClick>
-				</Scripts>
-		</Button>
-		<Button name="G4Box10" inherits="HealerTemplate" id="4">
-				<Anchors>
-					<Anchor point="TOPLEFT" relativeTo="G4Box9">
-						<Offset>
-							<AbsDimension x="0" y="-14"/>
-						</Offset>
-					</Anchor>
-				</Anchors>
-				<Scripts>
-					<OnClick>
-						Group_OnClick();
-					</OnClick>
-				</Scripts>
-		</Button>
-		<Button name="G4Box11" inherits="HealerTemplate" id="4">
-				<Anchors>
-					<Anchor point="TOPLEFT" relativeTo="G4Box10">
-						<Offset>
-							<AbsDimension x="0" y="-14"/>
-						</Offset>
-					</Anchor>
-				</Anchors>
-				<Scripts>
-					<OnClick>
-						Group_OnClick();
-					</OnClick>
-				</Scripts>
-		</Button>
-		<Button name="G4Box12" inherits="HealerTemplate" id="4">
-		
-				<Anchors>
-					<Anchor point="TOPLEFT" relativeTo="G4Box11">
-						<Offset>
-							<AbsDimension x="0" y="-14"/>
-						</Offset>
-					</Anchor>
-				</Anchors>
-				<Scripts>
-					<OnClick>
-						Group_OnClick();
-					</OnClick>
-				</Scripts>
-		</Button>
-		<Button name="G5Box1" inherits="HealerTemplate" id="5">
-				<Anchors>
-					<Anchor point="TOPLEFT">
-						<Offset>
-							<AbsDimension x="137" y="-318"/>
-						</Offset>
-					</Anchor>
-				</Anchors>
-				<Scripts>
-					<OnClick>
-						Group_OnClick();
-					</OnClick>
-				</Scripts>
-		</Button>
-		<Button name="G5Box2" inherits="HealerTemplate" id="5">
-				<Anchors>
-					<Anchor point="TOPLEFT" relativeTo="G5Box1">
-						<Offset>
-							<AbsDimension x="0" y="-14"/>
-						</Offset>
-					</Anchor>
-				</Anchors>
-				<Scripts>
-					<OnClick>
-						Group_OnClick();
-					</OnClick>
-				</Scripts>
-		</Button>
-		<Button name="G5Box3" inherits="HealerTemplate" id="5">
-				<Anchors>
-					<Anchor point="TOPLEFT" relativeTo="G5Box2">
-						<Offset>
-							<AbsDimension x="0" y="-14"/>
-						</Offset>
-					</Anchor>
-				</Anchors>
-				<Scripts>
-					<OnClick>
-						Group_OnClick();
-					</OnClick>
-				</Scripts>
-		</Button>
-		<Button name="G5Box4" inherits="HealerTemplate" id="5">
-				<Anchors>
-					<Anchor point="TOPLEFT" relativeTo="G5Box3">
-						<Offset>
-							<AbsDimension x="0" y="-14"/>
-						</Offset>
-					</Anchor>
-				</Anchors>
-				<Scripts>
-					<OnClick>
-						Group_OnClick();
-					</OnClick>
-				</Scripts>
-		</Button>
-		<Button name="G5Box5" inherits="HealerTemplate" id="5">
-				<Anchors>
-					<Anchor point="TOPLEFT" relativeTo="G5Box4">
-						<Offset>
-							<AbsDimension x="0" y="-14"/>
-						</Offset>
-					</Anchor>
-				</Anchors>
-				<Scripts>
-					<OnClick>
-						Group_OnClick();
-					</OnClick>
-				</Scripts>
-		</Button>
-		<Button name="G5Box6" inherits="HealerTemplate" id="5">
-				<Anchors>
-					<Anchor point="TOPLEFT" relativeTo="G5Box5">
-						<Offset>
-							<AbsDimension x="0" y="-14"/>
-						</Offset>
-					</Anchor>
-				</Anchors>
-				<Scripts>
-					<OnClick>
-						Group_OnClick();
-					</OnClick>
-				</Scripts>
-		</Button>
-		<Button name="G5Box7" inherits="HealerTemplate" id="5">
-				<Anchors>
-					<Anchor point="TOPLEFT" relativeTo="G5Box6">
-						<Offset>
-							<AbsDimension x="0" y="-14"/>
-						</Offset>
-					</Anchor>
-				</Anchors>
-				<Scripts>
-					<OnClick>
-						Group_OnClick();
-					</OnClick>
-				</Scripts>
-		</Button>
-		<Button name="G5Box8" inherits="HealerTemplate" id="5">
-				<Anchors>
-					<Anchor point="TOPLEFT" relativeTo="G5Box7">
-						<Offset>
-							<AbsDimension x="0" y="-14"/>
-						</Offset>
-					</Anchor>
-				</Anchors>
-				<Scripts>
-					<OnClick>
-						Group_OnClick();
-					</OnClick>
-				</Scripts>
-		</Button>
-		<Button name="G5Box9" inherits="HealerTemplate" id="5">
-				<Anchors>
-					<Anchor point="TOPLEFT" relativeTo="G5Box8">
-						<Offset>
-							<AbsDimension x="0" y="-14"/>
-						</Offset>
-					</Anchor>
-				</Anchors>
-				<Scripts>
-					<OnClick>
-						Group_OnClick();
-					</OnClick>
-				</Scripts>
-		</Button>
-		<Button name="G5Box10" inherits="HealerTemplate" id="5">
-				<Anchors>
-					<Anchor point="TOPLEFT" relativeTo="G5Box9">
-						<Offset>
-							<AbsDimension x="0" y="-14"/>
-						</Offset>
-					</Anchor>
-				</Anchors>
-				<Scripts>
-					<OnClick>
-						Group_OnClick();
-					</OnClick>
-				</Scripts>
-		</Button>
-		<Button name="G5Box11" inherits="HealerTemplate" id="5">
-				<Anchors>
-					<Anchor point="TOPLEFT" relativeTo="G5Box10">
-						<Offset>
-							<AbsDimension x="0" y="-14"/>
-						</Offset>
-					</Anchor>
-				</Anchors>
-				<Scripts>
-					<OnClick>
-						Group_OnClick();
-					</OnClick>
-				</Scripts>
-		</Button>
-		<Button name="G5Box12" inherits="HealerTemplate" id="5">
-		
-				<Anchors>
-					<Anchor point="TOPLEFT" relativeTo="G5Box11">
-						<Offset>
-							<AbsDimension x="0" y="-14"/>
-						</Offset>
-					</Anchor>
-				</Anchors>
-				<Scripts>
-					<OnClick>
-						Group_OnClick();
-					</OnClick>
-				</Scripts>
-		</Button>
-		<Button name="G6Box1" inherits="HealerTemplate" id="6">
-				<Anchors>
-					<Anchor point="TOPLEFT">
-						<Offset>
-							<AbsDimension x="257" y="-318"/>
-						</Offset>
-					</Anchor>
-				</Anchors>
-				<Scripts>
-					<OnClick>
-						Group_OnClick();
-					</OnClick>
-				</Scripts>
-		</Button>
-		<Button name="G6Box2" inherits="HealerTemplate" id="6">
-				<Anchors>
-					<Anchor point="TOPLEFT" relativeTo="G6Box1">
-						<Offset>
-							<AbsDimension x="0" y="-14"/>
-						</Offset>
-					</Anchor>
-				</Anchors>
-				<Scripts>
-					<OnClick>
-						Group_OnClick();
-					</OnClick>
-				</Scripts>
-		</Button>
-		<Button name="G6Box3" inherits="HealerTemplate" id="6">
-				<Anchors>
-					<Anchor point="TOPLEFT" relativeTo="G6Box2">
-						<Offset>
-							<AbsDimension x="0" y="-14"/>
-						</Offset>
-					</Anchor>
-				</Anchors>
-				<Scripts>
-					<OnClick>
-						Group_OnClick();
-					</OnClick>
-				</Scripts>
-		</Button>
-		<Button name="G6Box4" inherits="HealerTemplate" id="6">
-				<Anchors>
-					<Anchor point="TOPLEFT" relativeTo="G6Box3">
-						<Offset>
-							<AbsDimension x="0" y="-14"/>
-						</Offset>
-					</Anchor>
-				</Anchors>
-				<Scripts>
-					<OnClick>
-						Group_OnClick();
-					</OnClick>
-				</Scripts>
-		</Button>
-		<Button name="G6Box5" inherits="HealerTemplate" id="6">
-				<Anchors>
-					<Anchor point="TOPLEFT" relativeTo="G6Box4">
-						<Offset>
-							<AbsDimension x="0" y="-14"/>
-						</Offset>
-					</Anchor>
-				</Anchors>
-				<Scripts>
-					<OnClick>
-						Group_OnClick();
-					</OnClick>
-				</Scripts>
-		</Button>
-		<Button name="G6Box6" inherits="HealerTemplate" id="6">
-				<Anchors>
-					<Anchor point="TOPLEFT" relativeTo="G6Box5">
-						<Offset>
-							<AbsDimension x="0" y="-14"/>
-						</Offset>
-					</Anchor>
-				</Anchors>
-				<Scripts>
-					<OnClick>
-						Group_OnClick();
-					</OnClick>
-				</Scripts>
-		</Button>
-		<Button name="G6Box7" inherits="HealerTemplate" id="6">
-				<Anchors>
-					<Anchor point="TOPLEFT" relativeTo="G6Box6">
-						<Offset>
-							<AbsDimension x="0" y="-14"/>
-						</Offset>
-					</Anchor>
-				</Anchors>
-				<Scripts>
-					<OnClick>
-						Group_OnClick();
-					</OnClick>
-				</Scripts>
-		</Button>
-		<Button name="G6Box8" inherits="HealerTemplate" id="6">
-				<Anchors>
-					<Anchor point="TOPLEFT" relativeTo="G6Box7">
-						<Offset>
-							<AbsDimension x="0" y="-14"/>
-						</Offset>
-					</Anchor>
-				</Anchors>
-				<Scripts>
-					<OnClick>
-						Group_OnClick();
-					</OnClick>
-				</Scripts>
-		</Button>
-		<Button name="G6Box9" inherits="HealerTemplate" id="6">
-				<Anchors>
-					<Anchor point="TOPLEFT" relativeTo="G6Box8">
-						<Offset>
-							<AbsDimension x="0" y="-14"/>
-						</Offset>
-					</Anchor>
-				</Anchors>
-				<Scripts>
-					<OnClick>
-						Group_OnClick();
-					</OnClick>
-				</Scripts>
-		</Button>
-		<Button name="G6Box10" inherits="HealerTemplate" id="6">
-				<Anchors>
-					<Anchor point="TOPLEFT" relativeTo="G6Box9">
-						<Offset>
-							<AbsDimension x="0" y="-14"/>
-						</Offset>
-					</Anchor>
-				</Anchors>
-				<Scripts>
-					<OnClick>
-						Group_OnClick();
-					</OnClick>
-				</Scripts>
-		</Button>
-		<Button name="G6Box11" inherits="HealerTemplate" id="6">
-				<Anchors>
-					<Anchor point="TOPLEFT" relativeTo="G6Box10">
-						<Offset>
-							<AbsDimension x="0" y="-14"/>
-						</Offset>
-					</Anchor>
-				</Anchors>
-				<Scripts>
-					<OnClick>
-						Group_OnClick();
-					</OnClick>
-				</Scripts>
-		</Button>
-		<Button name="G6Box12" inherits="HealerTemplate" id="6">
-		
-				<Anchors>
-					<Anchor point="TOPLEFT" relativeTo="G6Box11">
-						<Offset>
-							<AbsDimension x="0" y="-14"/>
-						</Offset>
-					</Anchor>
-				</Anchors>
-				<Scripts>
-					<OnClick>
-						Group_OnClick();
-					</OnClick>
-				</Scripts>
-		</Button>
-		<Button name="G7Box1" inherits="HealerTemplate" id="7">
-				<Anchors>
-					<Anchor point="TOPLEFT">
-						<Offset>
-							<AbsDimension x="377" y="-318"/>
-						</Offset>
-					</Anchor>
-				</Anchors>
-				<Scripts>
-					<OnClick>
-						Group_OnClick();
-					</OnClick>
-				</Scripts>
-		</Button>
-		<Button name="G7Box2" inherits="HealerTemplate" id="7">
-				<Anchors>
-					<Anchor point="TOPLEFT" relativeTo="G7Box1">
-						<Offset>
-							<AbsDimension x="0" y="-14"/>
-						</Offset>
-					</Anchor>
-				</Anchors>
-				<Scripts>
-					<OnClick>
-						Group_OnClick();
-					</OnClick>
-				</Scripts>
-		</Button>
-		<Button name="G7Box3" inherits="HealerTemplate" id="7">
-				<Anchors>
-					<Anchor point="TOPLEFT" relativeTo="G7Box2">
-						<Offset>
-							<AbsDimension x="0" y="-14"/>
-						</Offset>
-					</Anchor>
-				</Anchors>
-				<Scripts>
-					<OnClick>
-						Group_OnClick();
-					</OnClick>
-				</Scripts>
-		</Button>
-		<Button name="G7Box4" inherits="HealerTemplate" id="7">
-				<Anchors>
-					<Anchor point="TOPLEFT" relativeTo="G7Box3">
-						<Offset>
-							<AbsDimension x="0" y="-14"/>
-						</Offset>
-					</Anchor>
-				</Anchors>
-				<Scripts>
-					<OnClick>
-						Group_OnClick();
-					</OnClick>
-				</Scripts>
-		</Button>
-		<Button name="G7Box5" inherits="HealerTemplate" id="7">
-				<Anchors>
-					<Anchor point="TOPLEFT" relativeTo="G7Box4">
-						<Offset>
-							<AbsDimension x="0" y="-14"/>
-						</Offset>
-					</Anchor>
-				</Anchors>
-				<Scripts>
-					<OnClick>
-						Group_OnClick();
-					</OnClick>
-				</Scripts>
-		</Button>
-		<Button name="G7Box6" inherits="HealerTemplate" id="7">
-				<Anchors>
-					<Anchor point="TOPLEFT" relativeTo="G7Box5">
-						<Offset>
-							<AbsDimension x="0" y="-14"/>
-						</Offset>
-					</Anchor>
-				</Anchors>
-				<Scripts>
-					<OnClick>
-						Group_OnClick();
-					</OnClick>
-				</Scripts>
-		</Button>
-		<Button name="G7Box7" inherits="HealerTemplate" id="7">
-				<Anchors>
-					<Anchor point="TOPLEFT" relativeTo="G7Box6">
-						<Offset>
-							<AbsDimension x="0" y="-14"/>
-						</Offset>
-					</Anchor>
-				</Anchors>
-				<Scripts>
-					<OnClick>
-						Group_OnClick();
-					</OnClick>
-				</Scripts>
-		</Button>
-		<Button name="G7Box8" inherits="HealerTemplate" id="7">
-				<Anchors>
-					<Anchor point="TOPLEFT" relativeTo="G7Box7">
-						<Offset>
-							<AbsDimension x="0" y="-14"/>
-						</Offset>
-					</Anchor>
-				</Anchors>
-				<Scripts>
-					<OnClick>
-						Group_OnClick();
-					</OnClick>
-				</Scripts>
-		</Button>
-		<Button name="G7Box9" inherits="HealerTemplate" id="7">
-				<Anchors>
-					<Anchor point="TOPLEFT" relativeTo="G7Box8">
-						<Offset>
-							<AbsDimension x="0" y="-14"/>
-						</Offset>
-					</Anchor>
-				</Anchors>
-				<Scripts>
-					<OnClick>
-						Group_OnClick();
-					</OnClick>
-				</Scripts>
-		</Button>
-		<Button name="G7Box10" inherits="HealerTemplate" id="7">
-				<Anchors>
-					<Anchor point="TOPLEFT" relativeTo="G7Box9">
-						<Offset>
-							<AbsDimension x="0" y="-14"/>
-						</Offset>
-					</Anchor>
-				</Anchors>
-				<Scripts>
-					<OnClick>
-						Group_OnClick();
-					</OnClick>
-				</Scripts>
-		</Button>
-		<Button name="G7Box11" inherits="HealerTemplate" id="7">
-				<Anchors>
-					<Anchor point="TOPLEFT" relativeTo="G7Box10">
-						<Offset>
-							<AbsDimension x="0" y="-14"/>
-						</Offset>
-					</Anchor>
-				</Anchors>
-				<Scripts>
-					<OnClick>
-						Group_OnClick();
-					</OnClick>
-				</Scripts>
-		</Button>
-		<Button name="G7Box12" inherits="HealerTemplate" id="7">
-		
-				<Anchors>
-					<Anchor point="TOPLEFT" relativeTo="G7Box11">
-						<Offset>
-							<AbsDimension x="0" y="-14"/>
-						</Offset>
-					</Anchor>
-				</Anchors>
-				<Scripts>
-					<OnClick>
-						Group_OnClick();
-					</OnClick>
-				</Scripts>
-		</Button>
-		<Button name="G8Box1" inherits="HealerTemplate" id="8">
-				<Anchors>
-					<Anchor point="TOPLEFT">
-						<Offset>
-							<AbsDimension x="497" y="-318"/>
-						</Offset>
-					</Anchor>
-				</Anchors>
-				<Scripts>
-					<OnClick>
-						Group_OnClick();
-					</OnClick>
-				</Scripts>
-		</Button>
-		<Button name="G8Box2" inherits="HealerTemplate" id="8">
-				<Anchors>
-					<Anchor point="TOPLEFT" relativeTo="G8Box1">
-						<Offset>
-							<AbsDimension x="0" y="-14"/>
-						</Offset>
-					</Anchor>
-				</Anchors>
-				<Scripts>
-					<OnClick>
-						Group_OnClick();
-					</OnClick>
-				</Scripts>
-		</Button>
-		<Button name="G8Box3" inherits="HealerTemplate" id="8">
-				<Anchors>
-					<Anchor point="TOPLEFT" relativeTo="G8Box2">
-						<Offset>
-							<AbsDimension x="0" y="-14"/>
-						</Offset>
-					</Anchor>
-				</Anchors>
-				<Scripts>
-					<OnClick>
-						Group_OnClick();
-					</OnClick>
-				</Scripts>
-		</Button>
-		<Button name="G8Box4" inherits="HealerTemplate" id="8">
-				<Anchors>
-					<Anchor point="TOPLEFT" relativeTo="G8Box3">
-						<Offset>
-							<AbsDimension x="0" y="-14"/>
-						</Offset>
-					</Anchor>
-				</Anchors>
-				<Scripts>
-					<OnClick>
-						Group_OnClick();
-					</OnClick>
-				</Scripts>
-		</Button>
-		<Button name="G8Box5" inherits="HealerTemplate" id="8">
-				<Anchors>
-					<Anchor point="TOPLEFT" relativeTo="G8Box4">
-						<Offset>
-							<AbsDimension x="0" y="-14"/>
-						</Offset>
-					</Anchor>
-				</Anchors>
-				<Scripts>
-					<OnClick>
-						Group_OnClick();
-					</OnClick>
-				</Scripts>
-		</Button>
-		<Button name="G8Box6" inherits="HealerTemplate" id="8">
-				<Anchors>
-					<Anchor point="TOPLEFT" relativeTo="G8Box5">
-						<Offset>
-							<AbsDimension x="0" y="-14"/>
-						</Offset>
-					</Anchor>
-				</Anchors>
-				<Scripts>
-					<OnClick>
-						Group_OnClick();
-					</OnClick>
-				</Scripts>
-		</Button>
-		<Button name="G8Box7" inherits="HealerTemplate" id="8">
-				<Anchors>
-					<Anchor point="TOPLEFT" relativeTo="G8Box6">
-						<Offset>
-							<AbsDimension x="0" y="-14"/>
-						</Offset>
-					</Anchor>
-				</Anchors>
-				<Scripts>
-					<OnClick>
-						Group_OnClick();
-					</OnClick>
-				</Scripts>
-		</Button>
-		<Button name="G8Box8" inherits="HealerTemplate" id="8">
-				<Anchors>
-					<Anchor point="TOPLEFT" relativeTo="G8Box7">
-						<Offset>
-							<AbsDimension x="0" y="-14"/>
-						</Offset>
-					</Anchor>
-				</Anchors>
-				<Scripts>
-					<OnClick>
-						Group_OnClick();
-					</OnClick>
-				</Scripts>
-		</Button>
-		<Button name="G8Box9" inherits="HealerTemplate" id="8">
-				<Anchors>
-					<Anchor point="TOPLEFT" relativeTo="G8Box8">
-						<Offset>
-							<AbsDimension x="0" y="-14"/>
-						</Offset>
-					</Anchor>
-				</Anchors>
-				<Scripts>
-					<OnClick>
-						Group_OnClick();
-					</OnClick>
-				</Scripts>
-		</Button>
-		<Button name="G8Box10" inherits="HealerTemplate" id="8">
-				<Anchors>
-					<Anchor point="TOPLEFT" relativeTo="G8Box9">
-						<Offset>
-							<AbsDimension x="0" y="-14"/>
-						</Offset>
-					</Anchor>
-				</Anchors>
-				<Scripts>
-					<OnClick>
-						Group_OnClick();
-					</OnClick>
-				</Scripts>
-		</Button>
-		<Button name="G8Box11" inherits="HealerTemplate" id="8">
-				<Anchors>
-					<Anchor point="TOPLEFT" relativeTo="G8Box10">
-						<Offset>
-							<AbsDimension x="0" y="-14"/>
-						</Offset>
-					</Anchor>
-				</Anchors>
-				<Scripts>
-					<OnClick>
-						Group_OnClick();
-					</OnClick>
-				</Scripts>
-		</Button>
-		<Button name="G8Box12" inherits="HealerTemplate" id="8">
-				<Anchors>
-					<Anchor point="TOPLEFT" relativeTo="G8Box11">
-						<Offset>
-							<AbsDimension x="0" y="-14"/>
-						</Offset>
-					</Anchor>
-				</Anchors>
-				<Scripts>
-					<OnClick>
-						Group_OnClick();
-					</OnClick>
-				</Scripts>
-		</Button>
+            
+        <Frame name="HGSHealersFrame">
+                <Size>
+                    <AbsDimension x="89" y="530"/>
+                </Size>
+                <Anchors>
+                    <Anchor point="TOPLEFT">
+                        <Offset>
+                            <AbsDimension x="8" y="-60"/>
+                        </Offset>
+                    </Anchor>
+                </Anchors>
+                <Backdrop name="HGSHEalersBackdrop" edgeFile="Interface\Tooltips\UI-Tooltip-Border" tile="true">
+                    <EdgeSize>
+                        <AbsValue val="16"/>
+                    </EdgeSize>
+                    <TileSize>
+                        <AbsValue val="16"/>
+                    </TileSize>
+                    <BackgroundInsets>
+                        <AbsInset left="5" right="5" top="5" bottom="5"/>
+                    </BackgroundInsets>
+                </Backdrop>
+            </Frame>
 
-			
-		</Frames>
-		<Scripts>
-			<OnLoad>
-				this:SetBackdropBorderColor(TOOLTIP_DEFAULT_COLOR.r, TOOLTIP_DEFAULT_COLOR.g, TOOLTIP_DEFAULT_COLOR.b);
-				this:SetBackdropColor(TOOLTIP_DEFAULT_BACKGROUND_COLOR.r, TOOLTIP_DEFAULT_BACKGROUND_COLOR.g, TOOLTIP_DEFAULT_BACKGROUND_COLOR.b);
-			</OnLoad>
-			<OnMouseDown>
-				if ( not this.isMoving ) then
-				this:StartMoving();
-				this.isMoving = true;
-				end
-			</OnMouseDown>
-			<OnMouseUp>
-				if ( this.isMoving) then
-				this:StopMovingOrSizing();
-				this.isMoving = false;
-				end
-			</OnMouseUp>
-		</Scripts>
-	</Frame>
-	
-	
+            <EditBox name="HGSGroup1Box" autoFocus="false" inherits="InputBoxTemplate" id="1">
+                <Size>
+                    <AbsDimension x="80" y="16"/>
+                </Size>
+                <Anchors>
+                    <Anchor point="TOPLEFT" relativeTo="HGSFrame" relativePoint="TOPLEFT">
+                        <Offset>
+                            <AbsDimension x="140" y="-57"/>
+                        </Offset>
+                    </Anchor>
+                </Anchors>
+                <Scripts>
+                    <OnEnterPressed>
+                        GroupBox_SetName(self);
+                        self:ClearFocus();
+                    </OnEnterPressed>
+                    <OnEditFocusLost>
+                        GroupBox_SetName(self);
+                    </OnEditFocusLost>
+                </Scripts>
+                <FontString inherits="ChatFontNormal" bytes="64"/>
+            </EditBox>
+            <EditBox name="HGSGroup2Box" autoFocus="false" inherits="InputBoxTemplate" id="2">
+                <Size>
+                    <AbsDimension x="80" y="16"/>
+                </Size>
+                <Anchors>
+                    <Anchor point="TOPLEFT" relativeTo="HGSFrame" relativePoint="TOPLEFT">
+                        <Offset>
+                            <AbsDimension x="260" y="-57"/>
+                        </Offset>
+                    </Anchor>
+                </Anchors>
+                <Scripts>
+                    <OnEnterPressed>
+                        GroupBox_SetName(self);
+                        self:ClearFocus();
+                    </OnEnterPressed>
+                    <OnEditFocusLost>
+                        GroupBox_SetName(self);
+                    </OnEditFocusLost>
+                </Scripts>
+                <FontString inherits="ChatFontNormal" bytes="64"/>
+            </EditBox>
+            <EditBox name="HGSGroup3Box" autoFocus="false" inherits="InputBoxTemplate" id="3">
+                <Size>
+                    <AbsDimension x="80" y="16"/>
+                </Size>
+                <Anchors>
+                    <Anchor point="TOPLEFT" relativeTo="HGSFrame" relativePoint="TOPLEFT">
+                        <Offset>
+                            <AbsDimension x="380" y="-57"/>
+                        </Offset>
+                    </Anchor>
+                </Anchors>
+                <Scripts>
+                    <OnEnterPressed>
+                        GroupBox_SetName(self);
+                        self:ClearFocus();
+                    </OnEnterPressed>
+                    <OnEditFocusLost>
+                        GroupBox_SetName(self);
+                    </OnEditFocusLost>
+                </Scripts>
+                <FontString inherits="ChatFontNormal" bytes="64"/>
+            </EditBox>
+            <EditBox name="HGSGroup4Box" autoFocus="false" inherits="InputBoxTemplate" id="4">
+                <Size>
+                    <AbsDimension x="80" y="16"/>
+                </Size>
+                <Anchors>
+                    <Anchor point="TOPLEFT" relativeTo="HGSFrame" relativePoint="TOPLEFT">
+                        <Offset>
+                            <AbsDimension x="500" y="-57"/>
+                        </Offset>
+                    </Anchor>
+                </Anchors>
+                <Scripts>
+                    <OnEnterPressed>
+                        GroupBox_SetName(self);
+                        self:ClearFocus();
+                    </OnEnterPressed>
+                    <OnEditFocusLost>
+                        GroupBox_SetName(self);
+                    </OnEditFocusLost>
+                </Scripts>
+                <FontString inherits="ChatFontNormal" bytes="64"/>
+            </EditBox>
+            <EditBox name="HGSGroup5Box" autoFocus="false" inherits="InputBoxTemplate" id="5">
+                <Size>
+                    <AbsDimension x="80" y="16"/>
+                </Size>
+                <Anchors>
+                    <Anchor point="TOPLEFT" relativeTo="HGSFrame" relativePoint="TOPLEFT">
+                        <Offset>
+                            <AbsDimension x="140" y="-297"/>
+                        </Offset>
+                    </Anchor>
+                </Anchors>
+                <Scripts>
+                    <OnEnterPressed>
+                        GroupBox_SetName(self);
+                        self:ClearFocus();
+                    </OnEnterPressed>
+                    <OnEditFocusLost>
+                        GroupBox_SetName(self);
+                    </OnEditFocusLost>
+                </Scripts>
+                <FontString inherits="ChatFontNormal" bytes="64"/>
+            </EditBox>
+            <EditBox name="HGSGroup6Box" autoFocus="false" inherits="InputBoxTemplate" id="6">
+                <Size>
+                    <AbsDimension x="80" y="16"/>
+                </Size>
+                <Anchors>
+                    <Anchor point="TOPLEFT" relativeTo="HGSFrame" relativePoint="TOPLEFT">
+                        <Offset>
+                            <AbsDimension x="260" y="-297"/>
+                        </Offset>
+                    </Anchor>
+                </Anchors>
+                <Scripts>
+                    <OnEnterPressed>
+                        GroupBox_SetName(self);
+                        self:ClearFocus();
+                    </OnEnterPressed>
+                    <OnEditFocusLost>
+                        GroupBox_SetName(self);
+                    </OnEditFocusLost>
+                </Scripts>
+                <FontString inherits="ChatFontNormal" bytes="64"/>
+            </EditBox>
+            <EditBox name="HGSGroup7Box" autoFocus="false" inherits="InputBoxTemplate" id="7">
+                <Size>
+                    <AbsDimension x="80" y="16"/>
+                </Size>
+                <Anchors>
+                    <Anchor point="TOPLEFT" relativeTo="HGSFrame" relativePoint="TOPLEFT">
+                        <Offset>
+                            <AbsDimension x="380" y="-297"/>
+                        </Offset>
+                    </Anchor>
+                </Anchors>
+                <Scripts>
+                    <OnEnterPressed>
+                        GroupBox_SetName(self);
+                        self:ClearFocus();
+                    </OnEnterPressed>
+                    <OnEditFocusLost>
+                        GroupBox_SetName(self);
+                    </OnEditFocusLost>
+                </Scripts>
+                <FontString inherits="ChatFontNormal" bytes="64"/>
+            </EditBox>
+            <EditBox name="HGSGroup8Box" autoFocus="false" inherits="InputBoxTemplate" id="8">
+                <Size>
+                    <AbsDimension x="80" y="16"/>
+                </Size>
+                <Anchors>
+                    <Anchor point="TOPLEFT" relativeTo="HGSFrame" relativePoint="TOPLEFT">
+                        <Offset>
+                            <AbsDimension x="500" y="-297"/>
+                        </Offset>
+                    </Anchor>
+                </Anchors>
+                <Scripts>
+                    <OnEnterPressed>
+                        GroupBox_SetName(self);
+                        self:ClearFocus();
+                    </OnEnterPressed>
+                    <OnEditFocusLost>
+                        GroupBox_SetName(self);
+                    </OnEditFocusLost>
+                </Scripts>
+                <FontString inherits="ChatFontNormal" bytes="64"/>
+            </EditBox>
+
+        <Frame name="HGSGroup1Frame">
+                <Size>
+                    <AbsDimension x="89" y="178"/>
+                </Size>
+                <Anchors>
+                    <Anchor point="TOPLEFT" relativeTo="HGSFrame" relativePoint="TOPLEFT">
+                        <Offset>
+                            <AbsDimension x="132" y="-72"/>
+                        </Offset>
+                    </Anchor>
+                </Anchors>
+                <Backdrop name="HGSHEalersBackdrop" edgeFile="Interface\Tooltips\UI-Tooltip-Border" tile="true">
+                    <EdgeSize>
+                        <AbsValue val="16"/>
+                    </EdgeSize>
+                    <TileSize>
+                        <AbsValue val="16"/>
+                    </TileSize>
+                    <BackgroundInsets>
+                        <AbsInset left="5" right="5" top="5" bottom="5"/>
+                    </BackgroundInsets>
+                </Backdrop>
+            
+            </Frame>
+        <Frame name="HGSGroup2Frame">
+                <Size>
+                    <AbsDimension x="89" y="178"/>
+                </Size>
+                <Anchors>
+                    <Anchor point="TOPLEFT" relativeTo="HGSFrame" relativePoint="TOPLEFT">
+                        <Offset>
+                            <AbsDimension x="252" y="-72"/>
+                        </Offset>
+                    </Anchor>
+                </Anchors>
+                <Backdrop name="HGSHEalersBackdrop" edgeFile="Interface\Tooltips\UI-Tooltip-Border" tile="true">
+                    <EdgeSize>
+                        <AbsValue val="16"/>
+                    </EdgeSize>
+                    <TileSize>
+                        <AbsValue val="16"/>
+                    </TileSize>
+                    <BackgroundInsets>
+                        <AbsInset left="5" right="5" top="5" bottom="5"/>
+                    </BackgroundInsets>
+                </Backdrop>
+            
+            </Frame>
+        <Frame name="HGSGroup3Frame">
+                <Size>
+                    <AbsDimension x="89" y="178"/>
+                </Size>
+                <Anchors>
+                    <Anchor point="TOPLEFT" relativeTo="HGSFrame" relativePoint="TOPLEFT">
+                        <Offset>
+                            <AbsDimension x="372" y="-72"/>
+                        </Offset>
+                    </Anchor>
+                </Anchors>
+                <Backdrop name="HGSHEalersBackdrop" edgeFile="Interface\Tooltips\UI-Tooltip-Border" tile="true">
+                    <EdgeSize>
+                        <AbsValue val="16"/>
+                    </EdgeSize>
+                    <TileSize>
+                        <AbsValue val="16"/>
+                    </TileSize>
+                    <BackgroundInsets>
+                        <AbsInset left="5" right="5" top="5" bottom="5"/>
+                    </BackgroundInsets>
+                </Backdrop>
+            
+            </Frame>
+        <Frame name="HGSGroup4Frame">
+                <Size>
+                    <AbsDimension x="89" y="178"/>
+                </Size>
+                <Anchors>
+                    <Anchor point="TOPLEFT" relativeTo="HGSFrame" relativePoint="TOPLEFT">
+                        <Offset>
+                            <AbsDimension x="492" y="-72"/>
+                        </Offset>
+                    </Anchor>
+                </Anchors>
+                <Backdrop name="HGSHEalersBackdrop" edgeFile="Interface\Tooltips\UI-Tooltip-Border" tile="true">
+                    <EdgeSize>
+                        <AbsValue val="16"/>
+                    </EdgeSize>
+                    <TileSize>
+                        <AbsValue val="16"/>
+                    </TileSize>
+                    <BackgroundInsets>
+                        <AbsInset left="5" right="5" top="5" bottom="5"/>
+                    </BackgroundInsets>
+                </Backdrop>
+            
+            </Frame>
+        <Frame name="HGSGroup5Frame">
+                <Size>
+                    <AbsDimension x="89" y="178"/>
+                </Size>
+                <Anchors>
+                    <Anchor point="TOPLEFT" relativeTo="HGSFrame" relativePoint="TOPLEFT">
+                        <Offset>
+                            <AbsDimension x="132" y="-312"/>
+                        </Offset>
+                    </Anchor>
+                </Anchors>
+                <Backdrop name="HGSHEalersBackdrop" edgeFile="Interface\Tooltips\UI-Tooltip-Border" tile="true">
+                    <EdgeSize>
+                        <AbsValue val="16"/>
+                    </EdgeSize>
+                    <TileSize>
+                        <AbsValue val="16"/>
+                    </TileSize>
+                    <BackgroundInsets>
+                        <AbsInset left="5" right="5" top="5" bottom="5"/>
+                    </BackgroundInsets>
+                </Backdrop>
+            
+            </Frame>
+        <Frame name="HGSGroup6Frame">
+                <Size>
+                    <AbsDimension x="89" y="178"/>
+                </Size>
+                <Anchors>
+                    <Anchor point="TOPLEFT" relativeTo="HGSFrame" relativePoint="TOPLEFT">
+                        <Offset>
+                            <AbsDimension x="252" y="-312"/>
+                        </Offset>
+                    </Anchor>
+                </Anchors>
+                <Backdrop name="HGSHEalersBackdrop" edgeFile="Interface\Tooltips\UI-Tooltip-Border" tile="true">
+                    <EdgeSize>
+                        <AbsValue val="16"/>
+                    </EdgeSize>
+                    <TileSize>
+                        <AbsValue val="16"/>
+                    </TileSize>
+                    <BackgroundInsets>
+                        <AbsInset left="5" right="5" top="5" bottom="5"/>
+                    </BackgroundInsets>
+                </Backdrop>
+            
+            </Frame>
+        <Frame name="HGSGroup7Frame">
+                <Size>
+                    <AbsDimension x="89" y="178"/>
+                </Size>
+                <Anchors>
+                    <Anchor point="TOPLEFT" relativeTo="HGSFrame" relativePoint="TOPLEFT">
+                        <Offset>
+                            <AbsDimension x="372" y="-312"/>
+                        </Offset>
+                    </Anchor>
+                </Anchors>
+                <Backdrop name="HGSHEalersBackdrop" edgeFile="Interface\Tooltips\UI-Tooltip-Border" tile="true">
+                    <EdgeSize>
+                        <AbsValue val="16"/>
+                    </EdgeSize>
+                    <TileSize>
+                        <AbsValue val="16"/>
+                    </TileSize>
+                    <BackgroundInsets>
+                        <AbsInset left="5" right="5" top="5" bottom="5"/>
+                    </BackgroundInsets>
+                </Backdrop>
+            
+            </Frame>
+        <Frame name="HGSGroup8Frame">
+                <Size>
+                    <AbsDimension x="89" y="178"/>
+                </Size>
+                <Anchors>
+                    <Anchor point="TOPLEFT" relativeTo="HGSFrame" relativePoint="TOPLEFT">
+                        <Offset>
+                            <AbsDimension x="492" y="-312"/>
+                        </Offset>
+                    </Anchor>
+                </Anchors>
+                <Backdrop name="HGSHEalersBackdrop" edgeFile="Interface\Tooltips\UI-Tooltip-Border" tile="true">
+                    <EdgeSize>
+                        <AbsValue val="16"/>
+                    </EdgeSize>
+                    <TileSize>
+                        <AbsValue val="16"/>
+                    </TileSize>
+                    <BackgroundInsets>
+                        <AbsInset left="5" right="5" top="5" bottom="5"/>
+                    </BackgroundInsets>
+                </Backdrop>
+            
+            </Frame>
+
+        <Button name="G1Box1" inherits="HealerTemplate" id="1">
+                <Anchors>
+                    <Anchor point="TOPLEFT">
+                        <Offset>
+                            <AbsDimension x="137" y="-78"/>
+                        </Offset>
+                    </Anchor>
+                </Anchors>
+                <Scripts>
+                    <OnClick>
+                        Group_OnClick(self);
+                    </OnClick>
+                </Scripts>
+        </Button>
+        <Button name="G1Box2" inherits="HealerTemplate" id="1">
+                <Anchors>
+                    <Anchor point="TOPLEFT" relativeTo="G1Box1">
+                        <Offset>
+                            <AbsDimension x="0" y="-14"/>
+                        </Offset>
+                    </Anchor>
+                </Anchors>
+                <Scripts>
+                    <OnClick>
+                        Group_OnClick(self);
+                    </OnClick>
+                </Scripts>
+        </Button>
+        <Button name="G1Box3" inherits="HealerTemplate" id="1">
+                <Anchors>
+                    <Anchor point="TOPLEFT" relativeTo="G1Box2">
+                        <Offset>
+                            <AbsDimension x="0" y="-14"/>
+                        </Offset>
+                    </Anchor>
+                </Anchors>
+                <Scripts>
+                    <OnClick>
+                        Group_OnClick(self);
+                    </OnClick>
+                </Scripts>
+        </Button>
+        <Button name="G1Box4" inherits="HealerTemplate" id="1">
+                <Anchors>
+                    <Anchor point="TOPLEFT" relativeTo="G1Box3">
+                        <Offset>
+                            <AbsDimension x="0" y="-14"/>
+                        </Offset>
+                    </Anchor>
+                </Anchors>
+                <Scripts>
+                    <OnClick>
+                        Group_OnClick(self);
+                    </OnClick>
+                </Scripts>
+        </Button>
+        <Button name="G1Box5" inherits="HealerTemplate" id="1">
+                <Anchors>
+                    <Anchor point="TOPLEFT" relativeTo="G1Box4">
+                        <Offset>
+                            <AbsDimension x="0" y="-14"/>
+                        </Offset>
+                    </Anchor>
+                </Anchors>
+                <Scripts>
+                    <OnClick>
+                        Group_OnClick(self);
+                    </OnClick>
+                </Scripts>
+        </Button>
+        <Button name="G1Box6" inherits="HealerTemplate" id="1">
+                <Anchors>
+                    <Anchor point="TOPLEFT" relativeTo="G1Box5">
+                        <Offset>
+                            <AbsDimension x="0" y="-14"/>
+                        </Offset>
+                    </Anchor>
+                </Anchors>
+                <Scripts>
+                    <OnClick>
+                        Group_OnClick(self);
+                    </OnClick>
+                </Scripts>
+        </Button>
+        <Button name="G1Box7" inherits="HealerTemplate" id="1">
+                <Anchors>
+                    <Anchor point="TOPLEFT" relativeTo="G1Box6">
+                        <Offset>
+                            <AbsDimension x="0" y="-14"/>
+                        </Offset>
+                    </Anchor>
+                </Anchors>
+                <Scripts>
+                    <OnClick>
+                        Group_OnClick(self);
+                    </OnClick>
+                </Scripts>
+        </Button>
+        <Button name="G1Box8" inherits="HealerTemplate" id="1">
+                <Anchors>
+                    <Anchor point="TOPLEFT" relativeTo="G1Box7">
+                        <Offset>
+                            <AbsDimension x="0" y="-14"/>
+                        </Offset>
+                    </Anchor>
+                </Anchors>
+                <Scripts>
+                    <OnClick>
+                        Group_OnClick(self);
+                    </OnClick>
+                </Scripts>
+        </Button>
+        <Button name="G1Box9" inherits="HealerTemplate" id="1">
+                <Anchors>
+                    <Anchor point="TOPLEFT" relativeTo="G1Box8">
+                        <Offset>
+                            <AbsDimension x="0" y="-14"/>
+                        </Offset>
+                    </Anchor>
+                </Anchors>
+                <Scripts>
+                    <OnClick>
+                        Group_OnClick(self);
+                    </OnClick>
+                </Scripts>
+        </Button>
+        <Button name="G1Box10" inherits="HealerTemplate" id="1">
+                <Anchors>
+                    <Anchor point="TOPLEFT" relativeTo="G1Box9">
+                        <Offset>
+                            <AbsDimension x="0" y="-14"/>
+                        </Offset>
+                    </Anchor>
+                </Anchors>
+                <Scripts>
+                    <OnClick>
+                        Group_OnClick(self);
+                    </OnClick>
+                </Scripts>
+        </Button>
+        <Button name="G1Box11" inherits="HealerTemplate" id="1">
+                <Anchors>
+                    <Anchor point="TOPLEFT" relativeTo="G1Box10">
+                        <Offset>
+                            <AbsDimension x="0" y="-14"/>
+                        </Offset>
+                    </Anchor>
+                </Anchors>
+                <Scripts>
+                    <OnClick>
+                        Group_OnClick(self);
+                    </OnClick>
+                </Scripts>
+        </Button>
+        <Button name="G1Box12" inherits="HealerTemplate" id="1">
+                <Anchors>
+                    <Anchor point="TOPLEFT" relativeTo="G1Box11">
+                        <Offset>
+                            <AbsDimension x="0" y="-14"/>
+                        </Offset>
+                    </Anchor>
+                </Anchors>
+                <Scripts>
+                    <OnClick>
+                        Group_OnClick(self);
+                    </OnClick>
+                </Scripts>
+        </Button>
+        
+        
+        <Button name="G2Box1" inherits="HealerTemplate" id="2">
+                <Anchors>
+                    <Anchor point="TOPLEFT">
+                        <Offset>
+                            <AbsDimension x="257" y="-78"/>
+                        </Offset>
+                    </Anchor>
+                </Anchors>
+                <Scripts>
+                    <OnClick>
+                        Group_OnClick(self);
+                    </OnClick>
+                </Scripts>
+        </Button>
+        <Button name="G2Box2" inherits="HealerTemplate" id="2">
+                <Anchors>
+                    <Anchor point="TOPLEFT" relativeTo="G2Box1">
+                        <Offset>
+                            <AbsDimension x="0" y="-14"/>
+                        </Offset>
+                    </Anchor>
+                </Anchors>
+                <Scripts>
+                    <OnClick>
+                        Group_OnClick(self);
+                    </OnClick>
+                </Scripts>
+        </Button>
+        <Button name="G2Box3" inherits="HealerTemplate" id="2">
+                <Anchors>
+                    <Anchor point="TOPLEFT" relativeTo="G2Box2">
+                        <Offset>
+                            <AbsDimension x="0" y="-14"/>
+                        </Offset>
+                    </Anchor>
+                </Anchors>
+                <Scripts>
+                    <OnClick>
+                        Group_OnClick(self);
+                    </OnClick>
+                </Scripts>
+        </Button>
+        <Button name="G2Box4" inherits="HealerTemplate" id="2">
+                <Anchors>
+                    <Anchor point="TOPLEFT" relativeTo="G2Box3">
+                        <Offset>
+                            <AbsDimension x="0" y="-14"/>
+                        </Offset>
+                    </Anchor>
+                </Anchors>
+                <Scripts>
+                    <OnClick>
+                        Group_OnClick(self);
+                    </OnClick>
+                </Scripts>
+        </Button>
+        <Button name="G2Box5" inherits="HealerTemplate" id="2">
+                <Anchors>
+                    <Anchor point="TOPLEFT" relativeTo="G2Box4">
+                        <Offset>
+                            <AbsDimension x="0" y="-14"/>
+                        </Offset>
+                    </Anchor>
+                </Anchors>
+                <Scripts>
+                    <OnClick>
+                        Group_OnClick(self);
+                    </OnClick>
+                </Scripts>
+        </Button>
+        <Button name="G2Box6" inherits="HealerTemplate" id="2">
+                <Anchors>
+                    <Anchor point="TOPLEFT" relativeTo="G2Box5">
+                        <Offset>
+                            <AbsDimension x="0" y="-14"/>
+                        </Offset>
+                    </Anchor>
+                </Anchors>
+                <Scripts>
+                    <OnClick>
+                        Group_OnClick(self);
+                    </OnClick>
+                </Scripts>
+        </Button>
+        <Button name="G2Box7" inherits="HealerTemplate" id="2">
+                <Anchors>
+                    <Anchor point="TOPLEFT" relativeTo="G2Box6">
+                        <Offset>
+                            <AbsDimension x="0" y="-14"/>
+                        </Offset>
+                    </Anchor>
+                </Anchors>
+                <Scripts>
+                    <OnClick>
+                        Group_OnClick(self);
+                    </OnClick>
+                </Scripts>
+        </Button>
+        <Button name="G2Box8" inherits="HealerTemplate" id="2">
+                <Anchors>
+                    <Anchor point="TOPLEFT" relativeTo="G2Box7">
+                        <Offset>
+                            <AbsDimension x="0" y="-14"/>
+                        </Offset>
+                    </Anchor>
+                </Anchors>
+                <Scripts>
+                    <OnClick>
+                        Group_OnClick(self);
+                    </OnClick>
+                </Scripts>
+        </Button>
+        <Button name="G2Box9" inherits="HealerTemplate" id="2">
+                <Anchors>
+                    <Anchor point="TOPLEFT" relativeTo="G2Box8">
+                        <Offset>
+                            <AbsDimension x="0" y="-14"/>
+                        </Offset>
+                    </Anchor>
+                </Anchors>
+                <Scripts>
+                    <OnClick>
+                        Group_OnClick(self);
+                    </OnClick>
+                </Scripts>
+        </Button>
+        <Button name="G2Box10" inherits="HealerTemplate" id="2">
+                <Anchors>
+                    <Anchor point="TOPLEFT" relativeTo="G2Box9">
+                        <Offset>
+                            <AbsDimension x="0" y="-14"/>
+                        </Offset>
+                    </Anchor>
+                </Anchors>
+                <Scripts>
+                    <OnClick>
+                        Group_OnClick(self);
+                    </OnClick>
+                </Scripts>
+        </Button>
+        <Button name="G2Box11" inherits="HealerTemplate" id="2">
+                <Anchors>
+                    <Anchor point="TOPLEFT" relativeTo="G2Box10">
+                        <Offset>
+                            <AbsDimension x="0" y="-14"/>
+                        </Offset>
+                    </Anchor>
+                </Anchors>
+                <Scripts>
+                    <OnClick>
+                        Group_OnClick(self);
+                    </OnClick>
+                </Scripts>
+        </Button>
+        <Button name="G2Box12" inherits="HealerTemplate" id="2">
+                <Anchors>
+                    <Anchor point="TOPLEFT" relativeTo="G2Box11">
+                        <Offset>
+                            <AbsDimension x="0" y="-14"/>
+                        </Offset>
+                    </Anchor>
+                </Anchors>
+                <Scripts>
+                    <OnClick>
+                        Group_OnClick(self);
+                    </OnClick>
+                </Scripts>
+        </Button>
+        
+        
+        <Button name="G3Box1" inherits="HealerTemplate" id="3">
+                <Anchors>
+                    <Anchor point="TOPLEFT">
+                        <Offset>
+                            <AbsDimension x="377" y="-78"/>
+                        </Offset>
+                    </Anchor>
+                </Anchors>
+                <Scripts>
+                    <OnClick>
+                        Group_OnClick(self);
+                    </OnClick>
+                </Scripts>
+        </Button>
+        <Button name="G3Box2" inherits="HealerTemplate" id="3">
+                <Anchors>
+                    <Anchor point="TOPLEFT" relativeTo="G3Box1">
+                        <Offset>
+                            <AbsDimension x="0" y="-14"/>
+                        </Offset>
+                    </Anchor>
+                </Anchors>
+                <Scripts>
+                    <OnClick>
+                        Group_OnClick(self);
+                    </OnClick>
+                </Scripts>
+        </Button>
+        <Button name="G3Box3" inherits="HealerTemplate" id="3">
+                <Anchors>
+                    <Anchor point="TOPLEFT" relativeTo="G3Box2">
+                        <Offset>
+                            <AbsDimension x="0" y="-14"/>
+                        </Offset>
+                    </Anchor>
+                </Anchors>
+                <Scripts>
+                    <OnClick>
+                        Group_OnClick(self);
+                    </OnClick>
+                </Scripts>
+        </Button>
+        <Button name="G3Box4" inherits="HealerTemplate" id="3">
+                <Anchors>
+                    <Anchor point="TOPLEFT" relativeTo="G3Box3">
+                        <Offset>
+                            <AbsDimension x="0" y="-14"/>
+                        </Offset>
+                    </Anchor>
+                </Anchors>
+                <Scripts>
+                    <OnClick>
+                        Group_OnClick(self);
+                    </OnClick>
+                </Scripts>
+        </Button>
+        <Button name="G3Box5" inherits="HealerTemplate" id="3">
+                <Anchors>
+                    <Anchor point="TOPLEFT" relativeTo="G3Box4">
+                        <Offset>
+                            <AbsDimension x="0" y="-14"/>
+                        </Offset>
+                    </Anchor>
+                </Anchors>
+                <Scripts>
+                    <OnClick>
+                        Group_OnClick(self);
+                    </OnClick>
+                </Scripts>
+        </Button>
+        <Button name="G3Box6" inherits="HealerTemplate" id="3">
+                <Anchors>
+                    <Anchor point="TOPLEFT" relativeTo="G3Box5">
+                        <Offset>
+                            <AbsDimension x="0" y="-14"/>
+                        </Offset>
+                    </Anchor>
+                </Anchors>
+                <Scripts>
+                    <OnClick>
+                        Group_OnClick(self);
+                    </OnClick>
+                </Scripts>
+        </Button>
+        <Button name="G3Box7" inherits="HealerTemplate" id="3">
+                <Anchors>
+                    <Anchor point="TOPLEFT" relativeTo="G3Box6">
+                        <Offset>
+                            <AbsDimension x="0" y="-14"/>
+                        </Offset>
+                    </Anchor>
+                </Anchors>
+                <Scripts>
+                    <OnClick>
+                        Group_OnClick(self);
+                    </OnClick>
+                </Scripts>
+        </Button>
+        <Button name="G3Box8" inherits="HealerTemplate" id="3">
+                <Anchors>
+                    <Anchor point="TOPLEFT" relativeTo="G3Box7">
+                        <Offset>
+                            <AbsDimension x="0" y="-14"/>
+                        </Offset>
+                    </Anchor>
+                </Anchors>
+                <Scripts>
+                    <OnClick>
+                        Group_OnClick(self);
+                    </OnClick>
+                </Scripts>
+        </Button>
+        <Button name="G3Box9" inherits="HealerTemplate" id="3">
+                <Anchors>
+                    <Anchor point="TOPLEFT" relativeTo="G3Box8">
+                        <Offset>
+                            <AbsDimension x="0" y="-14"/>
+                        </Offset>
+                    </Anchor>
+                </Anchors>
+                <Scripts>
+                    <OnClick>
+                        Group_OnClick(self);
+                    </OnClick>
+                </Scripts>
+        </Button>
+        <Button name="G3Box10" inherits="HealerTemplate" id="3">
+                <Anchors>
+                    <Anchor point="TOPLEFT" relativeTo="G3Box9">
+                        <Offset>
+                            <AbsDimension x="0" y="-14"/>
+                        </Offset>
+                    </Anchor>
+                </Anchors>
+                <Scripts>
+                    <OnClick>
+                        Group_OnClick(self);
+                    </OnClick>
+                </Scripts>
+        </Button>
+        <Button name="G3Box11" inherits="HealerTemplate" id="3">
+                <Anchors>
+                    <Anchor point="TOPLEFT" relativeTo="G3Box10">
+                        <Offset>
+                            <AbsDimension x="0" y="-14"/>
+                        </Offset>
+                    </Anchor>
+                </Anchors>
+                <Scripts>
+                    <OnClick>
+                        Group_OnClick(self);
+                    </OnClick>
+                </Scripts>
+        </Button>
+        <Button name="G3Box12" inherits="HealerTemplate" id="3">
+        
+                <Anchors>
+                    <Anchor point="TOPLEFT" relativeTo="G3Box11">
+                        <Offset>
+                            <AbsDimension x="0" y="-14"/>
+                        </Offset>
+                    </Anchor>
+                </Anchors>
+                <Scripts>
+                    <OnClick>
+                        Group_OnClick(self);
+                    </OnClick>
+                </Scripts>
+        </Button>
+        <Button name="G4Box1" inherits="HealerTemplate" id="4">
+                <Anchors>
+                    <Anchor point="TOPLEFT">
+                        <Offset>
+                            <AbsDimension x="497" y="-78"/>
+                        </Offset>
+                    </Anchor>
+                </Anchors>
+                <Scripts>
+                    <OnClick>
+                        Group_OnClick(self);
+                    </OnClick>
+                </Scripts>
+        </Button>
+        <Button name="G4Box2" inherits="HealerTemplate" id="4">
+                <Anchors>
+                    <Anchor point="TOPLEFT" relativeTo="G4Box1">
+                        <Offset>
+                            <AbsDimension x="0" y="-14"/>
+                        </Offset>
+                    </Anchor>
+                </Anchors>
+                <Scripts>
+                    <OnClick>
+                        Group_OnClick(self);
+                    </OnClick>
+                </Scripts>
+        </Button>
+        <Button name="G4Box3" inherits="HealerTemplate" id="4">
+                <Anchors>
+                    <Anchor point="TOPLEFT" relativeTo="G4Box2">
+                        <Offset>
+                            <AbsDimension x="0" y="-14"/>
+                        </Offset>
+                    </Anchor>
+                </Anchors>
+                <Scripts>
+                    <OnClick>
+                        Group_OnClick(self);
+                    </OnClick>
+                </Scripts>
+        </Button>
+        <Button name="G4Box4" inherits="HealerTemplate" id="4">
+                <Anchors>
+                    <Anchor point="TOPLEFT" relativeTo="G4Box3">
+                        <Offset>
+                            <AbsDimension x="0" y="-14"/>
+                        </Offset>
+                    </Anchor>
+                </Anchors>
+                <Scripts>
+                    <OnClick>
+                        Group_OnClick(self);
+                    </OnClick>
+                </Scripts>
+        </Button>
+        <Button name="G4Box5" inherits="HealerTemplate" id="4">
+                <Anchors>
+                    <Anchor point="TOPLEFT" relativeTo="G4Box4">
+                        <Offset>
+                            <AbsDimension x="0" y="-14"/>
+                        </Offset>
+                    </Anchor>
+                </Anchors>
+                <Scripts>
+                    <OnClick>
+                        Group_OnClick(self);
+                    </OnClick>
+                </Scripts>
+        </Button>
+        <Button name="G4Box6" inherits="HealerTemplate" id="4">
+                <Anchors>
+                    <Anchor point="TOPLEFT" relativeTo="G4Box5">
+                        <Offset>
+                            <AbsDimension x="0" y="-14"/>
+                        </Offset>
+                    </Anchor>
+                </Anchors>
+                <Scripts>
+                    <OnClick>
+                        Group_OnClick(self);
+                    </OnClick>
+                </Scripts>
+        </Button>
+        <Button name="G4Box7" inherits="HealerTemplate" id="4">
+                <Anchors>
+                    <Anchor point="TOPLEFT" relativeTo="G4Box6">
+                        <Offset>
+                            <AbsDimension x="0" y="-14"/>
+                        </Offset>
+                    </Anchor>
+                </Anchors>
+                <Scripts>
+                    <OnClick>
+                        Group_OnClick(self);
+                    </OnClick>
+                </Scripts>
+        </Button>
+        <Button name="G4Box8" inherits="HealerTemplate" id="4">
+                <Anchors>
+                    <Anchor point="TOPLEFT" relativeTo="G4Box7">
+                        <Offset>
+                            <AbsDimension x="0" y="-14"/>
+                        </Offset>
+                    </Anchor>
+                </Anchors>
+                <Scripts>
+                    <OnClick>
+                        Group_OnClick(self);
+                    </OnClick>
+                </Scripts>
+        </Button>
+        <Button name="G4Box9" inherits="HealerTemplate" id="4">
+                <Anchors>
+                    <Anchor point="TOPLEFT" relativeTo="G4Box8">
+                        <Offset>
+                            <AbsDimension x="0" y="-14"/>
+                        </Offset>
+                    </Anchor>
+                </Anchors>
+                <Scripts>
+                    <OnClick>
+                        Group_OnClick(self);
+                    </OnClick>
+                </Scripts>
+        </Button>
+        <Button name="G4Box10" inherits="HealerTemplate" id="4">
+                <Anchors>
+                    <Anchor point="TOPLEFT" relativeTo="G4Box9">
+                        <Offset>
+                            <AbsDimension x="0" y="-14"/>
+                        </Offset>
+                    </Anchor>
+                </Anchors>
+                <Scripts>
+                    <OnClick>
+                        Group_OnClick(self);
+                    </OnClick>
+                </Scripts>
+        </Button>
+        <Button name="G4Box11" inherits="HealerTemplate" id="4">
+                <Anchors>
+                    <Anchor point="TOPLEFT" relativeTo="G4Box10">
+                        <Offset>
+                            <AbsDimension x="0" y="-14"/>
+                        </Offset>
+                    </Anchor>
+                </Anchors>
+                <Scripts>
+                    <OnClick>
+                        Group_OnClick(self);
+                    </OnClick>
+                </Scripts>
+        </Button>
+        <Button name="G4Box12" inherits="HealerTemplate" id="4">
+        
+                <Anchors>
+                    <Anchor point="TOPLEFT" relativeTo="G4Box11">
+                        <Offset>
+                            <AbsDimension x="0" y="-14"/>
+                        </Offset>
+                    </Anchor>
+                </Anchors>
+                <Scripts>
+                    <OnClick>
+                        Group_OnClick(self);
+                    </OnClick>
+                </Scripts>
+        </Button>
+        <Button name="G5Box1" inherits="HealerTemplate" id="5">
+                <Anchors>
+                    <Anchor point="TOPLEFT">
+                        <Offset>
+                            <AbsDimension x="137" y="-318"/>
+                        </Offset>
+                    </Anchor>
+                </Anchors>
+                <Scripts>
+                    <OnClick>
+                        Group_OnClick(self);
+                    </OnClick>
+                </Scripts>
+        </Button>
+        <Button name="G5Box2" inherits="HealerTemplate" id="5">
+                <Anchors>
+                    <Anchor point="TOPLEFT" relativeTo="G5Box1">
+                        <Offset>
+                            <AbsDimension x="0" y="-14"/>
+                        </Offset>
+                    </Anchor>
+                </Anchors>
+                <Scripts>
+                    <OnClick>
+                        Group_OnClick(self);
+                    </OnClick>
+                </Scripts>
+        </Button>
+        <Button name="G5Box3" inherits="HealerTemplate" id="5">
+                <Anchors>
+                    <Anchor point="TOPLEFT" relativeTo="G5Box2">
+                        <Offset>
+                            <AbsDimension x="0" y="-14"/>
+                        </Offset>
+                    </Anchor>
+                </Anchors>
+                <Scripts>
+                    <OnClick>
+                        Group_OnClick(self);
+                    </OnClick>
+                </Scripts>
+        </Button>
+        <Button name="G5Box4" inherits="HealerTemplate" id="5">
+                <Anchors>
+                    <Anchor point="TOPLEFT" relativeTo="G5Box3">
+                        <Offset>
+                            <AbsDimension x="0" y="-14"/>
+                        </Offset>
+                    </Anchor>
+                </Anchors>
+                <Scripts>
+                    <OnClick>
+                        Group_OnClick(self);
+                    </OnClick>
+                </Scripts>
+        </Button>
+        <Button name="G5Box5" inherits="HealerTemplate" id="5">
+                <Anchors>
+                    <Anchor point="TOPLEFT" relativeTo="G5Box4">
+                        <Offset>
+                            <AbsDimension x="0" y="-14"/>
+                        </Offset>
+                    </Anchor>
+                </Anchors>
+                <Scripts>
+                    <OnClick>
+                        Group_OnClick(self);
+                    </OnClick>
+                </Scripts>
+        </Button>
+        <Button name="G5Box6" inherits="HealerTemplate" id="5">
+                <Anchors>
+                    <Anchor point="TOPLEFT" relativeTo="G5Box5">
+                        <Offset>
+                            <AbsDimension x="0" y="-14"/>
+                        </Offset>
+                    </Anchor>
+                </Anchors>
+                <Scripts>
+                    <OnClick>
+                        Group_OnClick(self);
+                    </OnClick>
+                </Scripts>
+        </Button>
+        <Button name="G5Box7" inherits="HealerTemplate" id="5">
+                <Anchors>
+                    <Anchor point="TOPLEFT" relativeTo="G5Box6">
+                        <Offset>
+                            <AbsDimension x="0" y="-14"/>
+                        </Offset>
+                    </Anchor>
+                </Anchors>
+                <Scripts>
+                    <OnClick>
+                        Group_OnClick(self);
+                    </OnClick>
+                </Scripts>
+        </Button>
+        <Button name="G5Box8" inherits="HealerTemplate" id="5">
+                <Anchors>
+                    <Anchor point="TOPLEFT" relativeTo="G5Box7">
+                        <Offset>
+                            <AbsDimension x="0" y="-14"/>
+                        </Offset>
+                    </Anchor>
+                </Anchors>
+                <Scripts>
+                    <OnClick>
+                        Group_OnClick(self);
+                    </OnClick>
+                </Scripts>
+        </Button>
+        <Button name="G5Box9" inherits="HealerTemplate" id="5">
+                <Anchors>
+                    <Anchor point="TOPLEFT" relativeTo="G5Box8">
+                        <Offset>
+                            <AbsDimension x="0" y="-14"/>
+                        </Offset>
+                    </Anchor>
+                </Anchors>
+                <Scripts>
+                    <OnClick>
+                        Group_OnClick(self);
+                    </OnClick>
+                </Scripts>
+        </Button>
+        <Button name="G5Box10" inherits="HealerTemplate" id="5">
+                <Anchors>
+                    <Anchor point="TOPLEFT" relativeTo="G5Box9">
+                        <Offset>
+                            <AbsDimension x="0" y="-14"/>
+                        </Offset>
+                    </Anchor>
+                </Anchors>
+                <Scripts>
+                    <OnClick>
+                        Group_OnClick(self);
+                    </OnClick>
+                </Scripts>
+        </Button>
+        <Button name="G5Box11" inherits="HealerTemplate" id="5">
+                <Anchors>
+                    <Anchor point="TOPLEFT" relativeTo="G5Box10">
+                        <Offset>
+                            <AbsDimension x="0" y="-14"/>
+                        </Offset>
+                    </Anchor>
+                </Anchors>
+                <Scripts>
+                    <OnClick>
+                        Group_OnClick(self);
+                    </OnClick>
+                </Scripts>
+        </Button>
+        <Button name="G5Box12" inherits="HealerTemplate" id="5">
+        
+                <Anchors>
+                    <Anchor point="TOPLEFT" relativeTo="G5Box11">
+                        <Offset>
+                            <AbsDimension x="0" y="-14"/>
+                        </Offset>
+                    </Anchor>
+                </Anchors>
+                <Scripts>
+                    <OnClick>
+                        Group_OnClick(self);
+                    </OnClick>
+                </Scripts>
+        </Button>
+        <Button name="G6Box1" inherits="HealerTemplate" id="6">
+                <Anchors>
+                    <Anchor point="TOPLEFT">
+                        <Offset>
+                            <AbsDimension x="257" y="-318"/>
+                        </Offset>
+                    </Anchor>
+                </Anchors>
+                <Scripts>
+                    <OnClick>
+                        Group_OnClick(self);
+                    </OnClick>
+                </Scripts>
+        </Button>
+        <Button name="G6Box2" inherits="HealerTemplate" id="6">
+                <Anchors>
+                    <Anchor point="TOPLEFT" relativeTo="G6Box1">
+                        <Offset>
+                            <AbsDimension x="0" y="-14"/>
+                        </Offset>
+                    </Anchor>
+                </Anchors>
+                <Scripts>
+                    <OnClick>
+                        Group_OnClick(self);
+                    </OnClick>
+                </Scripts>
+        </Button>
+        <Button name="G6Box3" inherits="HealerTemplate" id="6">
+                <Anchors>
+                    <Anchor point="TOPLEFT" relativeTo="G6Box2">
+                        <Offset>
+                            <AbsDimension x="0" y="-14"/>
+                        </Offset>
+                    </Anchor>
+                </Anchors>
+                <Scripts>
+                    <OnClick>
+                        Group_OnClick(self);
+                    </OnClick>
+                </Scripts>
+        </Button>
+        <Button name="G6Box4" inherits="HealerTemplate" id="6">
+                <Anchors>
+                    <Anchor point="TOPLEFT" relativeTo="G6Box3">
+                        <Offset>
+                            <AbsDimension x="0" y="-14"/>
+                        </Offset>
+                    </Anchor>
+                </Anchors>
+                <Scripts>
+                    <OnClick>
+                        Group_OnClick(self);
+                    </OnClick>
+                </Scripts>
+        </Button>
+        <Button name="G6Box5" inherits="HealerTemplate" id="6">
+                <Anchors>
+                    <Anchor point="TOPLEFT" relativeTo="G6Box4">
+                        <Offset>
+                            <AbsDimension x="0" y="-14"/>
+                        </Offset>
+                    </Anchor>
+                </Anchors>
+                <Scripts>
+                    <OnClick>
+                        Group_OnClick(self);
+                    </OnClick>
+                </Scripts>
+        </Button>
+        <Button name="G6Box6" inherits="HealerTemplate" id="6">
+                <Anchors>
+                    <Anchor point="TOPLEFT" relativeTo="G6Box5">
+                        <Offset>
+                            <AbsDimension x="0" y="-14"/>
+                        </Offset>
+                    </Anchor>
+                </Anchors>
+                <Scripts>
+                    <OnClick>
+                        Group_OnClick(self);
+                    </OnClick>
+                </Scripts>
+        </Button>
+        <Button name="G6Box7" inherits="HealerTemplate" id="6">
+                <Anchors>
+                    <Anchor point="TOPLEFT" relativeTo="G6Box6">
+                        <Offset>
+                            <AbsDimension x="0" y="-14"/>
+                        </Offset>
+                    </Anchor>
+                </Anchors>
+                <Scripts>
+                    <OnClick>
+                        Group_OnClick(self);
+                    </OnClick>
+                </Scripts>
+        </Button>
+        <Button name="G6Box8" inherits="HealerTemplate" id="6">
+                <Anchors>
+                    <Anchor point="TOPLEFT" relativeTo="G6Box7">
+                        <Offset>
+                            <AbsDimension x="0" y="-14"/>
+                        </Offset>
+                    </Anchor>
+                </Anchors>
+                <Scripts>
+                    <OnClick>
+                        Group_OnClick(self);
+                    </OnClick>
+                </Scripts>
+        </Button>
+        <Button name="G6Box9" inherits="HealerTemplate" id="6">
+                <Anchors>
+                    <Anchor point="TOPLEFT" relativeTo="G6Box8">
+                        <Offset>
+                            <AbsDimension x="0" y="-14"/>
+                        </Offset>
+                    </Anchor>
+                </Anchors>
+                <Scripts>
+                    <OnClick>
+                        Group_OnClick(self);
+                    </OnClick>
+                </Scripts>
+        </Button>
+        <Button name="G6Box10" inherits="HealerTemplate" id="6">
+                <Anchors>
+                    <Anchor point="TOPLEFT" relativeTo="G6Box9">
+                        <Offset>
+                            <AbsDimension x="0" y="-14"/>
+                        </Offset>
+                    </Anchor>
+                </Anchors>
+                <Scripts>
+                    <OnClick>
+                        Group_OnClick(self);
+                    </OnClick>
+                </Scripts>
+        </Button>
+        <Button name="G6Box11" inherits="HealerTemplate" id="6">
+                <Anchors>
+                    <Anchor point="TOPLEFT" relativeTo="G6Box10">
+                        <Offset>
+                            <AbsDimension x="0" y="-14"/>
+                        </Offset>
+                    </Anchor>
+                </Anchors>
+                <Scripts>
+                    <OnClick>
+                        Group_OnClick(self);
+                    </OnClick>
+                </Scripts>
+        </Button>
+        <Button name="G6Box12" inherits="HealerTemplate" id="6">
+        
+                <Anchors>
+                    <Anchor point="TOPLEFT" relativeTo="G6Box11">
+                        <Offset>
+                            <AbsDimension x="0" y="-14"/>
+                        </Offset>
+                    </Anchor>
+                </Anchors>
+                <Scripts>
+                    <OnClick>
+                        Group_OnClick(self);
+                    </OnClick>
+                </Scripts>
+        </Button>
+        <Button name="G7Box1" inherits="HealerTemplate" id="7">
+                <Anchors>
+                    <Anchor point="TOPLEFT">
+                        <Offset>
+                            <AbsDimension x="377" y="-318"/>
+                        </Offset>
+                    </Anchor>
+                </Anchors>
+                <Scripts>
+                    <OnClick>
+                        Group_OnClick(self);
+                    </OnClick>
+                </Scripts>
+        </Button>
+        <Button name="G7Box2" inherits="HealerTemplate" id="7">
+                <Anchors>
+                    <Anchor point="TOPLEFT" relativeTo="G7Box1">
+                        <Offset>
+                            <AbsDimension x="0" y="-14"/>
+                        </Offset>
+                    </Anchor>
+                </Anchors>
+                <Scripts>
+                    <OnClick>
+                        Group_OnClick(self);
+                    </OnClick>
+                </Scripts>
+        </Button>
+        <Button name="G7Box3" inherits="HealerTemplate" id="7">
+                <Anchors>
+                    <Anchor point="TOPLEFT" relativeTo="G7Box2">
+                        <Offset>
+                            <AbsDimension x="0" y="-14"/>
+                        </Offset>
+                    </Anchor>
+                </Anchors>
+                <Scripts>
+                    <OnClick>
+                        Group_OnClick(self);
+                    </OnClick>
+                </Scripts>
+        </Button>
+        <Button name="G7Box4" inherits="HealerTemplate" id="7">
+                <Anchors>
+                    <Anchor point="TOPLEFT" relativeTo="G7Box3">
+                        <Offset>
+                            <AbsDimension x="0" y="-14"/>
+                        </Offset>
+                    </Anchor>
+                </Anchors>
+                <Scripts>
+                    <OnClick>
+                        Group_OnClick(self);
+                    </OnClick>
+                </Scripts>
+        </Button>
+        <Button name="G7Box5" inherits="HealerTemplate" id="7">
+                <Anchors>
+                    <Anchor point="TOPLEFT" relativeTo="G7Box4">
+                        <Offset>
+                            <AbsDimension x="0" y="-14"/>
+                        </Offset>
+                    </Anchor>
+                </Anchors>
+                <Scripts>
+                    <OnClick>
+                        Group_OnClick(self);
+                    </OnClick>
+                </Scripts>
+        </Button>
+        <Button name="G7Box6" inherits="HealerTemplate" id="7">
+                <Anchors>
+                    <Anchor point="TOPLEFT" relativeTo="G7Box5">
+                        <Offset>
+                            <AbsDimension x="0" y="-14"/>
+                        </Offset>
+                    </Anchor>
+                </Anchors>
+                <Scripts>
+                    <OnClick>
+                        Group_OnClick(self);
+                    </OnClick>
+                </Scripts>
+        </Button>
+        <Button name="G7Box7" inherits="HealerTemplate" id="7">
+                <Anchors>
+                    <Anchor point="TOPLEFT" relativeTo="G7Box6">
+                        <Offset>
+                            <AbsDimension x="0" y="-14"/>
+                        </Offset>
+                    </Anchor>
+                </Anchors>
+                <Scripts>
+                    <OnClick>
+                        Group_OnClick(self);
+                    </OnClick>
+                </Scripts>
+        </Button>
+        <Button name="G7Box8" inherits="HealerTemplate" id="7">
+                <Anchors>
+                    <Anchor point="TOPLEFT" relativeTo="G7Box7">
+                        <Offset>
+                            <AbsDimension x="0" y="-14"/>
+                        </Offset>
+                    </Anchor>
+                </Anchors>
+                <Scripts>
+                    <OnClick>
+                        Group_OnClick(self);
+                    </OnClick>
+                </Scripts>
+        </Button>
+        <Button name="G7Box9" inherits="HealerTemplate" id="7">
+                <Anchors>
+                    <Anchor point="TOPLEFT" relativeTo="G7Box8">
+                        <Offset>
+                            <AbsDimension x="0" y="-14"/>
+                        </Offset>
+                    </Anchor>
+                </Anchors>
+                <Scripts>
+                    <OnClick>
+                        Group_OnClick(self);
+                    </OnClick>
+                </Scripts>
+        </Button>
+        <Button name="G7Box10" inherits="HealerTemplate" id="7">
+                <Anchors>
+                    <Anchor point="TOPLEFT" relativeTo="G7Box9">
+                        <Offset>
+                            <AbsDimension x="0" y="-14"/>
+                        </Offset>
+                    </Anchor>
+                </Anchors>
+                <Scripts>
+                    <OnClick>
+                        Group_OnClick(self);
+                    </OnClick>
+                </Scripts>
+        </Button>
+        <Button name="G7Box11" inherits="HealerTemplate" id="7">
+                <Anchors>
+                    <Anchor point="TOPLEFT" relativeTo="G7Box10">
+                        <Offset>
+                            <AbsDimension x="0" y="-14"/>
+                        </Offset>
+                    </Anchor>
+                </Anchors>
+                <Scripts>
+                    <OnClick>
+                        Group_OnClick(self);
+                    </OnClick>
+                </Scripts>
+        </Button>
+        <Button name="G7Box12" inherits="HealerTemplate" id="7">
+        
+                <Anchors>
+                    <Anchor point="TOPLEFT" relativeTo="G7Box11">
+                        <Offset>
+                            <AbsDimension x="0" y="-14"/>
+                        </Offset>
+                    </Anchor>
+                </Anchors>
+                <Scripts>
+                    <OnClick>
+                        Group_OnClick(self);
+                    </OnClick>
+                </Scripts>
+        </Button>
+        <Button name="G8Box1" inherits="HealerTemplate" id="8">
+                <Anchors>
+                    <Anchor point="TOPLEFT">
+                        <Offset>
+                            <AbsDimension x="497" y="-318"/>
+                        </Offset>
+                    </Anchor>
+                </Anchors>
+                <Scripts>
+                    <OnClick>
+                        Group_OnClick(self);
+                    </OnClick>
+                </Scripts>
+        </Button>
+        <Button name="G8Box2" inherits="HealerTemplate" id="8">
+                <Anchors>
+                    <Anchor point="TOPLEFT" relativeTo="G8Box1">
+                        <Offset>
+                            <AbsDimension x="0" y="-14"/>
+                        </Offset>
+                    </Anchor>
+                </Anchors>
+                <Scripts>
+                    <OnClick>
+                        Group_OnClick(self);
+                    </OnClick>
+                </Scripts>
+        </Button>
+        <Button name="G8Box3" inherits="HealerTemplate" id="8">
+                <Anchors>
+                    <Anchor point="TOPLEFT" relativeTo="G8Box2">
+                        <Offset>
+                            <AbsDimension x="0" y="-14"/>
+                        </Offset>
+                    </Anchor>
+                </Anchors>
+                <Scripts>
+                    <OnClick>
+                        Group_OnClick(self);
+                    </OnClick>
+                </Scripts>
+        </Button>
+        <Button name="G8Box4" inherits="HealerTemplate" id="8">
+                <Anchors>
+                    <Anchor point="TOPLEFT" relativeTo="G8Box3">
+                        <Offset>
+                            <AbsDimension x="0" y="-14"/>
+                        </Offset>
+                    </Anchor>
+                </Anchors>
+                <Scripts>
+                    <OnClick>
+                        Group_OnClick(self);
+                    </OnClick>
+                </Scripts>
+        </Button>
+        <Button name="G8Box5" inherits="HealerTemplate" id="8">
+                <Anchors>
+                    <Anchor point="TOPLEFT" relativeTo="G8Box4">
+                        <Offset>
+                            <AbsDimension x="0" y="-14"/>
+                        </Offset>
+                    </Anchor>
+                </Anchors>
+                <Scripts>
+                    <OnClick>
+                        Group_OnClick(self);
+                    </OnClick>
+                </Scripts>
+        </Button>
+        <Button name="G8Box6" inherits="HealerTemplate" id="8">
+                <Anchors>
+                    <Anchor point="TOPLEFT" relativeTo="G8Box5">
+                        <Offset>
+                            <AbsDimension x="0" y="-14"/>
+                        </Offset>
+                    </Anchor>
+                </Anchors>
+                <Scripts>
+                    <OnClick>
+                        Group_OnClick(self);
+                    </OnClick>
+                </Scripts>
+        </Button>
+        <Button name="G8Box7" inherits="HealerTemplate" id="8">
+                <Anchors>
+                    <Anchor point="TOPLEFT" relativeTo="G8Box6">
+                        <Offset>
+                            <AbsDimension x="0" y="-14"/>
+                        </Offset>
+                    </Anchor>
+                </Anchors>
+                <Scripts>
+                    <OnClick>
+                        Group_OnClick(self);
+                    </OnClick>
+                </Scripts>
+        </Button>
+        <Button name="G8Box8" inherits="HealerTemplate" id="8">
+                <Anchors>
+                    <Anchor point="TOPLEFT" relativeTo="G8Box7">
+                        <Offset>
+                            <AbsDimension x="0" y="-14"/>
+                        </Offset>
+                    </Anchor>
+                </Anchors>
+                <Scripts>
+                    <OnClick>
+                        Group_OnClick(self);
+                    </OnClick>
+                </Scripts>
+        </Button>
+        <Button name="G8Box9" inherits="HealerTemplate" id="8">
+                <Anchors>
+                    <Anchor point="TOPLEFT" relativeTo="G8Box8">
+                        <Offset>
+                            <AbsDimension x="0" y="-14"/>
+                        </Offset>
+                    </Anchor>
+                </Anchors>
+                <Scripts>
+                    <OnClick>
+                        Group_OnClick(self);
+                    </OnClick>
+                </Scripts>
+        </Button>
+        <Button name="G8Box10" inherits="HealerTemplate" id="8">
+                <Anchors>
+                    <Anchor point="TOPLEFT" relativeTo="G8Box9">
+                        <Offset>
+                            <AbsDimension x="0" y="-14"/>
+                        </Offset>
+                    </Anchor>
+                </Anchors>
+                <Scripts>
+                    <OnClick>
+                        Group_OnClick(self);
+                    </OnClick>
+                </Scripts>
+        </Button>
+        <Button name="G8Box11" inherits="HealerTemplate" id="8">
+                <Anchors>
+                    <Anchor point="TOPLEFT" relativeTo="G8Box10">
+                        <Offset>
+                            <AbsDimension x="0" y="-14"/>
+                        </Offset>
+                    </Anchor>
+                </Anchors>
+                <Scripts>
+                    <OnClick>
+                        Group_OnClick(self);
+                    </OnClick>
+                </Scripts>
+        </Button>
+        <Button name="G8Box12" inherits="HealerTemplate" id="8">
+                <Anchors>
+                    <Anchor point="TOPLEFT" relativeTo="G8Box11">
+                        <Offset>
+                            <AbsDimension x="0" y="-14"/>
+                        </Offset>
+                    </Anchor>
+                </Anchors>
+                <Scripts>
+                    <OnClick>
+                        Group_OnClick(self);
+                    </OnClick>
+                </Scripts>
+        </Button>
+
+            
+        </Frames>
+        <Scripts>
+            <OnLoad>
+                self:SetBackdropBorderColor(TOOLTIP_DEFAULT_COLOR.r, TOOLTIP_DEFAULT_COLOR.g, TOOLTIP_DEFAULT_COLOR.b);
+                self:SetBackdropColor(TOOLTIP_DEFAULT_BACKGROUND_COLOR.r, TOOLTIP_DEFAULT_BACKGROUND_COLOR.g, TOOLTIP_DEFAULT_BACKGROUND_COLOR.b);
+            </OnLoad>
+            <OnMouseDown>
+                if ( not self.isMoving ) then
+                self:StartMoving();
+                self.isMoving = true;
+                end
+            </OnMouseDown>
+            <OnMouseUp>
+                if ( self.isMoving) then
+                self:StopMovingOrSizing();
+                self.isMoving = false;
+                end
+            </OnMouseUp>
+        </Scripts>
+    </Frame>
+    
+    
 <Frame name="HGSMiniMap" parent="Minimap" enableMouse="true" hidden="false" frameStrata="LOW" movable="TRUE">
-	<Size>
-		<AbsDimension x="33" y="33"/>
-	</Size>
-	<Frames>
-	<Button name="HGSMMButton">
-				<Size>
-					<AbsDimension x="33" y="33" />
-				</Size>
-				<Anchors>
-					<Anchor point="TOPLEFT"></Anchor>
-				</Anchors>
-				<NormalTexture file="Interface\AddOns\HGS\Images\hgs"/>
-				<PushedTexture file="Interface\AddOns\HGS\Images\hgs2"/>
-				<HighlightTexture alphaMode="ADD" file="Interface\Minimap\UI-Minimap-ZoomButton-Highlight"/>
-				<Scripts>
-					<OnEnter>
-					</OnEnter>
-					<OnLeave>
-					</OnLeave>
-					<OnClick>
-						HGS_MiniMapClick(arg1);
-					</OnClick>
-				</Scripts>
-			</Button>
-	</Frames>
-	<Scripts>
-	<OnLoad>
-		HGS_OnLoad();
-	</OnLoad>
-	<OnEvent>
-		HGS_OnEvent(event, arg1);
-	</OnEvent>
-	<OnMouseDown>
-		if ( not this.isMoving ) then
-		this:StartMoving();
-		this.isMoving = true;
-		end
-	</OnMouseDown>
-	<OnMouseUp>
-		if ( this.isMoving) then
-		this:StopMovingOrSizing();
-		this.isMoving = false;
-		end
-	</OnMouseUp>
-	</Scripts>
+    <Size>
+        <AbsDimension x="33" y="33"/>
+    </Size>
+    <Frames>
+    <Button name="HGSMMButton">
+                <Size>
+                    <AbsDimension x="33" y="33" />
+                </Size>
+                <Anchors>
+                    <Anchor point="TOPLEFT"></Anchor>
+                </Anchors>
+                <NormalTexture file="Interface\AddOns\HGS\Images\hgs"/>
+                <PushedTexture file="Interface\AddOns\HGS\Images\hgs2"/>
+                <HighlightTexture alphaMode="ADD" file="Interface\Minimap\UI-Minimap-ZoomButton-Highlight"/>
+                <Scripts>
+                    <OnEnter>
+                    </OnEnter>
+                    <OnLeave>
+                    </OnLeave>
+                    <OnClick>
+                        HGS_MiniMapClick(self, arg1);
+                    </OnClick>
+                </Scripts>
+            </Button>
+    </Frames>
+    <Scripts>
+    <OnLoad>
+        HGS_OnLoad(self);
+    </OnLoad>
+    <OnEvent>
+        HGS_OnEvent(self, event, arg1);
+    </OnEvent>
+    <OnMouseDown>
+        if ( not self.isMoving ) then
+        self:StartMoving();
+        self.isMoving = true;
+        end
+    </OnMouseDown>
+    <OnMouseUp>
+        if ( self.isMoving) then
+        self:StopMovingOrSizing();
+        self.isMoving = false;
+        end
+    </OnMouseUp>
+    </Scripts>
 </Frame>
-	
-	
+    
+    
 </Ui> 
