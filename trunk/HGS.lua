@@ -9,12 +9,14 @@ HGS_DRUID = "Druid";
 HGS_SHAMAN = "Shaman";
 HGS_PRIEST = "Priest";
 HGS_PALADIN = "Paladin";
+HGS_MONK = "Monk";
 
 if ( GetLocale() == "frFR" ) then
     HGS_DRUID = "Druide";
     HGS_SHAMAN = "Chaman";
     HGS_PRIEST = "Pr\195\170tre";
     HGS_PALADIN = "Paladin";
+    HGS_MONK = "Monk";
 end
 
 if ( GetLocale() == "deDE") then
@@ -22,6 +24,7 @@ if ( GetLocale() == "deDE") then
     HGS_SHAMAN = "Schaman";
     HGS_PRIEST = "Priester";
     HGS_PALADIN = "Paladin";
+    HGS_MONK = "Monk";
 end 
     
 function HGS_OnLoad(self)
@@ -125,8 +128,10 @@ function SetGroupFont(healer,group,slot)
         healer:SetTextColor(0.9,0.5,0);
     elseif (HGSData[Instance][group][slot]["Class"] == HGS_SHAMAN) then
         healer:SetTextColor(0.3,0.3,1);
-   elseif (HGSData[Instance][group][slot]["Class"] == HGS_PALADIN) then
+    elseif (HGSData[Instance][group][slot]["Class"] == HGS_PALADIN) then
         healer:SetTextColor(1.0,0.5,0.75);
+    elseif (HGSData[Instance][group][slot]["Class"] == HGS_MONK) then
+        healer:SetTextColor(0.33,0.54,0.52);
     elseif (HGSData[Instance][group][slot]["Class"] == "Other") then
         healer:SetTextColor(0.7,0.7,0.7);
     end
@@ -139,8 +144,10 @@ function SetHealerFont(healer,id)
         healer:SetTextColor(0.9,0.5,0);
     elseif (HGSData["Healers"][id]["Class"] == HGS_SHAMAN)  then
         healer:SetTextColor(0.3,0.3,1);
-   elseif (HGSData["Healers"][id]["Class"] == HGS_PALADIN) then
+    elseif (HGSData["Healers"][id]["Class"] == HGS_PALADIN) then
       healer:SetTextColor(1.0,0.5,0.75);
+    elseif (HGSData["Healers"][id]["Class"] == HGS_MONK) then
+      healer:SetTextColor(0.33,0.54,0.52);
     elseif (HGSData["Healers"][id]["Class"] == "Other") then
         healer:SetTextColor(0.7,0.7,0.7);
     end
@@ -187,6 +194,7 @@ function UpdateFonts()
     SetHealerFont(Healer35text,35);
     SetHealerFont(Healer36text,36);
     SetHealerFont(Healer37text,37);
+    SetHealerFont(Healer38text,38);
     
     SetGroupFont(G1Box1text,1,1);
     SetGroupFont(G1Box2text,1,2);
@@ -332,7 +340,8 @@ function HGSUpdate()
     Healer34text:SetText(HGSData["Healers"][34]["Name"]);
     Healer35text:SetText(HGSData["Healers"][35]["Name"]);
     Healer36text:SetText(HGSData["Healers"][36]["Name"]);
-   Healer37text:SetText(HGSData["Healers"][37]["Name"]);
+    Healer37text:SetText(HGSData["Healers"][37]["Name"]);
+    Healer38text:SetText(HGSData["Healers"][38]["Name"]);
 
     G1Box1text:SetText(HGSData[Instance][1][1]["Name"]);
     G1Box2text:SetText(HGSData[Instance][1][2]["Name"]);
@@ -691,7 +700,7 @@ end
 function HGS_RemoveHealer(slot, groupid)
     local HCount = HGSData[Instance][groupid]["Count"];
 
-    for index=1,37,1 do
+    for index=1,38,1 do
         if(HGSData["Healers"][index]["Name"] == HGSData[Instance][groupid][slot]["Name"]) then
             HGSData["Healers"][index]["IsChosen"][Instance] = 0;
         end
@@ -716,7 +725,7 @@ function HGS_RemoveHealer(slot, groupid)
 end
 
 function HGS_Refresh()
-    RaidCount = GetNumRaidMembers();
+    RaidCount = GetNumGroupMembers();
     local name = "";
     local rank = "";
     local subgroup = "";
@@ -729,17 +738,19 @@ function HGS_Refresh()
     local Druids = {};
     local Shaman = {};
     local Paladins = {};
+    local Monks ={};
     local Pindex = 1;
     local Dindex = 1;
     local Sindex = 1;   
-   local PaladinIndex = 1;      
+    local PaladinIndex = 1;      
+    local MonkIndex = 1;
     
 
     --DEFAULT_CHAT_FRAME:AddMessage("you are "..UnitFactionGroup('player'), 0.3, 0.6, 0.3)
     
     HGSData["Healers"] = {}; 
     
-    for slot=1,37,1 do
+    for slot=1,38,1 do
         HGSData["Healers"][slot] = {};
         HGSData["Healers"][slot]["Name"] = "";
         HGSData["Healers"][slot]["Class"] = "";
@@ -768,12 +779,16 @@ function HGS_Refresh()
                 Shaman[Sindex]=name;
                 Sindex = Sindex + 1;
             end
+            if(string.find(class, HGS_MONK)) then
+                Monks[MonkIndex]=name;
+                MonkIndex = MonkIndex + 1;
+            end
         end 
     end
             
-    HealerCount= (Pindex - 1) + (Dindex - 1) + (Sindex - 1) + (PaladinIndex - 1);
+    HealerCount= (Pindex - 1) + (Dindex - 1) + (Sindex - 1) + (PaladinIndex - 1) + (MonkIndex - 1);
     
-    DEFAULT_CHAT_FRAME:AddMessage("Found "..(Pindex-1).." priests, "..(Dindex-1).." druids,  "..(Sindex-1).." shaman, and "..(PaladinIndex-1).." Paladins. ", 0.3, 0.6, 0.3);
+    DEFAULT_CHAT_FRAME:AddMessage("Found "..(MonkIndex-1).." monks, " ..(Pindex-1).." priests, "..(Dindex-1).." druids,  "..(Sindex-1).." shaman, and "..(PaladinIndex-1).." Paladins. ", 0.3, 0.6, 0.3);
     
     Hindex =1;
     for index=1,Pindex - 1,1 do
@@ -796,6 +811,11 @@ function HGS_Refresh()
         HGSData["Healers"][Hindex]["Class"] = HGS_PALADIN;
         Hindex = Hindex + 1;
     end
+    for index=1,MonkIndex - 1,1 do
+        HGSData["Healers"][Hindex]["Name"] = Monks[index];
+        HGSData["Healers"][Hindex]["Class"] = HGS_MONK;
+        Hindex = Hindex + 1;
+    end
 
     for index=26,33,1 do
         HGSData["Healers"][index]["Class"]="Other";
@@ -805,7 +825,8 @@ function HGS_Refresh()
     HGSData["Healers"][34]["Class"]=HGS_PRIEST;
     HGSData["Healers"][35]["Class"]=HGS_DRUID;
     HGSData["Healers"][36]["Class"]=HGS_SHAMAN;
-   HGSData["Healers"][37]["Class"]=HGS_PALADIN;
+    HGSData["Healers"][37]["Class"]=HGS_PALADIN;
+    HGSData["Healers"][38]["Class"]=HGS_MONK;
 
     HGSData["Healers"][25]["Name"]="Everyone Else";
     HGSData["Healers"][26]["Name"]="Group1";
@@ -820,12 +841,13 @@ function HGS_Refresh()
     HGSData["Healers"][35]["Name"]="Druids";
     HGSData["Healers"][36]["Name"]="Shamans";
     HGSData["Healers"][37]["Name"]="Paladins";
+    HGSData["Healers"][38]["Name"]="Monks";
         
     hflag = 0;
     for ins=1,HGS_SETS,1 do
         for groupid=1,8,1 do
             for slot=1,12,1 do
-                for index=1,37,1 do
+                for index=1,38,1 do
                     if(HGSData[ins][groupid][slot]["Name"] == HGSData["Healers"][index]["Name"]) then
                         HGSData["Healers"][index]["IsChosen"][ins] = 1;
                         hflag = 1;
@@ -989,6 +1011,7 @@ function HGS_FullReset()
     HGSData["Healers"][35]["Class"]=HGS_DRUID;
     HGSData["Healers"][36]["Class"]=HGS_SHAMAN;
     HGSData["Healers"][37]["Class"]=HGS_PALADIN;
+    HGSData["Healers"][38]["Class"]=HGS_MONK;
 
     HGSData["Healers"][25]["Name"]="Everyone Else";
     HGSData["Healers"][26]["Name"]="Group1";
@@ -1003,11 +1026,12 @@ function HGS_FullReset()
     HGSData["Healers"][35]["Name"]="Druids";
     HGSData["Healers"][36]["Name"]="Shamans";
     HGSData["Healers"][37]["Name"]="Paladins";
+    HGSData["Healers"][38]["Name"]="Monks";
             
     for ins=1,HGS_SETS,1 do
         for groupid=1,8,1 do
             for slot=1,12,1 do
-                for index=1,37,1 do
+                for index=1,38,1 do
                     if(HGSData[ins][groupid][slot]["Name"] == HGSData["Healers"][index]["Name"]) then
                         HGSData["Healers"][index]["IsChosen"][ins] = 1;
                     end
@@ -1038,7 +1062,7 @@ function HGS_Init()
         HGSData["Healers"] = {}; 
     end
     
-    for index=1,37,1 do
+    for index=1,38,1 do
         if(HGSData["Healers"][index] == nil) then
             HGSData["Healers"][index] = {};
         end
@@ -1054,6 +1078,7 @@ function HGS_Init()
     HGSData["Healers"][35]["Class"]=HGS_DRUID;
     HGSData["Healers"][36]["Class"]=HGS_SHAMAN;
     HGSData["Healers"][37]["Class"]=HGS_PALADIN;
+    HGSData["Healers"][38]["Class"]=HGS_MONK;
 
     HGSData["Healers"][25]["Name"]="Everyone Else";
     HGSData["Healers"][26]["Name"]="Group1";
@@ -1068,6 +1093,7 @@ function HGS_Init()
     HGSData["Healers"][35]["Name"]="Druids";
     HGSData["Healers"][36]["Name"]="Shamans";
     HGSData["Healers"][37]["Name"]="Paladins";
+    HGSData["Healers"][38]["Name"]="Monks";
     
     HealerCount=0;
     if(HGSData["Healers"] == nil) then
