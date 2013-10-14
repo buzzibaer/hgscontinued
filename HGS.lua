@@ -37,12 +37,12 @@ function HGS_OnLoad(self)
     SLASH_HGS2 = "/hgs";
 end
 
-function HGS_OnEvent(self, event, arg1)
+function HGS_OnEvent(self, event, ...)
 
     if (event == "CHAT_MSG_WHISPER") then
     
-    local msg = arg1;
-    local plr = arg2;
+    local msg, plr = ...;
+    
     if((msg == "HGS") or (msg == "hgs")) then
     HGS_PlayerBCast(plr);
     end
@@ -90,7 +90,7 @@ function HGSCommand(msg)
     end
     
     if (msg == "") then
-        DEFAULT_CHAT_FRAME:AddMessage("~ Healing Groups Suck v1.9.7 ~", 0.5, 1, 0.5);
+        DEFAULT_CHAT_FRAME:AddMessage("~ Healing Groups Suck v1.9.8 ~", 0.5, 1, 0.5);
         DEFAULT_CHAT_FRAME:AddMessage("/hgs show - Shows the minimap icon", 0.3, 0.6, 0.3);
         DEFAULT_CHAT_FRAME:AddMessage("/hgs hide - Hides the minimap icon", 0.3, 0.6, 0.3);
         DEFAULT_CHAT_FRAME:AddMessage("/hgs open - Opens the group window", 0.3, 0.6, 0.3);
