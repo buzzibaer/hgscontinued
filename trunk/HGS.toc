@@ -1,5 +1,5 @@
 ## Interface: 50400
-## Version: 1.9.7
+## Version: 1.9.8
 ## Title: Healing Groups Suck v1.9
 ## Notes:  Raid GUI for creating healing groups
 ## DefaultState: Enabled
