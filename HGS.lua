@@ -16,7 +16,7 @@ if ( GetLocale() == "frFR" ) then
     HGS_SHAMAN = "Chaman";
     HGS_PRIEST = "Pr\195\170tre";
     HGS_PALADIN = "Paladin";
-    HGS_MONK = "Monk";
+    HGS_MONK = "Moine";
 end
 
 if ( GetLocale() == "deDE") then
@@ -24,7 +24,7 @@ if ( GetLocale() == "deDE") then
     HGS_SHAMAN = "Schaman";
     HGS_PRIEST = "Priester";
     HGS_PALADIN = "Paladin";
-    HGS_MONK = "Monk";
+    HGS_MONK = "M\195\182nch";
 end 
     
 function HGS_OnLoad(self)
@@ -90,7 +90,7 @@ function HGSCommand(msg)
     end
     
     if (msg == "") then
-        DEFAULT_CHAT_FRAME:AddMessage("~ Healing Groups Suck v1.9.6 ~", 0.5, 1, 0.5);
+        DEFAULT_CHAT_FRAME:AddMessage("~ Healing Groups Suck v1.9.7 ~", 0.5, 1, 0.5);
         DEFAULT_CHAT_FRAME:AddMessage("/hgs show - Shows the minimap icon", 0.3, 0.6, 0.3);
         DEFAULT_CHAT_FRAME:AddMessage("/hgs hide - Hides the minimap icon", 0.3, 0.6, 0.3);
         DEFAULT_CHAT_FRAME:AddMessage("/hgs open - Opens the group window", 0.3, 0.6, 0.3);
