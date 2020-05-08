@@ -1,7 +1,7 @@
 <Ui xmlns="http://www.blizzard.com/wow/ui/" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" 
 xsi:schemaLocation="http://www.blizzard.com/wow/ui/..\..\FrameXML\UI.xsd">
 
-<Script file="HGS.lua"/>
+<Script file="hgscontinued.lua"/>
     
     
     
@@ -663,7 +663,7 @@ xsi:schemaLocation="http://www.blizzard.com/wow/ui/..\..\FrameXML\UI.xsd">
             </Button>
 
 
-            <EditBox name="ChannelBox" autoFocus="false" inherits="InputBoxTemplate" id="1">
+            <EditBox name="ChannelBox" autoFocus="false" inherits="InputBoxTemplate" bytes="64" id="1">
                 <Size>
                     <AbsDimension x="80" y="16"/>
                 </Size>
@@ -683,11 +683,11 @@ xsi:schemaLocation="http://www.blizzard.com/wow/ui/..\..\FrameXML\UI.xsd">
                         HGS_SetChannel(self);
                     </OnEditFocusLost>
                 </Scripts>
-                <FontString inherits="ChatFontNormal" bytes="64"/>
+                <FontString inherits="ChatFontNormal"/>
             </EditBox>
 
 
-            <EditBox name="CommentBox" autoFocus="false" inherits="InputBoxTemplate" id="1">
+            <EditBox name="CommentBox" autoFocus="false" inherits="InputBoxTemplate"  bytes="512" id="1">
                 <Size>
                     <AbsDimension x="360" y="34"/>
                 </Size>
@@ -707,11 +707,11 @@ xsi:schemaLocation="http://www.blizzard.com/wow/ui/..\..\FrameXML\UI.xsd">
                         HGS_SaveComment();
                     </OnEditFocusLost>
                 </Scripts>
-                <FontString inherits="ChatFontNormal" bytes="512"/>
+                <FontString inherits="ChatFontNormal"/>
             </EditBox>
             
             
-            <EditBox name="InstanceBox" autoFocus="false" inherits="InputBoxTemplate" id="1">
+            <EditBox name="InstanceBox" autoFocus="false" inherits="InputBoxTemplate" bytes="64" id="1">
                 <Size>
                     <AbsDimension x="135" y="16"/>
                 </Size>
@@ -731,7 +731,7 @@ xsi:schemaLocation="http://www.blizzard.com/wow/ui/..\..\FrameXML\UI.xsd">
                         HGS_SaveInstance();
                     </OnEditFocusLost>
                 </Scripts>
-                <FontString inherits="ChatFontNormal" bytes="64"/>
+                <FontString inherits="ChatFontNormal"/>
             </EditBox>
 
         <Button name="HGSInstanceNext" inherits="GameMenuButtonTemplate" justifyH="CENTER">
@@ -860,7 +860,7 @@ xsi:schemaLocation="http://www.blizzard.com/wow/ui/..\..\FrameXML\UI.xsd">
                 </Backdrop>
             </Frame>
 
-            <EditBox name="HGSGroup1Box" autoFocus="false" inherits="InputBoxTemplate" id="1">
+            <EditBox name="HGSGroup1Box" autoFocus="false" inherits="InputBoxTemplate" bytes="64" id="1">
                 <Size>
                     <AbsDimension x="80" y="16"/>
                 </Size>
@@ -880,9 +880,9 @@ xsi:schemaLocation="http://www.blizzard.com/wow/ui/..\..\FrameXML\UI.xsd">
                         GroupBox_SetName(self);
                     </OnEditFocusLost>
                 </Scripts>
-                <FontString inherits="ChatFontNormal" bytes="64"/>
+                <FontString inherits="ChatFontNormal" />
             </EditBox>
-            <EditBox name="HGSGroup2Box" autoFocus="false" inherits="InputBoxTemplate" id="2">
+            <EditBox name="HGSGroup2Box" autoFocus="false" inherits="InputBoxTemplate" bytes="64" id="2">
                 <Size>
                     <AbsDimension x="80" y="16"/>
                 </Size>
@@ -902,9 +902,9 @@ xsi:schemaLocation="http://www.blizzard.com/wow/ui/..\..\FrameXML\UI.xsd">
                         GroupBox_SetName(self);
                     </OnEditFocusLost>
                 </Scripts>
-                <FontString inherits="ChatFontNormal" bytes="64"/>
+                <FontString inherits="ChatFontNormal"/>
             </EditBox>
-            <EditBox name="HGSGroup3Box" autoFocus="false" inherits="InputBoxTemplate" id="3">
+            <EditBox name="HGSGroup3Box" autoFocus="false" inherits="InputBoxTemplate" bytes="64" id="3">
                 <Size>
                     <AbsDimension x="80" y="16"/>
                 </Size>
@@ -924,9 +924,9 @@ xsi:schemaLocation="http://www.blizzard.com/wow/ui/..\..\FrameXML\UI.xsd">
                         GroupBox_SetName(self);
                     </OnEditFocusLost>
                 </Scripts>
-                <FontString inherits="ChatFontNormal" bytes="64"/>
+                <FontString inherits="ChatFontNormal"/>
             </EditBox>
-            <EditBox name="HGSGroup4Box" autoFocus="false" inherits="InputBoxTemplate" id="4">
+            <EditBox name="HGSGroup4Box" autoFocus="false" inherits="InputBoxTemplate" bytes="64" id="4">
                 <Size>
                     <AbsDimension x="80" y="16"/>
                 </Size>
@@ -946,9 +946,9 @@ xsi:schemaLocation="http://www.blizzard.com/wow/ui/..\..\FrameXML\UI.xsd">
                         GroupBox_SetName(self);
                     </OnEditFocusLost>
                 </Scripts>
-                <FontString inherits="ChatFontNormal" bytes="64"/>
+                <FontString inherits="ChatFontNormal"/>
             </EditBox>
-            <EditBox name="HGSGroup5Box" autoFocus="false" inherits="InputBoxTemplate" id="5">
+            <EditBox name="HGSGroup5Box" autoFocus="false" inherits="InputBoxTemplate" bytes="64" id="5">
                 <Size>
                     <AbsDimension x="80" y="16"/>
                 </Size>
@@ -968,9 +968,9 @@ xsi:schemaLocation="http://www.blizzard.com/wow/ui/..\..\FrameXML\UI.xsd">
                         GroupBox_SetName(self);
                     </OnEditFocusLost>
                 </Scripts>
-                <FontString inherits="ChatFontNormal" bytes="64"/>
+                <FontString inherits="ChatFontNormal"/>
             </EditBox>
-            <EditBox name="HGSGroup6Box" autoFocus="false" inherits="InputBoxTemplate" id="6">
+            <EditBox name="HGSGroup6Box" autoFocus="false" inherits="InputBoxTemplate" bytes="64" id="6">
                 <Size>
                     <AbsDimension x="80" y="16"/>
                 </Size>
@@ -990,9 +990,9 @@ xsi:schemaLocation="http://www.blizzard.com/wow/ui/..\..\FrameXML\UI.xsd">
                         GroupBox_SetName(self);
                     </OnEditFocusLost>
                 </Scripts>
-                <FontString inherits="ChatFontNormal" bytes="64"/>
+                <FontString inherits="ChatFontNormal"/>
             </EditBox>
-            <EditBox name="HGSGroup7Box" autoFocus="false" inherits="InputBoxTemplate" id="7">
+            <EditBox name="HGSGroup7Box" autoFocus="false" inherits="InputBoxTemplate" bytes="64" id="7">
                 <Size>
                     <AbsDimension x="80" y="16"/>
                 </Size>
@@ -1012,9 +1012,9 @@ xsi:schemaLocation="http://www.blizzard.com/wow/ui/..\..\FrameXML\UI.xsd">
                         GroupBox_SetName(self);
                     </OnEditFocusLost>
                 </Scripts>
-                <FontString inherits="ChatFontNormal" bytes="64"/>
+                <FontString inherits="ChatFontNormal"/>
             </EditBox>
-            <EditBox name="HGSGroup8Box" autoFocus="false" inherits="InputBoxTemplate" id="8">
+            <EditBox name="HGSGroup8Box" autoFocus="false" inherits="InputBoxTemplate" bytes="64" id="8">
                 <Size>
                     <AbsDimension x="80" y="16"/>
                 </Size>
@@ -1034,7 +1034,7 @@ xsi:schemaLocation="http://www.blizzard.com/wow/ui/..\..\FrameXML\UI.xsd">
                         GroupBox_SetName(self);
                     </OnEditFocusLost>
                 </Scripts>
-                <FontString inherits="ChatFontNormal" bytes="64"/>
+                <FontString inherits="ChatFontNormal"/>
             </EditBox>
 
         <Frame name="HGSGroup1Frame">
