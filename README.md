@@ -1,12 +1,12 @@
 # hgscontinued
 Healing Group Sucks Continued
 
-*** Healing Group Sucks Continued ***
+Healing Group Sucks Continued
 
-*
-* Update on the famous Healing Group Sucks Addon
-* Due to disappearing of the original Author i made some Updates to make it work
-*
+
+ Update on the famous Healing Group Sucks Addon
+ Due to disappearing of the original Author i made some Updates to make it work
+
 
 Healing Groups Suck is a GUI for creating, broadcasting, and saving healing groups during raids.
 
