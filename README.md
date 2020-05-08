@@ -1,11 +1,10 @@
 # hgscontinued
-Healing Group Sucks Continued
-
-Healing Group Sucks Continued
 
 
- Update on the famous Healing Group Sucks Addon
- Due to disappearing of the original Author i made some Updates to make it work
+## Healing Group Sucks Continued
+
+Update on the famous Healing Group Sucks Addon
+Due to disappearing of the original Author i made some Updates to make it work
 
 
 Healing Groups Suck is a GUI for creating, broadcasting, and saving healing groups during raids.
@@ -24,38 +23,33 @@ Click Broadcast or type '/hgs broadcast'. Only groups with assigned healers will
 
 People can also whisper you with 'hgs' or 'HGS' and you will reply to them with their healing assignment. It will use the current HGS Set on the to look up assignments.
 
-***********************************************
-*** History ****
-***********************************************
-* Version 1.7
-* 1. Paladins and Shamans both added for Horde
-* 2. Update for sexuality within chars / male female separation from last patch
-* 3. Some Bugfixes and Refactoring
-***********************************************
-* Version 1.8
-* 1. Bugfix for for first time users
+
+### History
+
+#### Version 1.7
+* Paladins and Shamans both added for Horde
+* Update for sexuality within chars / male female separation from last patch
+* Some Bugfixes and Refactoring
+
+#### Version 1.8
+* Bugfix for for first time users
 * Init now works correctly
-***********************************************
-***********************************************
-* Version 1.9
-* 1. TOC and Version update.. nothing changed
-***********************************************
-***********************************************
-* Version 1.9.6
-* 1. TOC and Version update
+
+#### Version 1.9
+* TOC and Version update.. nothing changed
+
+#### Version 1.9.6
+* TOC and Version update
 * Monks as healers added
 * changed API Call vor raidmembers
-***********************************************
-***********************************************
-* Version 1.9.7
-* 1. TOC and Version update
+
+#### Version 1.9.7
+* TOC and Version update
 * Monks as healers fixed
-***********************************************
-***********************************************
-* Version 1.9.8
+
+
+#### Version 1.9.8
 * fixed whisper command
-***********************************************
-***********************************************
-* Version 1.9.9
+
+#### Version 1.9.9
 * toc update
-***********************************************
