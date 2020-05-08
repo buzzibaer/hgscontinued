@@ -26,30 +26,29 @@ People can also whisper you with 'hgs' or 'HGS' and you will reply to them with 
 
 ### History
 
-#### Version 1.7
-* Paladins and Shamans both added for Horde
-* Update for sexuality within chars / male female separation from last patch
-* Some Bugfixes and Refactoring
+#### Version 1.9.9
+* toc update
 
-#### Version 1.8
-* Bugfix for for first time users
-* Init now works correctly
+#### Version 1.9.8
+* fixed whisper command
 
-#### Version 1.9
-* TOC and Version update.. nothing changed
+#### Version 1.9.7
+* TOC and Version update
+* Monks as healers fixed
 
 #### Version 1.9.6
 * TOC and Version update
 * Monks as healers added
 * changed API Call vor raidmembers
 
-#### Version 1.9.7
-* TOC and Version update
-* Monks as healers fixed
+#### Version 1.9
+* TOC and Version update.. nothing changed
 
+#### Version 1.8
+* Bugfix for for first time users
+* Init now works correctly
 
-#### Version 1.9.8
-* fixed whisper command
-
-#### Version 1.9.9
-* toc update
+#### Version 1.7
+* Paladins and Shamans both added for Horde
+* Update for sexuality within chars / male female separation from last patch
+* Some Bugfixes and Refactoring
