@@ -26,6 +26,12 @@ People can also whisper you with 'hgs' or 'HGS' and you will reply to them with 
 
 ### History
 
+#### Version 1.9.11
+* minimap icon fixed after renaming
+
+#### Version 1.9.10
+* toc update for classic
+
 #### Version 1.9.9
 * toc update
 

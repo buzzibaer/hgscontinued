@@ -58,7 +58,7 @@ xsi:schemaLocation="http://www.blizzard.com/wow/ui/..\..\FrameXML\UI.xsd">
         <Layers>
             <Layer level="OVERLAY">
 
-            <FontString name="HGSTitle" inherits="GameFontNormal" text="Healing Groups Suck v1.9.10">
+            <FontString name="HGSTitle" inherits="GameFontNormal" text="Healing Groups Suck v1.9.11">
                     <Size>
                         <AbsDimension x="190" y="16"/>
                     </Size>
@@ -2619,8 +2619,8 @@ xsi:schemaLocation="http://www.blizzard.com/wow/ui/..\..\FrameXML\UI.xsd">
                 <Anchors>
                     <Anchor point="TOPLEFT"></Anchor>
                 </Anchors>
-                <NormalTexture file="Interface\AddOns\HGS\Images\hgs"/>
-                <PushedTexture file="Interface\AddOns\HGS\Images\hgs2"/>
+                <NormalTexture file="Interface\AddOns\hgscontinued\Images\hgs"/>
+                <PushedTexture file="Interface\AddOns\hgscontinued\Images\hgs2"/>
                 <HighlightTexture alphaMode="ADD" file="Interface\Minimap\UI-Minimap-ZoomButton-Highlight"/>
                 <Scripts>
                     <OnEnter>
