@@ -1,5 +1,5 @@
-## Interface: 11304
-## Version: 1.9.11
+## Interface: 11305
+## Version: 1.9.12
 ## Title: Healing Groups Suck v1.9
 ## Notes:  Raid GUI for creating healing groups
 ## Author: buzzibaer
