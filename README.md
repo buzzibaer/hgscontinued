@@ -26,6 +26,9 @@ People can also whisper you with 'hgs' or 'HGS' and you will reply to them with 
 
 ### History
 
+#### Version 1.9.13
+* toc update
+
 #### Version 1.9.12
 * toc update
 
