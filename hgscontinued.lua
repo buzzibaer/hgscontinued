@@ -90,7 +90,7 @@ function HGSCommand(msg)
     end
     
     if (msg == "") then
-        DEFAULT_CHAT_FRAME:AddMessage("~ Healing Groups Suck v1.9.10 ~", 0.5, 1, 0.5);
+        DEFAULT_CHAT_FRAME:AddMessage("~ Healing Groups Suck v1.9.14 ~", 0.5, 1, 0.5);
         DEFAULT_CHAT_FRAME:AddMessage("/hgs show - Shows the minimap icon", 0.3, 0.6, 0.3);
         DEFAULT_CHAT_FRAME:AddMessage("/hgs hide - Hides the minimap icon", 0.3, 0.6, 0.3);
         DEFAULT_CHAT_FRAME:AddMessage("/hgs open - Opens the group window", 0.3, 0.6, 0.3);
