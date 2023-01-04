@@ -1,0 +1,12 @@
+## Interface: 30400
+
+## Version: 1.9.14
+## Title: Healing Groups Suck v1.9
+## Notes:  Raid GUI for creating healing groups
+## Author: buzzibaer
+## X-Curse-Project-ID: 7976
+## DefaultState: Enabled
+## LoadOnDemand: 0
+## SavedVariables: HGSData
+hgscontinued.xml
+hgscontinued.lua
